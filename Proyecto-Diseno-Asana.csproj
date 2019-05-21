@@ -63,13 +63,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Controlador.cs" />
+    <Compile Include="control\DTO.cs" />
+    <Compile Include="control\Controlador.cs" />
+    <Compile Include="control\gestor\GestorAvance.cs" />
+    <Compile Include="control\gestor\GestorProyecto.cs" />
+    <Compile Include="control\gestor\GestorUsuario.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="modelo\Avance.cs" />
+    <Compile Include="modelo\Proyecto.cs" />
+    <Compile Include="modelo\Tarea.cs" />
+    <Compile Include="modelo\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,5 +103,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
