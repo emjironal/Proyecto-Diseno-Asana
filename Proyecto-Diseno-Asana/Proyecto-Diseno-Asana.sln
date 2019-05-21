@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proyecto-Diseno-Asana", "Proyecto-Diseno-Asana.csproj", "{961BB25D-197C-487C-9746-3D9F65D1B7D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{961BB25D-197C-487C-9746-3D9F65D1B7D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{961BB25D-197C-487C-9746-3D9F65D1B7D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{961BB25D-197C-487C-9746-3D9F65D1B7D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{961BB25D-197C-487C-9746-3D9F65D1B7D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B60EFB32-7297-4C2E-BFDE-0332C53B1F2B}
+	EndGlobalSection
+EndGlobal
