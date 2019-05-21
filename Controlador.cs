@@ -8,6 +8,13 @@ namespace Proyecto_Diseno_Asana
 {
     class Controlador
     {
+        private Controlador instance;
 
+        private Controlador(){}
+
+        public Controlador getInstance()
+        {
+            return instance;
+        }
     }
 }
