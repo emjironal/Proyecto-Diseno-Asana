@@ -63,11 +63,26 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="control\consulta\ConsultaBuilder.cs" />
+    <Compile Include="control\consulta\ConsultaGetProyecto.cs" />
+    <Compile Include="control\consulta\ConsultaxActividad.cs" />
+    <Compile Include="control\consulta\ConsultaxFecha.cs" />
+    <Compile Include="control\consulta\ConsultaxMiembro.cs" />
+    <Compile Include="control\dao\DAOAvance.cs" />
+    <Compile Include="control\dao\DAOConsulta.cs" />
+    <Compile Include="control\dao\DAOProyecto.cs" />
+    <Compile Include="control\dao\DAOUsuario.cs" />
     <Compile Include="control\DTO.cs" />
     <Compile Include="control\Controlador.cs" />
+    <Compile Include="control\fabrica\Fabrica.cs" />
+    <Compile Include="control\fabrica\FabricaCargaProyecto.cs" />
+    <Compile Include="control\fabrica\FabricaImportacionProyecto.cs" />
     <Compile Include="control\gestor\GestorAvance.cs" />
+    <Compile Include="control\gestor\GestorBaseDatos.cs" />
     <Compile Include="control\gestor\GestorProyecto.cs" />
     <Compile Include="control\gestor\GestorUsuario.cs" />
+    <Compile Include="control\reporte\Reporte.cs" />
+    <Compile Include="control\reporte\ReportePDF.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -75,6 +90,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="modelo\Avance.cs" />
+    <Compile Include="modelo\Consulta.cs" />
+    <Compile Include="modelo\ProductoAbstracto.cs" />
     <Compile Include="modelo\Proyecto.cs" />
     <Compile Include="modelo\Tarea.cs" />
     <Compile Include="modelo\Usuario.cs" />

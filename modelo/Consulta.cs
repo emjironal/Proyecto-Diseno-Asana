@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Diseno_Asana.modelo
 {
-    class Proyecto : ProductoAbstracto
+    class Consulta
     {
     }
 }
