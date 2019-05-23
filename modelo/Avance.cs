@@ -12,5 +12,6 @@ namespace Proyecto_Diseno_Asana.modelo
         private int HorasDedicadas { get; set; }
         private String descripción { get; set; }
         private List<Evidencia> evidencias { get; set; }
+        private Usuario creador { get; set; }
     }
 }
