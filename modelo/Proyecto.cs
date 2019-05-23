@@ -12,5 +12,7 @@ namespace Proyecto_Diseno_Asana.modelo
         public String Nombre { get; set; }
         private Usuario AdministradorProyecto { get; set; }
         private List<Usuario> miembros { get; set; }
+
+        private List<Tarea> secciones { get; set; }
     }
 }

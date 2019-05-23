@@ -11,5 +11,6 @@ namespace Proyecto_Diseno_Asana.modelo
         private DateTime Fecha { get; set; }
         private int HorasDedicadas { get; set; }
         private String descripción { get; set; }
+        private List<Evidencia> evidencias { get; set; }
     }
 }
