@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="modelo\Avance.cs" />
     <Compile Include="modelo\Consulta.cs" />
+    <Compile Include="modelo\Evidencia.cs" />
     <Compile Include="modelo\ProductoAbstracto.cs" />
     <Compile Include="modelo\Proyecto.cs" />
     <Compile Include="modelo\Tarea.cs" />
