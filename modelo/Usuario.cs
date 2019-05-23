@@ -8,5 +8,9 @@ namespace Proyecto_Diseno_Asana.modelo
 {
     class Usuario
     {
+        private string Nombre { get; set; }
+        private string Correo { get; set; }
+        private string Contraseña { get; set; }
+        public bool isAdministrador { get; set; }
     }
 }

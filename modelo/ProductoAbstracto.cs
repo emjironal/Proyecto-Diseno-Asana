@@ -8,5 +8,7 @@ namespace Proyecto_Diseno_Asana.modelo
 {
     interface ProductoAbstracto
     {
+        String getId();
+        String getNombre();
     }
 }
