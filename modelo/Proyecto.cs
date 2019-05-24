@@ -8,10 +8,10 @@ namespace Proyecto_Diseno_Asana.modelo
 {
     class Proyecto : ProductoAbstracto
     {
-        private String id { get; set; }
+        public String id { get; set; }
         public String nombre { get; set; }
-        private Usuario administradorProyecto { get; set; }
-        private List<Usuario> miembros { get; set; }
-        private List<Tarea> secciones { get; set; }
+        public Usuario administradorProyecto { get; set; }
+        public List<Usuario> miembros { get; set; }
+        public List<Tarea> secciones { get; set; }
     }
 }

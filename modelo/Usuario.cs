@@ -8,11 +8,12 @@ namespace Proyecto_Diseno_Asana.modelo
 {
     class Usuario
     {
-        private string nombre { get; set; }
-        private string correo { get; set; }
-        private string contraseña { get; set; }
-        private bool isAdministrador { get; set; }
-        private List<Proyecto> proyectos { get; set; }
-        private List<Tarea> tareas { get; set; }
+        public string id { get; set; }
+        public string nombre { get; set; }
+        public string correo { get; set; }
+        public string contraseña { get; set; }
+        public bool isAdministrador { get; set; }
+        public List<Proyecto> proyectos { get; set; }
+        public List<Tarea> tareas { get; set; }
     }
 }

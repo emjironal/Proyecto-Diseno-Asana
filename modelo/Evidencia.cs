@@ -9,6 +9,6 @@ namespace Proyecto_Diseno_Asana.modelo
 {
     class Evidencia
     {
-        private List<FileStream> documentos { get; set; }
+        public List<FileStream> documentos { get; set; }
     }
 }
