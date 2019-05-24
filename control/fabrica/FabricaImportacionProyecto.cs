@@ -12,11 +12,13 @@ namespace Proyecto_Diseno_Asana.control.fabrica
     {
         public ProductoAbstracto fabricaProducto(object entrada)
         {
-            string json = (string)entrada;
-            JArray data = JArray.Parse(json);
+            string jsonstr = (string)entrada;
+            JObject json = JObject.Parse(jsonstr);
+            JArray data = (JArray)getObjectgFromJObject(json, "data");
             Proyecto proyecto = new Proyecto();
             proyecto.secciones = new List<Tarea>();
             Tarea defaultSection = new Tarea();
+            defaultSection.tareas = new List<Tarea>();
             proyecto.secciones.Add(defaultSection);
             foreach (JObject jObject in data)
             {
@@ -102,7 +104,9 @@ namespace Proyecto_Diseno_Asana.control.fabrica
             var fchEntrega = getObjectgFromJObject(jObject, "due_on");
             if (fchEntrega != null)
             {
-                tarea.fchEntrega = (DateTime)fchEntrega;
+                DateTime fch;
+                DateTime.TryParseExact((string)fchEntrega, "yyyy-mm-dd", null, System.Globalization.DateTimeStyles.None, out fch);
+                tarea.fchEntrega = fch;
             }
         }
 
@@ -124,7 +128,10 @@ namespace Proyecto_Diseno_Asana.control.fabrica
         private void parseEncargado(JObject jObject, Tarea tarea)
         {
             JObject assignee = (JObject) getObjectgFromJObject(jObject, "assignee");
-            tarea.encargado = parseUsuario(assignee);
+            if (assignee != null)
+            {
+                tarea.encargado = parseUsuario(assignee);
+            }
         }
 
         private Usuario parseUsuario(JObject jObject)
