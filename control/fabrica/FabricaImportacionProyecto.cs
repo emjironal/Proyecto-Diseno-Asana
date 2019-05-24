@@ -57,9 +57,10 @@ namespace Proyecto_Diseno_Asana.control.fabrica
         {
             JArray subtasks = (JArray)getObjectgFromJObject(jObject, "subtasks");
             tarea.tareas = new List<Tarea>();
-            foreach(JObject subtarea in subtasks)
+            foreach(JObject subtask in subtasks)
             {
-                tarea.tareas.Add(parseTarea(jObject));
+                Tarea subtarea = parseTarea(subtask);
+                tarea.tareas.Add(subtarea);
             }
         }
 
