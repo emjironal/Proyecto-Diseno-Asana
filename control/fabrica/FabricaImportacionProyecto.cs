@@ -46,6 +46,7 @@ namespace Proyecto_Diseno_Asana.control.fabrica
             parseSeguidores(jObject, tarea);
             parseNombre(jObject, tarea);
             parseNotas(jObject, tarea);
+            parseSubtareas(jObject, tarea);
             return tarea;
         }
 
@@ -56,12 +57,9 @@ namespace Proyecto_Diseno_Asana.control.fabrica
         {
             JArray subtasks = (JArray)getObjectgFromJObject(jObject, "subtasks");
             tarea.tareas = new List<Tarea>();
-            if(subtasks != null)
+            foreach(JObject subtarea in subtasks)
             {
-                foreach(JObject subtarea in subtasks)
-                {
-                    tarea.tareas.Add(parseTarea(jObject));
-                }
+                tarea.tareas.Add(parseTarea(jObject));
             }
         }
 
