@@ -13,22 +13,72 @@ namespace Proyecto_Diseno_Asana.control.fabrica
         public ProductoAbstracto fabricaProducto(object entrada)
         {
             string json = (string)entrada;
-            var data = JArray.Parse(json);
+            JArray data = JArray.Parse(json);
             Proyecto proyecto = new Proyecto();
             proyecto.secciones = new List<Tarea>();
             Tarea defaultSection = new Tarea();
             proyecto.secciones.Add(defaultSection);
-            int seccion = 0;
             foreach (JObject jObject in data)
             {
-                Tarea tarea = new Tarea();
-                parseCodigo(jObject, tarea);
-                parseEncargado(jObject, tarea);
-                parseFchFinalizacion(jObject, tarea);
-                parseFchEntrega(jObject, tarea);
-                parseSeguidores(jObject, tarea);
+                Tarea tarea = parseTarea(jObject);
+                if((string)getObjectgFromJObject(jObject, "resource_subtype") == "section")
+                {
+                    proyecto.secciones.Add(tarea);
+                }
+                else
+                {
+                    proyecto.secciones.Last<Tarea>().tareas.Add(tarea);
+                }
             }
             return proyecto;
+        }
+
+        /**
+         * Obtiene la tarea
+         */
+        private Tarea parseTarea(JObject jObject)
+        {
+            Tarea tarea = new Tarea();
+            parseCodigo(jObject, tarea);
+            parseEncargado(jObject, tarea);
+            parseFchFinalizacion(jObject, tarea);
+            parseFchEntrega(jObject, tarea);
+            parseSeguidores(jObject, tarea);
+            parseNombre(jObject, tarea);
+            parseNotas(jObject, tarea);
+            return tarea;
+        }
+
+        /**
+         * Obtiene las subtareas
+         */
+        private void parseSubtareas(JObject jObject, Tarea tarea)
+        {
+            JArray subtasks = (JArray)getObjectgFromJObject(jObject, "subtasks");
+            tarea.tareas = new List<Tarea>();
+            if(subtasks != null)
+            {
+                foreach(JObject subtarea in subtasks)
+                {
+                    tarea.tareas.Add(parseTarea(jObject));
+                }
+            }
+        }
+
+        /**
+         * Obtiene las notas
+         */
+        private void parseNotas(JObject jObject, Tarea tarea)
+        {
+            tarea.notas = (string)getObjectgFromJObject(jObject, "notes");
+        }
+
+        /**
+         * Obtiene el nombre
+         */
+        private void parseNombre(JObject jObject, Tarea tarea)
+        {
+            tarea.nombre = (string)getObjectgFromJObject(jObject, "name");
         }
 
         /**
@@ -36,7 +86,7 @@ namespace Proyecto_Diseno_Asana.control.fabrica
          */
         private void parseSeguidores(JObject jObject, Tarea tarea)
         {
-            var followers = (JArray)getObjectgFromJObject(jObject, "followers");
+            JArray followers = (JArray)getObjectgFromJObject(jObject, "followers");
             tarea.seguidores = new List<Usuario>();
             foreach (JObject seguidor in followers)
             {
