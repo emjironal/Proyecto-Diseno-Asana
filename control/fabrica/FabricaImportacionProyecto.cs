@@ -16,21 +16,28 @@ namespace Proyecto_Diseno_Asana.control.fabrica
             JObject json = JObject.Parse(jsonstr);
             JArray data = (JArray)getObjectFromJObject(json, "data");
             Proyecto proyecto = new Proyecto();
-            proyecto.secciones = new List<Tarea>();
-            Tarea defaultSection = new Tarea();
-            defaultSection.tareas = new List<Tarea>();
-            proyecto.secciones.Add(defaultSection);
-            foreach (JObject jObject in data)
+            if (data.Count != 0)
             {
-                Tarea tarea = parseTarea(jObject);
-                if((string)getObjectFromJObject(jObject, "resource_subtype") == "section")
+                proyecto.secciones = new List<Tarea>();
+                Tarea defaultSection = new Tarea();
+                defaultSection.tareas = new List<Tarea>();
+                proyecto.secciones.Add(defaultSection);
+                foreach (JObject jObject in data)
                 {
-                    proyecto.secciones.Add(tarea);
+                    Tarea tarea = parseTarea(jObject);
+                    if ((string)getObjectFromJObject(jObject, "resource_subtype") == "section")
+                    {
+                        proyecto.secciones.Add(tarea);
+                    }
+                    else
+                    {
+                        proyecto.secciones.Last<Tarea>().tareas.Add(tarea);
+                    }
                 }
-                else
-                {
-                    proyecto.secciones.Last<Tarea>().tareas.Add(tarea);
-                }
+                proyecto.administradorProyecto = proyecto.secciones.Last().tareas.Last().seguidores.First();
+                JArray projects = (JArray)getObjectFromJObject(data.First.ToObject<JObject>(), "projects");
+                proyecto.nombre = (string)getObjectFromJObject(projects.First.ToObject<JObject>(), "name");
+                proyecto.id = (string)getObjectFromJObject(projects.First.ToObject<JObject>(), "gid");
             }
             return proyecto;
         }
