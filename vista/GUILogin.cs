@@ -29,6 +29,9 @@ namespace Proyecto_Diseno_Asana.vista
                 if (controlador.getDTO().getUsuario().isAdministrador)
                 {
                     //Abre menu de administrador
+                    this.Hide();
+                    Form gUIMainAdministrador = new GUIMainAdministrador();
+                    gUIMainAdministrador.ShowDialog();
 
                 }
                 else
