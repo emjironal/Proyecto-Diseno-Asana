@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proyecto_Diseno_Asana.control.gestorusuario
+namespace Proyecto_Diseno_Asana.control.gestor
 {
     class GestorUsuario
     {

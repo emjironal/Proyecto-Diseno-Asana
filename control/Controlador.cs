@@ -1,6 +1,10 @@
-﻿using Proyecto_Diseno_Asana.controller;
+﻿using Proyecto_Diseno_Asana.control.fabrica;
+using Proyecto_Diseno_Asana.control.gestor;
+using Proyecto_Diseno_Asana.controller;
+using Proyecto_Diseno_Asana.modelo;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +13,7 @@ namespace Proyecto_Diseno_Asana
 {
     class Controlador
     {
-        private Controlador instance;
+        static private Controlador instance = new Controlador();
         private DTO dto;
 
         private Controlador()
@@ -17,7 +21,7 @@ namespace Proyecto_Diseno_Asana
             dto = new DTO();
         }
 
-        public Controlador getInstance()
+        static public Controlador getInstance()
         {
             return instance;
         }
@@ -32,9 +36,21 @@ namespace Proyecto_Diseno_Asana
 
         }
 
-        public Boolean importarProyecto()
+        public Boolean importarProyecto(string pathJson)
         {
-            return true;
+            GestorProyecto gestor = new GestorProyecto();
+            try
+            {
+                string json = File.OpenText(pathJson).ReadToEnd();
+                Proyecto proyecto = gestor.importarProyecto(json);
+                dto.setProyecto(proyecto);
+                return true;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return false;
         }
 
         public Boolean actualizarProyecto()
