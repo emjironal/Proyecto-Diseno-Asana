@@ -13,5 +13,15 @@ namespace Proyecto_Diseno_Asana.modelo
         public Usuario administradorProyecto { get; set; }
         public List<Usuario> miembros { get; set; }
         public List<Tarea> secciones { get; set; }
+
+        string ProductoAbstracto.getId()
+        {
+            return this.id;
+        }
+
+        object ProductoAbstracto.getNombre()
+        {
+            return this.nombre;
+        }
     }
 }

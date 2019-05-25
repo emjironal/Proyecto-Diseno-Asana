@@ -24,41 +24,40 @@ namespace Proyecto_Diseno_Asana.modelo
             this.From = From;
         }
 
-        public void SetSelect(String Select)
+        public Consulta SetSelect(String Select)
         {
-
+            this.Select = Select;
+            return this;
         }
 
-        public void SetFrom(String From)
+        public Consulta SetFrom(String From)
         {
-
+            this.From = From;
+            return this;
         }
 
-        public void SetWhere(String Where)
+        public Consulta SetWhere(String Where)
         {
-
+            this.Where = Where;
+            return this;
         }
 
-        public void SetGroupBy(String GroupBy)
+        public Consulta SetGroupBy(String GroupBy)
         {
-
+            this.GroupBy = GroupBy;
+            return this;
         }
 
-        public void SetHaving(String Having)
+        public Consulta SetHaving(String Having)
         {
-
+            this.Having = Having;
+            return this;
         }
 
-        public void SetOrderBy(String OrderBy)
+        public Consulta SetOrderBy(String OrderBy)
         {
-
-        }
-
-        public String Get()
-        {
-            //Buscar patron para este tipo de operacion
-            //Decorator maybe?
-            return null;
+            this.OrderBy = OrderBy;
+            return this;
         }
     }
 }
