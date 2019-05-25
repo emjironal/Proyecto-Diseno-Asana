@@ -38,11 +38,11 @@ namespace Proyecto_Diseno_Asana
 
         public Boolean importarProyecto(string pathJson)
         {
-            GestorProyecto gestor = new GestorProyecto();
+            GestorProyecto gestorProyecto = new GestorProyecto();
             try
             {
                 string json = File.OpenText(pathJson).ReadToEnd();
-                Proyecto proyecto = gestor.importarProyecto(json);
+                Proyecto proyecto = gestorProyecto.importarProyecto(json);
                 dto.setProyecto(proyecto);
                 return true;
             }
@@ -53,9 +53,21 @@ namespace Proyecto_Diseno_Asana
             return false;
         }
 
-        public Boolean actualizarProyecto()
+        public Boolean actualizarProyecto(string pathJson)
         {
-            return true;
+            GestorProyecto gestorProyecto = new GestorProyecto();
+            try
+            {
+                string json = File.OpenText(pathJson).ReadToEnd();
+                Proyecto proyecto = gestorProyecto.actualizarProyecto(json);
+                dto.setProyecto(proyecto);
+                return true;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return false;
         }
 
         public Boolean completarUsuario()
@@ -68,9 +80,19 @@ namespace Proyecto_Diseno_Asana
             return true;
         }
 
-        public void agregarAvance()
+        public void agregarAvance(string descripcion, int horasDedicadas)
         {
-
+            GestorAvance gestorAvance = new GestorAvance();
+            Avance avance = dto.getAvance();
+            avance.creador = dto.getUsuario();
+            avance.descripción = descripcion;
+            avance.HorasDedicadas = horasDedicadas;
+            avance.Fecha = DateTime.Now;
+            avance.id = dto.getTarea().avances.Count;
+            if (gestorAvance.agregarAvance(avance))
+            {
+                dto.getTarea().avances.Add(avance);
+            }
         }
 
         public Boolean hacerConsulta(String tipo)

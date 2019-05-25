@@ -14,9 +14,9 @@ namespace Proyecto_Diseno_Asana.modelo
         public DateTime fchFinalizacion { get; set; }
         public DateTime fchEntrega { get; set; }
         public String notas { get; set; }
-        public List<Tarea> tareas { get; set; }
-        public List<Avance> avances { get; set; }
-        public List<Usuario> seguidores { get; set; }
+        public List<Tarea> tareas { get; set; } = new List<Tarea>();
+        public List<Avance> avances { get; set; } = new List<Avance>();
+        public List<Usuario> seguidores { get; set; } = new List<Usuario>();
         public Usuario encargado { get; set; }
     }
 }
