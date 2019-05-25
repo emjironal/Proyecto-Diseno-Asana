@@ -77,5 +77,10 @@ namespace Proyecto_Diseno_Asana
         {
             return true;
         }
+
+        public DTO getDTO()
+        {
+            return this.dto;
+        }
     }
 }
