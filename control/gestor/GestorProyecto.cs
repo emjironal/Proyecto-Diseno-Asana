@@ -1,20 +1,23 @@
-﻿using Proyecto_Diseno_Asana.modelo;
+﻿using Proyecto_Diseno_Asana.control.fabrica;
+using Proyecto_Diseno_Asana.modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proyecto_Diseno_Asana.control.gestorproyecto
+namespace Proyecto_Diseno_Asana.control.gestor
 {
     class GestorProyecto
     {
-        public Proyecto importarProyecto(String csv)
+        public Proyecto importarProyecto(String json)
         {
-            return null;
+            Fabrica fabrica = new FabricaImportacionProyecto();
+            Proyecto proyecto = (Proyecto)fabrica.fabricaProducto(json);
+            return proyecto;
         }
 
-        public Proyecto actualizarProyecto(String csv)
+        public Proyecto actualizarProyecto(String json)
         {
             return null;
         }

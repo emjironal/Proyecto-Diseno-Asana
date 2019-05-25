@@ -35,11 +35,10 @@ namespace Proyecto_Diseno_Asana
                 while ((s = sr.ReadLine()) != null)
                 {
                     json += s;
-                    Console.WriteLine(s);
                 }
             }
             Proyecto proyecto = (Proyecto)fabrica.fabricaProducto(json);
-            Console.WriteLine(proyecto.secciones);
+            Console.WriteLine(proyecto.secciones.First().tareas.First().codigo);
         }
     }
 }
