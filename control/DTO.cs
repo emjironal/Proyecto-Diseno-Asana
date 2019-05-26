@@ -13,6 +13,14 @@ namespace Proyecto_Diseno_Asana.controller
         private Proyecto proyecto;
         private Tarea tarea;
         private Avance avance;
+
+        public DTO()
+        {
+            usuario = new Usuario();
+            proyecto = new Proyecto();
+            tarea = new Tarea();
+            avance = new Avance();
+        }
         
         public Usuario getUsuario()
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_Diseno_Asana.modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,12 @@ namespace Proyecto_Diseno_Asana.control.dao
 {
     class DAOAvance
     {
-        private Boolean crearAvance(DAOAvance avance)
+        public Boolean crearAvance(Avance avance)
         {
             return true;
         }
 
-        private Boolean eliminarAvance(int id)
+        public Boolean eliminarAvance(int id)
         {
             return true;
         }

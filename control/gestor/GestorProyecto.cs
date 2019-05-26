@@ -19,7 +19,8 @@ namespace Proyecto_Diseno_Asana.control.gestor
 
         public Proyecto actualizarProyecto(String json)
         {
-            return null;
+            Proyecto proyecto = importarProyecto(json);
+            return proyecto;
         }
 
         public Proyecto cargarProyecto(String idProyecto)

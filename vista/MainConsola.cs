@@ -34,11 +34,30 @@ namespace Proyecto_Diseno_Asana.vista
                 case "1":
                     importarProyecto();
                     break;
+                case "2":
+                    agregarAvance();
+                    break;
                 default:
                     print("Opción no válida");
                     break;
             }
             return false;
+        }
+
+        static private void agregarAvance()
+        {
+            print("Descripción:");
+            string descripcion = input();
+            print("Horas dedicadas:");
+            int horas;
+            if(int.TryParse(input(), out horas))
+            {
+                control.agregarAvance(descripcion, horas);
+            }
+            else
+            {
+                print("No es un integer");
+            }
         }
 
         static private void importarProyecto()
@@ -56,6 +75,7 @@ namespace Proyecto_Diseno_Asana.vista
             print();
             print("Seleccione una opción del menú:");
             print("1. Importar proyecto");
+            print("2. Agregar avance");
             print("S. Salir");
             print("Ingrese su elección: ");
         }
