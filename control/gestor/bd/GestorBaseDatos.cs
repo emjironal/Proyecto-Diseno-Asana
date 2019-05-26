@@ -19,6 +19,8 @@ namespace Proyecto_Diseno_Asana.control.gestor
         public abstract Boolean conectar();
 
         public abstract Boolean desconectar();
+
+        public abstract Object[] consultar(String query);
     }
 
 

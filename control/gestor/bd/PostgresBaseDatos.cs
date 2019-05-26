@@ -28,13 +28,14 @@ namespace Proyecto_Diseno_Asana.control.gestor.bd
         public PostgresBaseDatos(params string[] parametros) : base(parametros)  
         {
             String server = parametros[0];
-            String userId= parametros[1];
-            String password = parametros[2];
-            String database = parametros[3];
+            String userId = parametros[1];
+            String port = parametros[2];
+            String password = parametros[3];
+            String database = parametros[4];
             this.conexion = String.Format("Server={0};" +
-                    "User Id={1};Password={2};Database={3};",
+                    "User Id={1};Password={2};Database={3};Port={4}",
                     server, userId,
-                    password, database);
+                    password, database,port);
         }
 
         public override bool conectar()
@@ -42,6 +43,15 @@ namespace Proyecto_Diseno_Asana.control.gestor.bd
             this.conn = new NpgsqlConnection(this.conexion);
             conn.Open();
             return true;
+        }
+
+        public override object[] consultar(string query)
+        {
+            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
+            ds.Reset();
+            da.Fill(ds);
+            dt = ds.Tables[0];
+            return ds.Tables.Cast<DataTable>().ToArray(); 
         }
 
         /*

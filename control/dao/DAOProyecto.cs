@@ -9,6 +9,12 @@ namespace Proyecto_Diseno_Asana.control.dao
 {
     class DAOProyecto
     {
+        public DAOProyecto() {
+            gestor.GestorBaseDatos gestor = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            gestor.conectar();
+        }
+
+
         public Boolean agregarProyecto(Proyecto proyecto)
         {
             return true;
