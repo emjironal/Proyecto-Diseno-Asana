@@ -8,56 +8,89 @@ namespace Proyecto_Diseno_Asana.modelo
 {
     class Consulta
     {
-        String Select;
-        String From;
-        String Where;
-        String GroupBy;
-        String Having;
-        String OrderBy;
+        String select;
+        String from;
+        String where;
+        String groupBy;
+        String having;
+        String orderBy;
+        //Se añade capacidad de join, por el momento se acepta solo inner join
+        Dictionary<String, String> Joins;
 
-
-        public Consulta() { }
+        public Consulta() {
+            select = from = where = groupBy = having = orderBy = "";
+            Joins = new Dictionary<string, string>();
+        }
 
         public Consulta(String Select, String From)
         {
-            this.Select = Select;
-            this.From = From;
+            this.select = Select;
+            this.from = From;
         }
 
-        public Consulta SetSelect(String Select)
+        public Consulta Select(String select)
         {
-            this.Select = Select;
+            this.select = select;
             return this;
         }
 
-        public Consulta SetFrom(String From)
+        public Consulta From(String From)
         {
-            this.From = From;
+            this.from = From;
             return this;
         }
 
-        public Consulta SetWhere(String Where)
+        public Consulta Where(String Where)
         {
-            this.Where = Where;
+            this.where = Where;
             return this;
         }
 
-        public Consulta SetGroupBy(String GroupBy)
+        public Consulta GroupBy(String GroupBy)
         {
-            this.GroupBy = GroupBy;
+            this.groupBy = GroupBy;
             return this;
         }
 
-        public Consulta SetHaving(String Having)
+        public Consulta Having(String Having)
         {
-            this.Having = Having;
+            this.having = Having;
             return this;
         }
 
-        public Consulta SetOrderBy(String OrderBy)
+        public Consulta OrderBy(String OrderBy)
         {
-            this.OrderBy = OrderBy;
+            this.orderBy = OrderBy;
             return this;
+        }
+
+        public Consulta Join(String Table, String Criteria) {
+            Joins.Add(Table, Criteria);
+            return this;
+        }
+
+        public String Get() {
+            //Buscar patron para esto
+            String result;
+            if (select != "" && from != ""){
+                result = String.Format("SELECT {0} From {1} ", select, from);
+            }else{
+                return "";
+            }
+            if (Joins.Count > 0 ) {
+                foreach (String key in Joins.Keys) {
+                    result += String.Format("INNER JOIN {0} ON ({1}) ",key, Joins[key]) ;
+                }                
+            }
+            if (where != "")
+                result += "WHERE " + where ;
+            if (groupBy != "")
+                result += "GROUP BY " + groupBy;
+            if (orderBy != "")
+                result += "ORDER BY " + orderBy;
+            if (having != "")
+                result += "HAVING " + having; 
+            return result;
         }
     }
 }
