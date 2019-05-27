@@ -45,32 +45,22 @@ namespace Proyecto_Diseno_Asana.control.gestor.bd
             return true;
         }
 
-        public override object[] consultar(string query)
+        public override object[] consultar(string query, int columns)
         {
-            NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
-            ds.Reset();
-            da.Fill(ds);
-            dt = ds.Tables[0];
-            return ds.Tables.Cast<DataTable>().ToArray(); 
+            conectar();
+            NpgsqlCommand command = new NpgsqlCommand(query, conn);
+            List<Object> list = new List<object>();
+            NpgsqlDataReader dr = command.ExecuteReader();
+            while (dr.Read())
+            {
+                List<Object> row = new List<object>();
+                for (int i = 0; i < columns; i++)
+                    row.Add(dr[i]);
+                list.Add(row);
+            }
+            desconectar();
+            return list.ToArray();
         }
-
-        /*
-         * https://www.codeproject.com/Articles/30989/Using-PostgreSQL-in-your-C-NET-application-An-intr
-         * 
-         string sql = "SELECT * FROM simple_table";
-                // data adapter making request from our connection
-                NpgsqlDataAdapter da = new NpgsqlDataAdapter(sql, conn);
-                // i always reset DataSet before i do
-                // something with it.... i don't know why :-)
-                ds.Reset();
-                // filling DataSet with result from NpgsqlDataAdapter
-                da.Fill(ds);
-                // since it C# DataSet can handle multiple tables, we will select first
-                dt = ds.Tables[0];
-                // connect grid to DataTable
-                dataGridView1.DataSource = dt;
-             
-             */
 
         public override bool desconectar()
         {

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Proyecto_Diseno_Asana.control.gestor;
 using Proyecto_Diseno_Asana.control.gestor.bd;
+using System.Data;
 
 namespace Proyecto_Diseno_Asana.vista
 {
@@ -40,12 +41,9 @@ namespace Proyecto_Diseno_Asana.vista
                     agregarAvance();
                     break;
                 case "3":
-                    GestorBaseDatos gestor = new PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "postgres");
-                    gestor.conectar();
-                    Object[] result = gestor.consultar("Select * from proyecto;");
-                    Object t = result.First(); 
-                    Console.WriteLine(t);
-                    gestor.desconectar();
+                    GestorBaseDatos bd = new PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "postgres");
+                    Object[] s = bd.consultar("SELECT * FROM Proyecto;", 3);
+                    Console.WriteLine(s[0]);
                     break;
                 case "4":
                     abrirProyecto();
