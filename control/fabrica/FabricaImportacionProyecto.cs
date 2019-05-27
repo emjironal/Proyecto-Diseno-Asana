@@ -22,6 +22,7 @@ namespace Proyecto_Diseno_Asana.control.fabrica
                 Tarea defaultSection = new Tarea();
                 defaultSection.tareas = new List<Tarea>();
                 proyecto.secciones.Add(defaultSection);
+                string miembros = "";
                 foreach (JObject jObject in data)
                 {
                     Tarea tarea = parseTarea(jObject);
@@ -31,7 +32,15 @@ namespace Proyecto_Diseno_Asana.control.fabrica
                     }
                     else
                     {
-                        proyecto.secciones.Last<Tarea>().tareas.Add(tarea);
+                        proyecto.secciones.Last().tareas.Add(tarea);
+                        foreach(Usuario user in tarea.seguidores)
+                        {
+                            if(!miembros.Contains(user.id))
+                            {
+                                proyecto.miembros.Add(user);
+                                miembros += user.id + ",";
+                            }
+                        }
                     }
                 }
                 proyecto.administradorProyecto = proyecto.secciones.Last().tareas.Last().seguidores.First();

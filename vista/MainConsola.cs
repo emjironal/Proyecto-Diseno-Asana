@@ -45,11 +45,63 @@ namespace Proyecto_Diseno_Asana.vista
                     Object[] s = bd.consultar("SELECT * FROM Proyecto;", 3);
                     Console.WriteLine(s[0]);
                     break;
+                case "4":
+                    abrirProyecto();
+                    break;
                 default:
                     print("Opción no válida");
                     break;
             }
             return false;
+        }
+
+        static private void abrirProyecto()
+        {
+            print("Id del proyecto:");
+            string idProyecto = input();
+            Proyecto proyecto = control.dto.getProyecto();
+            if(idProyecto != proyecto.id)
+            {
+                print("No exite el proyecto");
+            }
+            else
+            {
+                print("Id: " + proyecto.id);
+                print("Nombre: " + proyecto.nombre);
+                print("Administrador: " + proyecto.administradorProyecto.nombre);
+                print("Miembros: ");
+                foreach (Usuario miembro in proyecto.miembros)
+                {
+                    print("\tNombre: " + miembro.nombre);
+                }
+                print("Secciones:");
+                foreach(Tarea seccion in proyecto.secciones)
+                {
+                    print("\tSeccion: " + seccion.nombre);
+                    print("\tTareas: ");
+                    foreach (Tarea tarea in seccion.tareas)
+                    {
+                        print("\t\tTarea: " + tarea.nombre);
+                        print("\t\tDescripción: " + tarea.notas);
+                        print("\t\tEncargado: " + (tarea.encargado == null ? "No hay" : tarea.encargado.nombre));
+                        foreach(Usuario seguidor in tarea.seguidores)
+                        {
+                            print("\t\t\tSeguidor: " + seguidor.nombre);
+                        }
+                        print("\t\tSubtareas:");
+                        foreach (Tarea subtarea in tarea.tareas)
+                        {
+                            print("\t\t\tSubtarea: " + subtarea.nombre);
+                        }
+                        print("\t\tAvances:");
+                        foreach (Avance avance in tarea.avances)
+                        {
+                            print("\t\t\tNota: " + avance.descripción);
+                            print("\t\t\tHoras dedicadas: " + avance.HorasDedicadas.ToString());
+                        }
+                    }
+                }
+            }
         }
 
         static private void agregarAvance()
@@ -60,7 +112,13 @@ namespace Proyecto_Diseno_Asana.vista
             int horas;
             if(int.TryParse(input(), out horas))
             {
-                control.agregarAvance(descripcion, horas);
+                Avance avance = control.dto.getAvance();
+                avance.creador = control.dto.getUsuario();
+                avance.descripción = descripcion;
+                avance.HorasDedicadas = horas;
+                avance.Fecha = DateTime.Now;
+                avance.id = control.dto.getTarea().avances.Count;
+                control.agregarAvance();
             }
             else
             {
@@ -85,6 +143,7 @@ namespace Proyecto_Diseno_Asana.vista
             print("1. Importar proyecto");
             print("2. Agregar avance");
             print("3. Probar conexion");
+            print("4. Abrir proyecto");
             print("S. Salir");
             print("Ingrese su elección: ");
         }
