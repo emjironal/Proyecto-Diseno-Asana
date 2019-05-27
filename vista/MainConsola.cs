@@ -40,6 +40,11 @@ namespace Proyecto_Diseno_Asana.vista
                 case "2":
                     agregarAvance();
                     break;
+                case "3":
+                    GestorBaseDatos bd = new PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "postgres");
+                    Object[] s = bd.consultar("SELECT * FROM Proyecto;", 3);
+                    Console.WriteLine(s[0]);
+                    break;
                 default:
                     print("Opción no válida");
                     break;
