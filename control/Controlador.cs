@@ -14,7 +14,7 @@ namespace Proyecto_Diseno_Asana
     class Controlador
     {
         static private Controlador instance = new Controlador();
-        private DTO dto;
+        public DTO dto { get; }
 
         private Controlador()
         {
@@ -80,15 +80,10 @@ namespace Proyecto_Diseno_Asana
             return true;
         }
 
-        public void agregarAvance(string descripcion, int horasDedicadas)
+        public void agregarAvance()
         {
             GestorAvance gestorAvance = new GestorAvance();
             Avance avance = dto.getAvance();
-            avance.creador = dto.getUsuario();
-            avance.descripción = descripcion;
-            avance.HorasDedicadas = horasDedicadas;
-            avance.Fecha = DateTime.Now;
-            avance.id = dto.getTarea().avances.Count;
             if (gestorAvance.agregarAvance(avance))
             {
                 dto.getTarea().avances.Add(avance);
