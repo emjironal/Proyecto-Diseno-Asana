@@ -50,11 +50,34 @@ namespace Proyecto_Diseno_Asana.vista
                 case "4":
                     abrirProyecto();
                     break;
+                case "5":
+                    abrirTarea();
+                    break;
                 default:
                     print("Opción no válida");
                     break;
             }
             return false;
+        }
+
+        static private void abrirTarea()
+        {
+            print("Id de la tarea");
+            string idTarea = input();
+            Proyecto proyecto = control.dto.getProyecto();
+            foreach(Tarea seccion in proyecto.secciones)
+            {
+                foreach(Tarea tarea in seccion.tareas)
+                {
+                    if(tarea.codigo == idTarea)
+                    {
+                        control.dto.setTarea(tarea);
+                        imprimirTarea(tarea, "");
+                        return;
+                    }
+                }
+            }
+            print("No existe esa tarea en el proyecto: " + proyecto.nombre);
         }
 
         static private void abrirProyecto()
@@ -74,36 +97,63 @@ namespace Proyecto_Diseno_Asana.vista
                 print("Miembros: ");
                 foreach (Usuario miembro in proyecto.miembros)
                 {
-                    print("\tNombre: " + miembro.nombre);
+                    imprimirUsuario(miembro, "\t");
                 }
                 print("Secciones:");
-                foreach(Tarea seccion in proyecto.secciones)
+                foreach (Tarea seccion in proyecto.secciones)
                 {
-                    print("\tSeccion: " + seccion.nombre);
-                    print("\tTareas: ");
-                    foreach (Tarea tarea in seccion.tareas)
-                    {
-                        print("\t\tTarea: " + tarea.nombre);
-                        print("\t\tDescripción: " + tarea.notas);
-                        print("\t\tEncargado: " + (tarea.encargado == null ? "No hay" : tarea.encargado.nombre));
-                        foreach(Usuario seguidor in tarea.seguidores)
-                        {
-                            print("\t\t\tSeguidor: " + seguidor.nombre);
-                        }
-                        print("\t\tSubtareas:");
-                        foreach (Tarea subtarea in tarea.tareas)
-                        {
-                            print("\t\t\tSubtarea: " + subtarea.nombre);
-                        }
-                        print("\t\tAvances:");
-                        foreach (Avance avance in tarea.avances)
-                        {
-                            print("\t\t\tNota: " + avance.descripción);
-                            print("\t\t\tHoras dedicadas: " + avance.HorasDedicadas.ToString());
-                        }
-                    }
+                    imprimirSeccion(seccion, "\t");
                 }
             }
+            print();
+        }
+
+        static private void imprimirSeccion(Tarea seccion, string tabs)
+        {
+            print(tabs + "Seccion: " + seccion.nombre);
+            print(tabs + "Tareas: ");
+            foreach (Tarea tarea in seccion.tareas)
+            {
+                imprimirTarea(tarea, tabs + "\t");
+            }
+            print();
+        }
+
+        static private void imprimirTarea(Tarea tarea, string tabs)
+        {
+            print(tabs + "Tarea: " + tarea.nombre);
+            print(tabs + "Descripción: " + tarea.notas);
+            print(tabs + "Encargado: " + (tarea.encargado == null ? "No hay" : tarea.encargado.nombre));
+            print(tabs + "Seguidores:");
+            foreach (Usuario seguidor in tarea.seguidores)
+            {
+                imprimirUsuario(seguidor, tabs + "\t");
+            }
+            print(tabs + "Subtareas:");
+            foreach (Tarea subtarea in tarea.tareas)
+            {
+                imprimirTarea(subtarea, tabs + "\t");
+            }
+            print(tabs + "Avances:");
+            foreach (Avance avance in tarea.avances)
+            {
+                imprimirAvance(avance, tabs + "\t");
+            }
+            print();
+        }
+
+        static private void imprimirAvance(Avance avance, string tabs)
+        {
+            print(tabs + "Nota: " + avance.descripción);
+            print(tabs + "Horas dedicadas: " + avance.HorasDedicadas.ToString());
+            print(tabs + "Creador: " + (avance.creador == null ? "" : avance.creador.nombre));
+            print();
+        }
+
+        static private void imprimirUsuario(Usuario user, string tabs)
+        {
+            print(tabs + "Nombre: " + user.nombre);
+            print();
         }
 
         static private void agregarAvance()
@@ -146,6 +196,7 @@ namespace Proyecto_Diseno_Asana.vista
             print("2. Agregar avance");
             print("3. Probar conexion");
             print("4. Abrir proyecto");
+            print("5. Abrir tarea");
             print("S. Salir");
             print("Ingrese su elección: ");
         }
