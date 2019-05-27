@@ -60,6 +60,10 @@ namespace Proyecto_Diseno_Asana
             {
                 string json = File.OpenText(pathJson).ReadToEnd();
                 Proyecto proyecto = gestorProyecto.actualizarProyecto(json);
+                //mergeMiembros;
+                //mergeSecciones(agarrar de la posicion countvieja hasta el final);
+                //mergeTareasPorSeccion(agarrar de la posicion countvieja hasta el final por cada seccion vieja);
+                //mergeSubtareasPorTarea(agarrar de la posicion countvieja hasta el final por cada tarea vieja);
                 dto.setProyecto(proyecto);
                 return true;
             }
