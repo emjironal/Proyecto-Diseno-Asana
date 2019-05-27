@@ -32,5 +32,26 @@ namespace Proyecto_Diseno_Asana.control.gestor
         {
             return true;
         }
+
+        //Mergin
+
+        public Proyecto mergeMiemrbros(Proyecto proyecto1, Proyecto proyecto2)
+        {
+            //miembros
+            return proyecto1;
+        }
+
+        public Tarea mergeTareas(Tarea tarea, Tarea tarea1)
+        {
+            //
+            return tarea1;
+        }
+
+        public Tarea mergeSubtarea(Tarea tarea, Tarea tarea1)
+        {
+            return tarea1;
+        }
+
+
     }
 }
