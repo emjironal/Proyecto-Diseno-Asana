@@ -35,8 +35,11 @@ namespace Proyecto_Diseno_Asana.control.gestor
 
         //Mergin
 
-        public Proyecto mergeMiemrbros(Proyecto proyecto1, Proyecto proyecto2)
+        public Proyecto mergeMiembros(Proyecto proyecto1, Proyecto proyecto2)
         {
+            if (proyecto1.id == proyecto2.id) {
+                proyecto1.miembros = proyecto2.miembros;
+            }
             //miembros
             return proyecto1;
         }
