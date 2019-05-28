@@ -20,3 +20,4 @@ namespace Proyecto_Diseno_Asana.modelo
         public Usuario encargado { get; set; }
     }
 }
+ 

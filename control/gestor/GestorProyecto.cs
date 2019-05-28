@@ -35,19 +35,44 @@ namespace Proyecto_Diseno_Asana.control.gestor
 
         //Mergin
 
-        public Proyecto mergeMiembros(Proyecto proyecto1, Proyecto proyecto2)
+        public List<Usuario> mergeMiembros(Proyecto oldProyecto, Proyecto newProyecto)
         {
-            if (proyecto1.id == proyecto2.id) {
-                proyecto1.miembros = proyecto2.miembros;
+            if (oldProyecto.id == newProyecto.id)
+            {
+                oldProyecto.miembros = newProyecto.miembros;
             }
-            //miembros
-            return proyecto1;
+            return oldProyecto.miembros;
         }
 
-        public Tarea mergeTareas(Tarea tarea, Tarea tarea1)
+        public List<Tarea> MergeSecciones(Proyecto oldProyecto, Proyecto newProyecto)
         {
-            //
-            return tarea1;
+            if (oldProyecto.id == newProyecto.id)
+            {
+                foreach (Tarea seccion in newProyecto.secciones)
+                {
+                    for (int i = 0; i < oldProyecto.secciones.Count(); i++)
+                    {
+                        Tarea oldSeccion = oldProyecto.secciones.ElementAt(i);
+                        if (seccion.codigo == oldProyecto.secciones.ElementAt(i).codigo) {
+                            actualizarTarea(oldSeccion, seccion);
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
+        private void actualizarTarea(Tarea oldSeccion, Tarea newSeccion)
+        {
+            /*
+             * isFinalizada
+             * fchFinalizacion
+             * fchEntrega
+             * notas
+             * seguidores
+             * ecanrgado
+             *
+             */
         }
 
         public Tarea mergeSubtarea(Tarea tarea, Tarea tarea1)
