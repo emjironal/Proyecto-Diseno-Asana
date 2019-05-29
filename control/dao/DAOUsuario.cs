@@ -16,7 +16,9 @@ namespace Proyecto_Diseno_Asana.control.dao
 
         public Boolean agregarUsuario(Usuario usr)
         {
-            return true;
+            gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos();
+            string query = string.Format("insert into Usuario (id_usuario, nombre) values ('{0}', '{1}')", usr.id, usr.nombre);
+            return db.executeNonQuery(query); ;
         }
 
         public Boolean eliminarUsuario(String correo)

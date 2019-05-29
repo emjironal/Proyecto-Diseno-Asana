@@ -17,12 +17,23 @@ namespace Proyecto_Diseno_Asana.control.dao
 
         public Boolean agregarProyecto(Proyecto proyecto)
         {
-            return true;
+            gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos();
+            (new dao.DAOUsuario()).agregarUsuario(proyecto.administradorProyecto);
+            string query = string.Format("insert into Proyecto values ('{0}', '{1}', '{2}')", proyecto.id, proyecto.administradorProyecto.id, proyecto.nombre);
+            db.executeNonQuery(query);
+            foreach (Tarea seccion in proyecto.secciones)
+            {
+                agregarTarea(seccion, null);
+            }
+            return db.executeNonQuery(query);
         }
 
-        public Boolean agregarTarea(Tarea tarea)
+        public Boolean agregarTarea(Tarea tarea, string idPadre)
         {
-            return true;
+            gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos();
+            string query = "insert into Tarea (id_tarea, idEncargado) values ('{0}', '{1}')";
+            query = string.Format(query, tarea.codigo, tarea.encargado.id);
+            return db.executeNonQuery(query);
         }
 
         private Proyecto consultarProyecto(int id)

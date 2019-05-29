@@ -62,6 +62,16 @@ namespace Proyecto_Diseno_Asana.control.gestor.bd
             return list.ToArray();
         }
 
+        public bool executeNonQuery(string query)
+        {
+            using (var cmd = new NpgsqlCommand())
+            {
+                cmd.Connection = conn;
+                cmd.CommandText = query;
+                return cmd.ExecuteNonQuery() != 0;
+            }
+        }
+
         public override bool desconectar()
         {
             conn.Close();

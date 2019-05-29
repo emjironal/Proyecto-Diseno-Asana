@@ -21,6 +21,8 @@ namespace Proyecto_Diseno_Asana.control.gestor
         public abstract Boolean desconectar();
 
         public abstract Object[] consultar(String query, int columns);
+
+        public abstract bool executeNonQuery(string query);
     }
 
 
