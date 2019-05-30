@@ -14,7 +14,7 @@ namespace Proyecto_Diseno_Asana
     class Controlador
     {
         static private Controlador instance = new Controlador();
-        private DTO dto;
+        public DTO dto { get; }
 
         private Controlador()
         {
@@ -38,11 +38,11 @@ namespace Proyecto_Diseno_Asana
 
         public Boolean importarProyecto(string pathJson)
         {
-            GestorProyecto gestor = new GestorProyecto();
+            GestorProyecto gestorProyecto = new GestorProyecto();
             try
             {
                 string json = File.OpenText(pathJson).ReadToEnd();
-                Proyecto proyecto = gestor.importarProyecto(json);
+                Proyecto proyecto = gestorProyecto.importarProyecto(json);
                 dto.setProyecto(proyecto);
                 return true;
             }
@@ -53,9 +53,25 @@ namespace Proyecto_Diseno_Asana
             return false;
         }
 
-        public Boolean actualizarProyecto()
+        public Boolean actualizarProyecto(string pathJson)
         {
-            return true;
+            GestorProyecto gestorProyecto = new GestorProyecto();
+            try
+            {
+                string json = File.OpenText(pathJson).ReadToEnd();
+                Proyecto proyecto = gestorProyecto.actualizarProyecto(json);
+                //mergeMiembros;
+                //mergeSecciones(agarrar de la posicion countvieja hasta el final);
+                //mergeTareasPorSeccion(agarrar de la posicion countvieja hasta el final por cada seccion vieja);
+                //mergeSubtareasPorTarea(agarrar de la posicion countvieja hasta el final por cada tarea vieja);
+                dto.setProyecto(proyecto);
+                return true;
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return false;
         }
 
         public Boolean completarUsuario()
@@ -70,7 +86,12 @@ namespace Proyecto_Diseno_Asana
 
         public void agregarAvance()
         {
-
+            GestorAvance gestorAvance = new GestorAvance();
+            Avance avance = dto.getAvance();
+            if (gestorAvance.agregarAvance(avance))
+            {
+                dto.getTarea().avances.Add(avance);
+            }
         }
 
         public Boolean hacerConsulta(String tipo)

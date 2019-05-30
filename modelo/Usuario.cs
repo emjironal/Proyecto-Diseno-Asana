@@ -13,7 +13,7 @@ namespace Proyecto_Diseno_Asana.modelo
         public string correo { get; set; }
         public string contraseña { get; set; }
         public bool isAdministrador { get; set; }
-        public List<Proyecto> proyectos { get; set; }
-        public List<Tarea> tareas { get; set; }
+        public List<Proyecto> proyectos { get; set; } = new List<Proyecto>();
+        public List<Tarea> tareas { get; set; } = new List<Tarea>();
     }
 }
