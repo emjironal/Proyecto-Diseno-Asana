@@ -62,7 +62,7 @@ namespace Proyecto_Diseno_Asana.control.dao
         {
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             db.conectar();
-            string query = "insert MiembroPorProyecto values ({0}, {1})";
+            string query = "insert into MiembroPorProyecto values ({0}, {1})";
             query = string.Format(query, idUsuario, idProyecto);
             bool result = db.executeNonQuery(query);
             db.desconectar();
@@ -73,7 +73,7 @@ namespace Proyecto_Diseno_Asana.control.dao
         {
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             db.conectar();
-            string query = "insert SeguidorPorTarea values ({0}, {1})";
+            string query = "insert into SeguidorPorTarea values ({0}, {1})";
             query = string.Format(query, idUsuario, idTarea);
             bool result = db.executeNonQuery(query);
             db.desconectar();
