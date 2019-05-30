@@ -21,31 +21,29 @@ namespace Proyecto_Diseno_Asana.vista
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             Usuario usr = new Usuario();
-            usr.correo = this.tBCorreo.Text;
-            Controlador controlador = Controlador.getInstance();
-            controlador.getDTO().setUsuario(usr);
-            if (controlador.login())
+            usr.contraseña = tBCorreo.Text;
+            Controlador ctrl = Controlador.getInstance();
+            ctrl.getDTO().setUsuario(usr);
+            if (ctrl.login())
             {
-                if (controlador.getDTO().getUsuario().isAdministrador)
+                this.Hide();
+                if (ctrl.getDTO().getUsuario().isAdministrador)
                 {
-                    //Abre menu de administrador
-                    this.Hide();
-                    Form gUIMainAdministrador = new GUIMainAdministrador();
-                    gUIMainAdministrador.ShowDialog();
 
+                    Form mainAdmin = new GUIMainAdministrador();
+                    mainAdmin.ShowDialog();
                 }
                 else
                 {
-                    //Abre menu de usuario normal
-
+                    Form mainMiembro = new GUIMainMiembro();
+                    mainMiembro.ShowDialog();
                 }
             }
             else
             {
                 tBCorreo.Text = "";
-                System.Windows.Forms.MessageBox.Show("Error: Usuario no existe");
+                System.Windows.Forms.MessageBox.Show("Error: usuario no existe");
             }
-           
         }
     }
 }

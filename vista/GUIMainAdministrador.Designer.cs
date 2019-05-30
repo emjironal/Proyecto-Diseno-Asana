@@ -28,64 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnImportNew = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnImportar = new System.Windows.Forms.Button();
             this.btnCompletar = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblProyectos = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnImportNew
-            // 
-            this.btnImportNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportNew.Location = new System.Drawing.Point(41, 107);
-            this.btnImportNew.Name = "btnImportNew";
-            this.btnImportNew.Size = new System.Drawing.Size(344, 45);
-            this.btnImportNew.TabIndex = 0;
-            this.btnImportNew.Text = "Importar Proyecto Nuevo";
-            this.btnImportNew.UseVisualStyleBackColor = true;
-            this.btnImportNew.Click += new System.EventHandler(this.BtnImportNew_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 228);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(43, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 25);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Proyectos:";
+            this.label1.Size = new System.Drawing.Size(323, 37);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Menú Administrador";
+            // 
+            // btnImportar
+            // 
+            this.btnImportar.Location = new System.Drawing.Point(50, 100);
+            this.btnImportar.Name = "btnImportar";
+            this.btnImportar.Size = new System.Drawing.Size(228, 54);
+            this.btnImportar.TabIndex = 1;
+            this.btnImportar.Text = "Importar Proyecto";
+            this.btnImportar.UseVisualStyleBackColor = true;
+            this.btnImportar.Click += new System.EventHandler(this.BtnImportar_Click);
             // 
             // btnCompletar
             // 
-            this.btnCompletar.Location = new System.Drawing.Point(817, 107);
+            this.btnCompletar.Location = new System.Drawing.Point(767, 100);
             this.btnCompletar.Name = "btnCompletar";
-            this.btnCompletar.Size = new System.Drawing.Size(233, 45);
+            this.btnCompletar.Size = new System.Drawing.Size(228, 54);
             this.btnCompletar.TabIndex = 2;
             this.btnCompletar.Text = "Completar Usuario";
             this.btnCompletar.UseVisualStyleBackColor = true;
-            this.btnCompletar.Click += new System.EventHandler(this.Button2_Click);
+            this.btnCompletar.Click += new System.EventHandler(this.BtnCompletar_Click);
             // 
-            // label2
+            // lblProyectos
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(41, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(323, 37);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Menú Administrador";
+            this.lblProyectos.AutoEllipsis = true;
+            this.lblProyectos.AutoSize = true;
+            this.lblProyectos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProyectos.Location = new System.Drawing.Point(61, 188);
+            this.lblProyectos.Name = "lblProyectos";
+            this.lblProyectos.Size = new System.Drawing.Size(136, 31);
+            this.lblProyectos.TabIndex = 3;
+            this.lblProyectos.Text = "Proyectos";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(50, 286);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 82;
+            this.dataGridView1.RowTemplate.Height = 33;
+            this.dataGridView1.Size = new System.Drawing.Size(956, 274);
+            this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
             // 
             // GUIMainAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1137, 752);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(1046, 636);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.lblProyectos);
             this.Controls.Add(this.btnCompletar);
+            this.Controls.Add(this.btnImportar);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnImportNew);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "GUIMainAdministrador";
-            this.Text = "ASANA Upgrade";
+            this.Text = "ASANA upgrade";
+            this.Load += new System.EventHandler(this.GUIMainAdministrador_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -93,9 +109,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnImportNew;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnImportar;
         private System.Windows.Forms.Button btnCompletar;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblProyectos;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

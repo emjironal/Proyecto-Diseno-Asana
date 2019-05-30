@@ -13,41 +13,37 @@ namespace Proyecto_Diseno_Asana.vista
 {
     public partial class GUIRegistro : Form
     {
-        public GUIRegistro()
+        Form guiPadre;
+        public GUIRegistro(Form padre)
         {
+            guiPadre = padre;
             InitializeComponent();
         }
 
-        private void GroupBox1_Enter(object sender, EventArgs e)
-        {
+        
 
-        }
-
-        private void BtnUpdate_Click(object sender, EventArgs e)
+        private void BtnCompletar_Click(object sender, EventArgs e)
         {
+            Controlador ctrl = Controlador.getInstance();
             Usuario usr = new Usuario();
-            usr.nombre = tBNombre.Text;
             usr.correo = tBCorreo.Text;
+            usr.nombre = tBNombre.Text;
             usr.isAdministrador = cBisAdmin.Checked;
-            Controlador controlador = Controlador.getInstance();
-            controlador.getDTO().setUsuario(usr);
-            if (controlador.completarUsuario())
+            ctrl.getDTO().setUsuario(usr);
+            if (ctrl.completarUsuario())
             {
-                System.Windows.Forms.MessageBox.Show("Usuario actualizado exitosamente");
+                System.Windows.Forms.MessageBox.Show("Usuario completado correctamente");
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Error: no se pudo actualizar el usuario");
+                System.Windows.Forms.MessageBox.Show("Error, no se pudo completar el usuario");
             }
-
-            tBNombre.Text = "";
-            tBCorreo.Text = "";
-            cBisAdmin.Checked = false;
         }
 
-        private void Label1_Click(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            guiPadre.ShowDialog();
         }
     }
 }

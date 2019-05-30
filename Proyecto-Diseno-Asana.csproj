@@ -49,6 +49,7 @@
       <HintPath>packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
@@ -65,6 +66,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -84,6 +86,48 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="control\gestor\bd\PostgresBaseDatos.cs" />
+    <Compile Include="vista\GUIAvance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vista\GUIAvance.Designer.cs">
+      <DependentUpon>GUIAvance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vista\GUIConsultas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vista\GUIConsultas.Designer.cs">
+      <DependentUpon>GUIConsultas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vista\GUILogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vista\GUILogin.Designer.cs">
+      <DependentUpon>GUILogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vista\GUIMainAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vista\GUIMainAdministrador.Designer.cs">
+      <DependentUpon>GUIMainAdministrador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vista\GUIMainMiembro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vista\GUIMainMiembro.Designer.cs">
+      <DependentUpon>GUIMainMiembro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vista\GUIProyecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vista\GUIProyecto.Designer.cs">
+      <DependentUpon>GUIProyecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="vista\GUIRegistro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vista\GUIRegistro.Designer.cs">
+      <DependentUpon>GUIRegistro.cs</DependentUpon>
+    </Compile>
     <Compile Include="vista\MainConsola.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -142,6 +186,18 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vista\GUIConsultas.resx">
+      <DependentUpon>GUIConsultas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vista\GUILogin.resx">
+      <DependentUpon>GUILogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vista\GUIMainAdministrador.resx">
+      <DependentUpon>GUIMainAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vista\GUIRegistro.resx">
+      <DependentUpon>GUIRegistro.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

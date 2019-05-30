@@ -103,5 +103,12 @@ namespace Proyecto_Diseno_Asana
         {
             return this.dto;
         }
+
+        public List<Proyecto> consultarProyectos()
+        {
+            GestorProyecto gestorProyecto = new GestorProyecto();
+            return gestorProyecto.consultarProyectos();
+        }
+
     }
 }

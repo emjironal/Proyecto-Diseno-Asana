@@ -34,5 +34,10 @@ namespace Proyecto_Diseno_Asana.control.gestor
         {
             return true;
         }
+
+        public List<Proyecto> consultarProyectos()
+        {
+            return null;
+        }
     }
 }

@@ -148,5 +148,10 @@ namespace Proyecto_Diseno_Asana.control.dao
         {
             return null;
         }
+
+        private List<Proyecto> consultarProyectos()
+        {
+            return null;
+        }
     }
 }
