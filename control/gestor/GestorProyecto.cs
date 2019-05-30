@@ -14,7 +14,9 @@ namespace Proyecto_Diseno_Asana.control.gestor
         {
             Fabrica fabrica = new FabricaImportacionProyecto();
             Proyecto proyecto = (Proyecto)fabrica.fabricaProducto(json);
-            return proyecto;
+            if ((new dao.DAOProyecto()).agregarProyecto(proyecto))
+                return proyecto;
+            return null;
         }
 
         public Proyecto actualizarProyecto(String json)
