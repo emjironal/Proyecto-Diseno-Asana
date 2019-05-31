@@ -40,6 +40,15 @@ namespace Proyecto_Diseno_Asana.control.gestor
             return null;
         }
 
+        public List<Usuario> mergeMiembros(Proyecto oldProyecto, Proyecto newProyecto)
+        {
+            if (oldProyecto.id == newProyecto.id)
+            {
+                oldProyecto.miembros = newProyecto.miembros;
+            }
+            return oldProyecto.miembros;
+        }
+
         public List<Tarea> MergeSecciones(Proyecto oldProyecto, Proyecto newProyecto)
         {
             if (oldProyecto.id == newProyecto.id)
