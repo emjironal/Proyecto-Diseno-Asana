@@ -76,7 +76,8 @@ namespace Proyecto_Diseno_Asana
 
         public Boolean completarUsuario()
         {
-            return true;
+            GestorUsuario gestorUsuario = new GestorUsuario();
+            return gestorUsuario.completarUsuario(dto.getUsuario());
         }
 
         public Boolean borrarUsuario()
