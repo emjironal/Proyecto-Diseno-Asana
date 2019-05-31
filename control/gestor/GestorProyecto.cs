@@ -54,7 +54,7 @@ namespace Proyecto_Diseno_Asana.control.gestor
                     {
                         Tarea oldSeccion = oldProyecto.secciones.ElementAt(i);
                         if (seccion.codigo == oldProyecto.secciones.ElementAt(i).codigo) {
-                            actualizarTarea(oldSeccion, seccion);
+                            Tarea nueva = actualizarTarea(oldSeccion, seccion);
                         }
                     }
                 }
@@ -62,7 +62,7 @@ namespace Proyecto_Diseno_Asana.control.gestor
             return null;
         }
 
-        private void actualizarTarea(Tarea oldSeccion, Tarea newSeccion)
+        private Tarea actualizarTarea(Tarea oldSeccion, Tarea newSeccion)
         {
             /*
              * isFinalizada
@@ -73,6 +73,19 @@ namespace Proyecto_Diseno_Asana.control.gestor
              * ecanrgado
              *
              */
+            if (oldSeccion.codigo == newSeccion.codigo)
+            {
+                Tarea updatedTarea = newSeccion;
+                foreach (Tarea tarea in newSeccion.tareas) {
+                    for (int i = 0; i < oldSeccion.tareas.Count; i++) {
+                        if (tarea.codigo == oldSeccion.tareas.ElementAt(i).codigo) {
+                            Tarea nueva = mergeSubtarea(oldSeccion, newSeccion);
+
+                        }
+                    }
+                }
+            }
+            return null;
         }
 
         public Tarea mergeSubtarea(Tarea tarea, Tarea tarea1)

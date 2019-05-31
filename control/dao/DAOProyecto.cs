@@ -9,9 +9,10 @@ namespace Proyecto_Diseno_Asana.control.dao
 {
     class DAOProyecto
     {
+        gestor.GestorBaseDatos DbConnection;
+
         public DAOProyecto() {
-            gestor.GestorBaseDatos gestor = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
-            gestor.conectar();
+            this.DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
         }
 
 
@@ -25,12 +26,16 @@ namespace Proyecto_Diseno_Asana.control.dao
             return true;
         }
 
-        private Proyecto consultarProyecto(int id)
+        private Proyecto consultarProyecto(String id)
         {
+            Object[] proyAttrib = DbConnection.consultar(new Consulta().Select("*").From("Proyecto").Where(String.Format("id = {0}",id)).Get(), 3);
+            Proyecto proyecto = new Proyecto();
+            proyecto.id = ((String[]) proyAttrib[0])[0];
+
             return null;
         }
 
-        private List<Tarea> consultarTarea(int proyecto)
+        private List<Tarea> consultarTarea(String proyecto)
         {
             return null;
         }
