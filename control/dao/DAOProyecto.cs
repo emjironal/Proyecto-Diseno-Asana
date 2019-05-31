@@ -26,11 +26,19 @@ namespace Proyecto_Diseno_Asana.control.dao
             return true;
         }
 
-        private Proyecto consultarProyecto(String id)
+        public Proyecto consultarProyecto(String id)
         {
-            Object[] proyAttrib = DbConnection.consultar(new Consulta().Select("*").From("Proyecto").Where(String.Format("id = {0}",id)).Get(), 3);
+            Object[] proyAttrib = DbConnection.consultar(new Consulta().Select("*").From("Proyecto").Where(String.Format("id_proyecto = '{0}'",id)).Get(), 3);
             Proyecto proyecto = new Proyecto();
-            proyecto.id = ((String[]) proyAttrib[0])[0];
+            try
+            {
+                proyecto.id = ((String[]) proyAttrib[0])[0];
+                //proyecto.administradorProyecto = 
+            }
+            catch (Exception e) {
+
+            }
+            
 
             return null;
         }
