@@ -7,14 +7,31 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Diseno_Asana.control.dao
 {
-    class DAOUsuario
+    static class DAOUsuario
     {
-        public Boolean consultarUsuario(Usuario usr)
+        public static Usuario consultarUsuario(String usr)
         {
-            return true;
+            gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            String[][] response = (String [][]) db.consultar(new Consulta().Select("*").From("usuario").Where(String.Format("id_usuario = '{0}'",usr)).Get(),4);
+            if (response.Count() > 0)
+            {
+                Usuario user = new Usuario();
+                String[] userData = response[0];
+                user.id = userData[0];
+                user.nombre = userData[1];
+                // userData[2] --> usuario
+                user.contraseña = userData[3];
+                user.correo = userData[4];
+                user.isAdministrador = Boolean.Parse(userData[5]);
+                return user;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        public Boolean agregarUsuario(Usuario usr)
+        public static Boolean agregarUsuario(Usuario usr)
         {
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             db.conectar();
@@ -24,7 +41,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             return result;
         }
 
-        public Boolean eliminarUsuario(String correo)
+        public static Boolean eliminarUsuario(String correo)
         {
             return true;
         }

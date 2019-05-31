@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Diseno_Asana.control.dao
 {
-    class DAOConsulta
+    static class DAOConsulta
     {
-        private ConsultaBuilder builder;
+        private static ConsultaBuilder builder;
 
-        public Consulta constructQuery(Object criterio)
+        public static Consulta constructQuery(Object criterio)
         {
             return null;
         }
 
-        private Boolean darFormato(List<Tarea> listaTareas)
+        private static Boolean darFormato(List<Tarea> listaTareas)
         {
             return true;
         }

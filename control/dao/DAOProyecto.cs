@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Diseno_Asana.control.dao
 {
-    class DAOProyecto
+    static class DAOProyecto
     {
-        public Boolean agregarProyecto(Proyecto proyecto)
+        public static Boolean agregarProyecto(Proyecto proyecto)
         {
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
-            (new dao.DAOUsuario()).agregarUsuario(proyecto.administradorProyecto);
+            DAOUsuario.agregarUsuario(proyecto.administradorProyecto);
             db.conectar();
             string query = string.Format("insert into Proyecto values ('{0}', '{1}', '{2}')", proyecto.id, proyecto.nombre, proyecto.administradorProyecto.id);
             bool result = db.executeNonQuery(query);
             db.desconectar();
             foreach (Usuario usuario in proyecto.miembros)
             {
-                (new dao.DAOUsuario()).agregarUsuario(usuario);
+                DAOUsuario.agregarUsuario(usuario);
                 result &= agregarMiembroPorProyecto(proyecto.id, usuario.id);
             }
             foreach (Tarea seccion in proyecto.secciones)
@@ -37,7 +37,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             return result;
         }
 
-        private void agregarTarea(Tarea tarea, Tarea seccion, Proyecto proyecto)
+        private static void agregarTarea(Tarea tarea, Tarea seccion, Proyecto proyecto)
         {
             agregarTarea(tarea, null, proyecto.id);
             agregarTareaPorProyecto(proyecto.id, tarea.codigo);
@@ -58,7 +58,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             }
         }
 
-        public bool agregarMiembroPorProyecto(string idProyecto, string idUsuario)
+        public static bool agregarMiembroPorProyecto(string idProyecto, string idUsuario)
         {
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             db.conectar();
@@ -69,7 +69,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             return result;
         }
 
-        public bool agregarSeguidorPorTarea(string idUsuario, string idTarea)
+        public static bool agregarSeguidorPorTarea(string idUsuario, string idTarea)
         {
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             db.conectar();
@@ -80,7 +80,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             return result;
         }
 
-        public bool agregarTareaPorProyecto(string idProyecto, string idTarea)
+        public static bool agregarTareaPorProyecto(string idProyecto, string idTarea)
         {
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             db.conectar();
@@ -91,7 +91,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             return result;
         }
 
-        public Boolean agregarTareaASeccion(Tarea tarea, Tarea seccion)
+        public static Boolean agregarTareaASeccion(Tarea tarea, Tarea seccion)
         {
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             db.conectar();
@@ -102,7 +102,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             return result;
         }
 
-        public Boolean agregarTarea(Tarea tarea, string idPadre, string idProyecto)
+        public static Boolean agregarTarea(Tarea tarea, string idPadre, string idProyecto)
         {
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             string query = "";
@@ -138,13 +138,16 @@ namespace Proyecto_Diseno_Asana.control.dao
             return result;
         }
 
-        public Proyecto consultarProyecto(String id)
+        public static Proyecto consultarProyecto(String id)
         {
-            Object[] proyAttrib = DbConnection.consultar(new Consulta().Select("*").From("Proyecto").Where(String.Format("id_proyecto = '{0}'",id)).Get(), 3);
+            gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            String[] proyAttrib = ((String[][]) DbConnection.consultar(new Consulta().Select("*").From("Proyecto").Where(String.Format("id_proyecto = '{0}'",id)).Get(), 3))[0];
             Proyecto proyecto = new Proyecto();
             try
             {
-                proyecto.id = ((String[]) proyAttrib[0])[0];
+                //
+                proyecto.id = proyAttrib[0];
+                //Usuario administrador = DAOUsuario.consultarUsuario()
                 //proyecto.administradorProyecto = 
             }
             catch (Exception e) {
@@ -155,17 +158,17 @@ namespace Proyecto_Diseno_Asana.control.dao
             return null;
         }
 
-        private List<Tarea> consultarTarea(int proyecto)
+        private static List<Tarea> consultarTarea(int proyecto)
         {
             return null;
         }
 
-        private List<Tarea> consultarTareaHijas(int tareaPadre)
+        private static List<Tarea> consultarTareaHijas(int tareaPadre)
         {
             return null;
         }
 
-        private List<Proyecto> consultarProyectos()
+        private static List<Proyecto> consultarProyectos()
         {
             return null;
         }

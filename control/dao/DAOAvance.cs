@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Diseno_Asana.control.dao
 {
-    class DAOAvance
+    static class DAOAvance
     {
-        public Boolean crearAvance(Avance avance)
+        public static Boolean crearAvance(Avance avance)
         {
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             db.conectar();
@@ -20,7 +20,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             return result;
         }
 
-        public bool agregarAvancePorTarea(string idTarea, string idAvance)
+        public static bool agregarAvancePorTarea(string idTarea, string idAvance)
         {
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             db.conectar();
@@ -31,7 +31,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             return result;
         }
 
-        public Boolean eliminarAvance(int id)
+        public static Boolean eliminarAvance(int id)
         {
             return true;
         }
