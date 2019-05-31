@@ -147,25 +147,73 @@ namespace Proyecto_Diseno_Asana.control.dao
             {
                 //
                 proyecto.id = proyAttrib[0];
-                //Usuario administrador = DAOUsuario.consultarUsuario()
-                //proyecto.administradorProyecto = 
+                Usuario administrador = DAOUsuario.consultarUsuario(proyAttrib[1]);
+                if (administrador != null) {
+                    proyecto.administradorProyecto = administrador;
+                }
+                proyecto.secciones = consultarTarea(id);
             }
             catch (Exception e) {
-
+                Console.WriteLine(e.StackTrace);
             }
             
 
             return null;
         }
 
-        private static List<Tarea> consultarTarea(int proyecto)
+        private static List<Tarea> consultarTarea(string proyecto)
         {
+            gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            List<Tarea> result = new List<Tarea>();
+            String[][] tareas = (String[][]) DbConnection.consultar(new Consulta().Select("*").From("Tarea").Where(String.Format("id_proyecto = {0} AND \"id_tareaPadre\" IS NULL",proyecto)).Get(),8);
+            foreach (String[] datosTarea in tareas) {
+                Tarea t = new Tarea();
+                int id = 0;
+                if(Int32.TryParse(datosTarea[0],out id))
+                {
+                    t.codigo = datosTarea[0];
+                    t.tareas = consultarTareaHijas(id,true);
+                }
+                Usuario encargado = DAOUsuario.consultarUsuario(datosTarea[1]);
+                if (encargado == null) {
+                    Console.WriteLine("tarea" + t.codigo + "no tiene encargado");
+                }
+                t.encargado = encargado;
+                t.fchEntrega = DateTime.Parse(datosTarea[2]);
+                t.fchFinalizacion = DateTime.Parse(datosTarea[3]);
+                t.nombre = datosTarea[4];
+                t.notas = datosTarea[5];
+            }
             return null;
         }
 
-        private static List<Tarea> consultarTareaHijas(int tareaPadre)
+        private static List<Tarea> consultarTareaHijas(int tareaPadre, bool isTarea)
         {
-            return null;
+            gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            List<Tarea> result = new List<Tarea>();
+            String[][] tareas = (String[][])DbConnection.consultar(new Consulta().Select("*").From("Tarea").Where(String.Format("\"id_tareaPadre\" = {0} ", tareaPadre)).Get(), 8);
+            foreach (String[] datosTarea in tareas)
+            {
+                Tarea t = new Tarea();
+                int id = 0;
+                if (Int32.TryParse(datosTarea[0], out id) && isTarea)
+                {
+                    t.codigo = datosTarea[0];
+                    t.tareas = consultarTareaHijas(id, false);
+                }
+                Usuario encargado = DAOUsuario.consultarUsuario(datosTarea[1]);
+                if (encargado == null)
+                {
+                    Console.WriteLine("tarea" + t.codigo + "no tiene encargado");
+                }
+                t.encargado = encargado;
+                t.fchEntrega = DateTime.Parse(datosTarea[2]);
+                t.fchFinalizacion = DateTime.Parse(datosTarea[3]);
+                t.nombre = datosTarea[4];
+                t.notas = datosTarea[5];
+                result.Add(t);
+            }
+            return result;
         }
 
         private static List<Proyecto> consultarProyectos()
