@@ -196,6 +196,12 @@
     <EmbeddedResource Include="vista\GUIMainAdministrador.resx">
       <DependentUpon>GUIMainAdministrador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="vista\GUIMainMiembro.resx">
+      <DependentUpon>GUIMainMiembro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="vista\GUIProyecto.resx">
+      <DependentUpon>GUIProyecto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vista\GUIRegistro.resx">
       <DependentUpon>GUIRegistro.cs</DependentUpon>
     </EmbeddedResource>

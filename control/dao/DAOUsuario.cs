@@ -45,5 +45,15 @@ namespace Proyecto_Diseno_Asana.control.dao
         {
             return true;
         }
+
+        public static Boolean completarUsuario(Usuario usr)
+        {
+            gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            db.conectar();
+            string query = string.Format("update Usuario set nombre = '{0}', correo = '{1}', is_administrador = {2} where (id_usuario = '{3}')", usr.nombre,usr.correo,(usr.isAdministrador?"true" : "false"),usr.id);
+            bool result = db.executeNonQuery(query);
+            db.desconectar();
+            return result;
+        }
     }
 }

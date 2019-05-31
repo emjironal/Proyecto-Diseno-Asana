@@ -51,11 +51,36 @@ namespace Proyecto_Diseno_Asana.vista
                 case "5":
                     abrirTarea();
                     break;
+                case "6":
+                    completarUsuario();
+                    break;
                 default:
                     print("Opción no válida");
                     break;
             }
             return false;
+        }
+
+        private static void completarUsuario()
+        {
+            Usuario usr = new Usuario();
+            print("Inregese el ID del usuario por completar: ");
+            usr.id = input();
+            print("Ingrese el correo: ");
+            usr.correo = input();
+            print("Ingrese el nombre");
+            usr.nombre = input();
+            print("Ingrese si es administrador (S/N)");
+            usr.isAdministrador = (input() == "S" ? true : false);
+            control.getDTO().setUsuario(usr);
+            if (control.completarUsuario())
+            {
+                print("Se completo el usuario con éxito");
+            }
+            else
+            {
+                print("Error: no se pudo comletar el usuario");
+            }
         }
 
         static private void abrirTarea()
@@ -195,6 +220,7 @@ namespace Proyecto_Diseno_Asana.vista
             print("3. Probar conexion");
             print("4. Abrir proyecto");
             print("5. Abrir tarea");
+            print("6. Completar usuario");
             print("S. Salir");
             print("Ingrese su elección: ");
         }
