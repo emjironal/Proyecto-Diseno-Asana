@@ -191,12 +191,47 @@ namespace Proyecto_Diseno_Asana.vista
                 avance.descripción = descripcion;
                 avance.HorasDedicadas = horas;
                 avance.Fecha = DateTime.Now;
-                avance.id = control.dto.getTarea().avances.Count;
+                avance.id = ""+ control.dto.getTarea().codigo + control.dto.getTarea().avances.Count;
+                agregarEvidencia();
                 control.agregarAvance();
             }
             else
             {
                 print("No es un integer");
+            }
+        }
+
+        private static void agregarEvidencia()
+        {
+            while (true)
+            {
+                print("Desea agregar evidencia: S/N");
+                string decision = input();
+                switch (decision.ToUpper())
+                {
+                    case "N":
+                        return;
+                    case "S":
+                        try
+                        {
+                            print("Ingrese el path del documento");
+                            string path = input();
+                            byte[] doc = File.ReadAllBytes(path);
+                            Evidencia evidencia = new Evidencia();
+                            evidencia.documento = doc;
+                            evidencia.tipo = Path.GetExtension(path);
+                            control.getDTO().getAvance().evidencias.Add(evidencia);
+                        }
+                        catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        break;
+                    default:
+                        print("Opción no válida");
+                        break;
+                }
+                print();
             }
         }
 

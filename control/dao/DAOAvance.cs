@@ -14,8 +14,12 @@ namespace Proyecto_Diseno_Asana.control.dao
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             db.conectar();
             string query = "insert into Avance values ('{0}', '{1}', '{2}', '{3}', '{4}')";
-            query = string.Format(query, avance.id, avance.Fecha.ToString("yyyy-mm-dd"), avance.HorasDedicadas, avance.descripción, avance.creador.id);
+            query = string.Format(query, avance.id, avance.Fecha.ToString("yyyy-MM-dd"), avance.HorasDedicadas, avance.descripción, avance.creador.id);
             bool result = db.executeNonQuery(query);
+            foreach(Evidencia evidencia in avance.evidencias)
+            {
+                result &= agregarEvidencia(evidencia, avance.id);
+            }
             db.desconectar();
             return result;
         }
@@ -31,9 +35,32 @@ namespace Proyecto_Diseno_Asana.control.dao
             return result;
         }
 
-        public static Boolean eliminarAvance(int id)
+        public static Boolean eliminarAvance(string id)
         {
             return true;
+        }
+
+        public static bool agregarEvidencia(Evidencia evidencia, string idAvance)
+        {
+            gestor.bd.PostgresBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            db.conectar();
+            //Query
+            Npgsql.NpgsqlCommand objCom = new Npgsql.NpgsqlCommand("insert into EvidenciaPorAvance " + " (id_avance, tipo, documento) values (:id, :tipo, :doc)", db.conn);
+            //Id avance
+            Npgsql.NpgsqlParameter idAvanceParam = new Npgsql.NpgsqlParameter("@id", System.Data.DbType.Decimal);
+            idAvanceParam.Value = idAvance;
+            objCom.Parameters.Add(idAvanceParam);
+            //Tipo de documento
+            Npgsql.NpgsqlParameter tipoParam = new Npgsql.NpgsqlParameter("@tipo", System.Data.DbType.String);
+            tipoParam.Value = evidencia.tipo;
+            objCom.Parameters.Add(tipoParam);
+            //Documento
+            Npgsql.NpgsqlParameter docParam = new Npgsql.NpgsqlParameter("@doc", System.Data.DbType.Binary);
+            docParam.Value = evidencia.documento;
+            objCom.Parameters.Add(docParam);
+            bool result = objCom.ExecuteNonQuery() != 0;
+            db.desconectar();
+            return result;
         }
     }
 }

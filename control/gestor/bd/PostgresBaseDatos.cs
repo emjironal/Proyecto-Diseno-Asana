@@ -12,7 +12,7 @@ namespace Proyecto_Diseno_Asana.control.gestor.bd
     {
         private DataSet ds = new DataSet();
         private DataTable dt = new DataTable();
-        private NpgsqlConnection conn;
+        public NpgsqlConnection conn { get; }
 
         /// <summary>
         /// PostgresBaseDatos(String Server, String UserId, String  Port, String Password, String DatabaseName): 
