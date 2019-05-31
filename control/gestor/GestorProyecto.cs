@@ -28,7 +28,7 @@ namespace Proyecto_Diseno_Asana.control.gestor
 
         public Proyecto cargarProyecto(String idProyecto)
         {
-            return null;
+            return DAOProyecto.consultarProyecto(idProyecto);
         }
 
         public Boolean consultar(String tipo, Object criterio)
@@ -76,8 +76,7 @@ namespace Proyecto_Diseno_Asana.control.gestor
              * fchEntrega
              * notas
              * seguidores
-             * ecanrgado
-             *
+             * encargado
              */
             if (oldSeccion.codigo == newSeccion.codigo)
             {
@@ -86,7 +85,6 @@ namespace Proyecto_Diseno_Asana.control.gestor
                     for (int i = 0; i < oldSeccion.tareas.Count; i++) {
                         if (tarea.codigo == oldSeccion.tareas.ElementAt(i).codigo) {
                             Tarea nueva = mergeSubtarea(oldSeccion, newSeccion);
-
                         }
                     }
                 }
