@@ -67,8 +67,6 @@ namespace Proyecto_Diseno_Asana.vista
             usr.id = input();
             print("Ingrese el correo: ");
             usr.correo = input();
-            print("Ingrese el nombre");
-            usr.nombre = input();
             print("Ingrese si es administrador (S/N)");
             usr.isAdministrador = (input() == "S" ? true : false);
             control.getDTO().setUsuario(usr);
