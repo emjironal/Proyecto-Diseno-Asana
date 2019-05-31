@@ -13,7 +13,7 @@ namespace Proyecto_Diseno_Asana.control.dao
         {
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             db.conectar();
-            string query = "insert into Avance values ({0}, {1}, {2}, {3}, {4})";
+            string query = "insert into Avance values ('{0}', '{1}', '{2}', '{3}', '{4}')";
             query = string.Format(query, avance.id, avance.Fecha.ToString("yyyy-mm-dd"), avance.HorasDedicadas, avance.descripción, avance.creador.id);
             bool result = db.executeNonQuery(query);
             db.desconectar();
