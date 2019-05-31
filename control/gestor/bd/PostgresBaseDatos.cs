@@ -64,11 +64,19 @@ namespace Proyecto_Diseno_Asana.control.gestor.bd
 
         public override bool executeNonQuery(string query)
         {
-            using (var cmd = new NpgsqlCommand())
+            try
             {
-                cmd.Connection = conn;
-                cmd.CommandText = query;
-                return cmd.ExecuteNonQuery() != 0;
+                using (var cmd = new NpgsqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = query;
+                    return cmd.ExecuteNonQuery() != 0;
+                }
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return false;
             }
         }
 

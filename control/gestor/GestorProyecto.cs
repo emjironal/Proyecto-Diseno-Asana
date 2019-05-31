@@ -1,5 +1,4 @@
-﻿using Proyecto_Diseno_Asana.control.dao;
-using Proyecto_Diseno_Asana.control.fabrica;
+﻿using Proyecto_Diseno_Asana.control.fabrica;
 using Proyecto_Diseno_Asana.modelo;
 using System;
 using System.Collections.Generic;
@@ -34,15 +33,9 @@ namespace Proyecto_Diseno_Asana.control.gestor
             return true;
         }
 
-        //Mergin
-
-        public List<Usuario> mergeMiembros(Proyecto oldProyecto, Proyecto newProyecto)
+        public List<Proyecto> consultarProyectos()
         {
-            if (oldProyecto.id == newProyecto.id)
-            {
-                oldProyecto.miembros = newProyecto.miembros;
-            }
-            return oldProyecto.miembros;
+            return null;
         }
 
         public List<Tarea> MergeSecciones(Proyecto oldProyecto, Proyecto newProyecto)
@@ -97,3 +90,8 @@ namespace Proyecto_Diseno_Asana.control.gestor
 
     }
 }
+
+using Proyecto_Diseno_Asana.control.fabrica;
+        public List<Proyecto> consultarProyectos()
+        {
+            return null;

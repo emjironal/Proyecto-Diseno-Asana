@@ -1,0 +1,21 @@
+select * from avance;
+select * from avanceportarea;
+select * from evidenciaporavance;
+select * from miembroporproyecto;
+select * from proyecto;
+select * from seguidorportarea;
+select * from tarea;
+select * from tareaporproyecto;
+select * from tareaporseccion;
+select * from usuario;
+
+truncate avance cascade;
+truncate avanceportarea;
+truncate evidenciaporavance;
+truncate miembroporproyecto;
+truncate proyecto cascade;
+truncate seguidorportarea;
+truncate tarea cascade;
+truncate tareaporproyecto;
+truncate tareaporseccion;
+truncate usuario cascade;

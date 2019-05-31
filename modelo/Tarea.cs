@@ -8,7 +8,7 @@ namespace Proyecto_Diseno_Asana.modelo
 {
     class Tarea
     {
-        public String codigo { get; set; }
+        public String codigo { get; set; } = null;
         public String nombre { get; set; }
         public bool isFinalizada { get; set; }
         public DateTime fchFinalizacion { get; set; }
