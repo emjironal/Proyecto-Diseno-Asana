@@ -23,8 +23,7 @@ namespace Proyecto_Diseno_Asana.control.gestor
 
         public Boolean eliminarAvance(Avance avance)
         {
-            DAOAvance daoAvance = new DAOAvance();
-            daoAvance.eliminarAvance(avance.id);
+            DAOAvance.eliminarAvance(avance.id);
             return true;
         }
     }

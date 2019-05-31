@@ -1,4 +1,5 @@
-﻿using Proyecto_Diseno_Asana.control.fabrica;
+﻿using Proyecto_Diseno_Asana.control.dao;
+using Proyecto_Diseno_Asana.control.fabrica;
 using Proyecto_Diseno_Asana.modelo;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Proyecto_Diseno_Asana.control.gestor
         {
             Fabrica fabrica = new FabricaImportacionProyecto();
             Proyecto proyecto = (Proyecto)fabrica.fabricaProducto(json);
-            if ((new dao.DAOProyecto()).agregarProyecto(proyecto))
+            if (DAOProyecto.agregarProyecto(proyecto))
                 return proyecto;
             return null;
         }
