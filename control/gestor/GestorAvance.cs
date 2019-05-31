@@ -12,9 +12,13 @@ namespace Proyecto_Diseno_Asana.control.gestor
     {
         public Boolean agregarAvance(Avance avance)
         {
-            DAOAvance daoAvance = new DAOAvance();
-            daoAvance.crearAvance(avance);
+            DAOAvance.crearAvance(avance);
             return true;
+        }
+
+        public Boolean agregarAvancePorTarea(string idTarea, string idAvance)
+        {
+            return DAOAvance.agregarAvancePorTarea(idTarea, idAvance);
         }
 
         public Boolean eliminarAvance(Avance avance)

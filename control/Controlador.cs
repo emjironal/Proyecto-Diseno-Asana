@@ -90,7 +90,8 @@ namespace Proyecto_Diseno_Asana
             Avance avance = dto.getAvance();
             if (gestorAvance.agregarAvance(avance))
             {
-                dto.getTarea().avances.Add(avance);
+                if((gestorAvance.agregarAvancePorTarea(dto.getTarea().codigo, avance.id.ToString())))
+                    dto.getTarea().avances.Add(avance);
             }
         }
 
