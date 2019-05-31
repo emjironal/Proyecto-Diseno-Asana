@@ -8,7 +8,7 @@ namespace Proyecto_Diseno_Asana.modelo
 {
     class Avance
     {
-        public int id { get; set; }
+        public string id { get; set; }
         public DateTime Fecha { get; set; }
         public int HorasDedicadas { get; set; }
         public String descripción { get; set; }

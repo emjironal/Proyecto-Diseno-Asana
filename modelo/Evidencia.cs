@@ -9,6 +9,7 @@ namespace Proyecto_Diseno_Asana.modelo
 {
     class Evidencia
     {
-        public List<FileStream> documentos { get; set; } = new List<FileStream>();
+        public string tipo { get; set; }
+        public byte[] documento { get; set; }
     }
 }
