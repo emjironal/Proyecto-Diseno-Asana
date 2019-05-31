@@ -14,7 +14,9 @@ namespace Proyecto_Diseno_Asana.control.gestor
         {
             Fabrica fabrica = new FabricaImportacionProyecto();
             Proyecto proyecto = (Proyecto)fabrica.fabricaProducto(json);
-            return proyecto;
+            if ((new dao.DAOProyecto()).agregarProyecto(proyecto))
+                return proyecto;
+            return null;
         }
 
         public Proyecto actualizarProyecto(String json)
@@ -25,7 +27,7 @@ namespace Proyecto_Diseno_Asana.control.gestor
 
         public Proyecto cargarProyecto(String idProyecto)
         {
-            DAOProyecto dao =
+            return null;
         }
 
         public Boolean consultar(String tipo, Object criterio)
@@ -90,8 +92,3 @@ namespace Proyecto_Diseno_Asana.control.gestor
 
     }
 }
-
-using Proyecto_Diseno_Asana.control.fabrica;
-        public List<Proyecto> consultarProyectos()
-        {
-            return null;
