@@ -8,6 +8,11 @@ select * from tarea;
 select * from tareaporproyecto;
 select * from tareaporseccion;
 select * from usuario;
+select id_avance, 
+       tipo, 
+       documento is null as data_is_null, 
+       octet_length(documento) as data_length 
+from evidenciaporavance;
 
 truncate avance cascade;
 truncate avanceportarea;
