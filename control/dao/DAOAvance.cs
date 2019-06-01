@@ -47,15 +47,15 @@ namespace Proyecto_Diseno_Asana.control.dao
             //Query
             Npgsql.NpgsqlCommand objCom = new Npgsql.NpgsqlCommand("insert into EvidenciaPorAvance " + " (id_avance, tipo, documento) values (:id, :tipo, :doc)", db.conn);
             //Id avance
-            Npgsql.NpgsqlParameter idAvanceParam = new Npgsql.NpgsqlParameter("@id", System.Data.DbType.Decimal);
-            idAvanceParam.Value = idAvance;
+            Npgsql.NpgsqlParameter idAvanceParam = new Npgsql.NpgsqlParameter("@id", NpgsqlTypes.NpgsqlDbType.Numeric);
+            idAvanceParam.Value = decimal.Parse(idAvance);
             objCom.Parameters.Add(idAvanceParam);
             //Tipo de documento
-            Npgsql.NpgsqlParameter tipoParam = new Npgsql.NpgsqlParameter("@tipo", System.Data.DbType.String);
+            Npgsql.NpgsqlParameter tipoParam = new Npgsql.NpgsqlParameter("@tipo", NpgsqlTypes.NpgsqlDbType.Varchar);
             tipoParam.Value = evidencia.tipo;
             objCom.Parameters.Add(tipoParam);
             //Documento
-            Npgsql.NpgsqlParameter docParam = new Npgsql.NpgsqlParameter("@doc", System.Data.DbType.Binary);
+            Npgsql.NpgsqlParameter docParam = new Npgsql.NpgsqlParameter("@doc", NpgsqlTypes.NpgsqlDbType.Bytea);
             docParam.Value = evidencia.documento;
             objCom.Parameters.Add(docParam);
             bool result = objCom.ExecuteNonQuery() != 0;
