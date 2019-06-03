@@ -23,6 +23,10 @@ namespace Proyecto_Diseno_Asana.control.gestor
         public Proyecto actualizarProyecto(String json)
         {
             Proyecto proyecto = importarProyecto(json);
+            GestorProyecto p = new GestorProyecto();
+            Proyecto oldProyecto = p.cargarProyecto(proyecto.id);
+            proyecto.miembros = mergeMiembros(proyecto, oldProyecto);
+            proyecto.secciones = MergeSecciones(proyecto, oldProyecto);
             return proyecto;
         }
 
@@ -52,6 +56,7 @@ namespace Proyecto_Diseno_Asana.control.gestor
 
         public List<Tarea> MergeSecciones(Proyecto oldProyecto, Proyecto newProyecto)
         {
+            List<Tarea> result = new List<Tarea>();
             if (oldProyecto.id == newProyecto.id)
             {
                 foreach (Tarea seccion in newProyecto.secciones)
@@ -61,11 +66,12 @@ namespace Proyecto_Diseno_Asana.control.gestor
                         Tarea oldSeccion = oldProyecto.secciones.ElementAt(i);
                         if (seccion.codigo == oldProyecto.secciones.ElementAt(i).codigo) {
                             Tarea nueva = actualizarTarea(oldSeccion, seccion);
+                            result.Add(nueva);
                         }
                     }
                 }
             }
-            return null;
+            return result;
         }
 
         private Tarea actualizarTarea(Tarea oldSeccion, Tarea newSeccion)
@@ -78,23 +84,37 @@ namespace Proyecto_Diseno_Asana.control.gestor
              * seguidores
              * encargado
              */
+            Tarea updatedTarea = newSeccion;
             if (oldSeccion.codigo == newSeccion.codigo)
             {
-                Tarea updatedTarea = newSeccion;
+                List<Tarea> updatedSubTareas = new List<Tarea>();
+                bool isNew = true;
                 foreach (Tarea tarea in newSeccion.tareas) {
                     for (int i = 0; i < oldSeccion.tareas.Count; i++) {
-                        if (tarea.codigo == oldSeccion.tareas.ElementAt(i).codigo) {
+                        if (tarea.codigo == oldSeccion.tareas.ElementAt(i).codigo)
+                        {
                             Tarea nueva = mergeSubtarea(oldSeccion, newSeccion);
+                            updatedSubTareas.Add(nueva);
+                            isNew = false;
+                            break;
                         }
                     }
+                    if (isNew) {
+                        updatedSubTareas.Add(tarea);
+                        break;
+                    } 
+                    isNew = true;
                 }
+                updatedTarea.tareas = updatedSubTareas;
             }
-            return null;
+            return updatedTarea;
         }
 
-        public Tarea mergeSubtarea(Tarea tarea, Tarea tarea1)
+        public Tarea mergeSubtarea(Tarea oldTarea, Tarea newTarea)
         {
-            return tarea1;
+            Tarea result = newTarea;
+            result.avances = oldTarea.avances;
+            return result;
         }
 
 
