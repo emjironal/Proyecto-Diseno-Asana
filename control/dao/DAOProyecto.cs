@@ -141,7 +141,9 @@ namespace Proyecto_Diseno_Asana.control.dao
         public static Proyecto consultarProyecto(String id)
         {
             gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
-            String[] proyAttrib = ((String[][]) DbConnection.consultar(new Consulta().Select("*").From("Proyecto").Where(String.Format("id_proyecto = '{0}'",id)).Get(), 3))[0];
+            //SE CAE AL TRATAR DE CASTEAR de Object[] a Object[][]
+            Object[][] resultSet = (Object[][]) DbConnection.consultar(new Consulta().Select("*").From("Proyecto").Where(String.Format("id_proyecto = '{0}'",id)).Get(), 3);
+            String[] proyAttrib = (String[]) resultSet[0];
             Proyecto proyecto = new Proyecto();
             try
             {
@@ -165,6 +167,7 @@ namespace Proyecto_Diseno_Asana.control.dao
         {
             gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             List<Tarea> result = new List<Tarea>();
+            //SE CAE AL TRATAR DE CASTEAR de Object[] a String[][]
             String[][] tareas = (String[][]) DbConnection.consultar(new Consulta().Select("*").From("Tarea").Where(String.Format("id_proyecto = {0} AND \"id_tareaPadre\" IS NULL",proyecto)).Get(),8);
             foreach (String[] datosTarea in tareas) {
                 Tarea t = new Tarea();
@@ -191,6 +194,7 @@ namespace Proyecto_Diseno_Asana.control.dao
         {
             gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             List<Tarea> result = new List<Tarea>();
+            //SE CAE AL TRATAR DE CASTEAR de Object[] a String[][]
             String[][] tareas = (String[][])DbConnection.consultar(new Consulta().Select("*").From("Tarea").Where(String.Format("\"id_tareaPadre\" = {0} ", tareaPadre)).Get(), 8);
             foreach (String[] datosTarea in tareas)
             {

@@ -42,7 +42,11 @@ namespace Proyecto_Diseno_Asana.vista
                     agregarAvance();
                     break;
                 case "3":
-                    DAOProyecto.consultarProyecto("1");
+                    Proyecto p = DAOProyecto.consultarProyecto("1123693986642643");
+                    if (p.id == "")
+                    {
+                        print("Jjajjajaja");
+                    }
                     break;
                 case "4":
                     abrirProyecto();
