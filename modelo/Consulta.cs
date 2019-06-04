@@ -83,13 +83,13 @@ namespace Proyecto_Diseno_Asana.modelo
                 }                
             }
             if (where != "")
-                result += "WHERE " + where ;
+                result += " WHERE " + where ;
             if (groupBy != "")
-                result += "GROUP BY " + groupBy;
+                result += " GROUP BY " + groupBy;
             if (orderBy != "")
-                result += "ORDER BY " + orderBy;
+                result += " ORDER BY " + orderBy;
             if (having != "")
-                result += "HAVING " + having; 
+                result += " HAVING " + having; 
             return result;
         }
     }
