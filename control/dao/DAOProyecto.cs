@@ -108,7 +108,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             string query = "";
             if (tarea.isFinalizada)
             {
-                if (tarea.fchEntrega.ToString("yyyy-MM-dd") != "0001-00-01")
+                if (tarea.fchEntrega.ToString("yyyy-MM-dd") != "0001-01-01")
                 {
                     query = "insert into Tarea (id_tarea, \"idEncargado\", \"fchFinalizacion\", \"fchEntrega\", \"id_tareaPadre\", id_proyecto, nombre, nota) values ('{0}', '{1}', '{2}', '{3}', {4}, '{5}', '{6}', '{7}')";
                     query = string.Format(query, tarea.codigo, tarea.encargado == null ? "null" : tarea.encargado.id, tarea.fchFinalizacion.ToString("yyyy-MM-dd"), tarea.fchEntrega.ToString("yyyy-MM-dd"), idPadre == null ? "null" : "'" + idPadre + "'", idProyecto, tarea.nombre, tarea.notas);
@@ -121,7 +121,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             }
             else
             {
-                if (tarea.fchEntrega.ToString("yyyy-MM-dd") != "0001-00-01")
+                if (tarea.fchEntrega.ToString("yyyy-MM-dd") != "0001-01-01")
                 {
                     query = "insert into Tarea (id_tarea, \"idEncargado\", \"fchEntrega\", \"id_tareaPadre\", id_proyecto, nombre, nota) values ('{0}', '{1}', '{2}', {3}, '{4}', '{5}', '{6}')";
                     query = string.Format(query, tarea.codigo, tarea.encargado == null ? "null" : tarea.encargado.id, tarea.fchEntrega.ToString("yyyy-MM-dd"), idPadre == null ? "null" : "'" + idPadre + "'", idProyecto, tarea.nombre, tarea.notas);
@@ -141,7 +141,7 @@ namespace Proyecto_Diseno_Asana.control.dao
         public static Proyecto consultarProyecto(String id)
         {
             gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
-            Object[][] resultSet = DbConnection.consultar(new Consulta().Select("*").From("Proyecto").Where(String.Format("id_proyecto = '{0}'",id)).Get(), 3);
+            Object[][] resultSet = DbConnection.consultar(new Consulta().Select("*").From("Proyecto").Where(String.Format("id_proyecto = {0}",id)).Get(), 3);
             Proyecto proyecto = new Proyecto();
             try
             {
@@ -152,6 +152,7 @@ namespace Proyecto_Diseno_Asana.control.dao
                     administrador.isAdministrador = true;
                     proyecto.administradorProyecto = administrador;
                 }
+                //TODO: Asignar miembros
                 proyecto.secciones = consultarTarea(id);
             }
             catch (Exception e) {
@@ -166,25 +167,30 @@ namespace Proyecto_Diseno_Asana.control.dao
         {
             gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             List<Tarea> result = new List<Tarea>();
-            //SE CAE AL TRATAR DE CASTEAR de Object[] a String[][]
-            Object[][] tareas = DbConnection.consultar(new Consulta().Select("*").From("Tarea").Where(String.Format("id_proyecto = {0} AND id_tareaPadre IS NULL",proyecto)).Get(),8);
+            Object[][] tareas = DbConnection.consultar(new Consulta().Select("*").From("Tarea t")
+                .Where(
+                    String.Format("id_proyecto = {0} AND \"id_tareaPadre\" IS NULL AND EXISTS ({1})",proyecto,
+                    String.Format(new Consulta().Select("*").From("tareaporseccion ts").Where("t.id_tarea = ts.id_seccion").Get())))
+                .OrderBy("t.id_tarea").Get(),8);
             for (int i = 0; i < tareas.Count(); i++) {
                 String[] datosTarea = Array.ConvertAll(tareas[i], p => (p ?? String.Empty).ToString());
                 Tarea t = new Tarea();
-                int id = 0;
-                if (Int32.TryParse(datosTarea[0], out id))
+                Int64 id = 0;
+                if (Int64.TryParse(datosTarea[0], out id))
                 {
                     t.codigo = datosTarea[0];
-                    t.tareas = consultarTareaHijas(id, true);
+                    t.tareas = consultarTareaHijas(id, true); //RETORNA 0 SIEMPRE
                 }
                 Usuario encargado = DAOUsuario.consultarUsuario(datosTarea[1]);
                 if (encargado == null)
                 {
                     Console.WriteLine("tarea" + t.codigo + "no tiene encargado");
                 }
+                //TODO: Asignar Seguidores
+                //TODO: Hacer el string valido para dateTime
                 t.encargado = encargado;
-                t.fchEntrega = DateTime.Parse(datosTarea[2]);
-                t.fchFinalizacion = DateTime.Parse(datosTarea[3]);
+                //t.fchEntrega = DateTime.Parse(datosTarea[2]); //No reconoce string como dateTime valido
+                //t.fchFinalizacion = DateTime.Parse(datosTarea[3]); //Lo mismo
                 t.nombre = datosTarea[4];
                 t.notas = datosTarea[5];
                 result.Add(t);
@@ -192,12 +198,11 @@ namespace Proyecto_Diseno_Asana.control.dao
             return result;
         }
 
-        private static List<Tarea> consultarTareaHijas(int tareaPadre, bool isTarea)
+        private static List<Tarea> consultarTareaHijas(long tareaPadre, bool isTarea)
         {
             gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             List<Tarea> result = new List<Tarea>();
-            //SE CAE AL TRATAR DE CASTEAR de Object[] a String[][]
-            Object[][] tareas = DbConnection.consultar(new Consulta().Select("*").From("Tarea").Where(String.Format("id_tareaPadre = {0} ", tareaPadre)).Get(), 8);
+            Object[][] tareas = DbConnection.consultar(new Consulta().Select("*").From("Tarea").Where(String.Format("\"id_tareaPadre\" = '{0}' ", tareaPadre)).Get(), 8);
             for (int i = 0; i < tareas.Count(); i++)
             {
                 String[] datosTarea = Array.ConvertAll(tareas[i], p => (p ?? String.Empty).ToString());
