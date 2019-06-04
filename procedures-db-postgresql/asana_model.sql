@@ -41,7 +41,7 @@ CREATE TABLE public.tarea
     nombre 				character varying(50) COLLATE pg_catalog."default",
     nota 				character varying(255) COLLATE pg_catalog."default",
     id_proyecto 		numeric NOT NULL,
-    "id_tareaPadre" character varying COLLATE pg_catalog."default",
+    "id_tareaPadre" 	character varying COLLATE pg_catalog."default",
     CONSTRAINT tarea_pkey PRIMARY KEY (id_tarea)
 );
 
