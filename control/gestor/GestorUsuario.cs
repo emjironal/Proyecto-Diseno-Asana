@@ -25,9 +25,9 @@ namespace Proyecto_Diseno_Asana.control.gestor
             return DAOUsuario.completarUsuario(usr);
         }
 
-        public Boolean login(Usuario usr)
+        public Usuario login(Usuario usr)
         {
-            return true;
+            return DAOUsuario.consultarUsuario(usr.id);
         }
     }
 }

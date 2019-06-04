@@ -15,12 +15,12 @@ namespace Proyecto_Diseno_Asana.control.dao
 
         private static Consulta constructQuery(Object criterio)
         {
-            string[] criterioList = (string[])criterio;
-            if (criterioList[0] == "miembro")
+            object[] criterioList = (object[])criterio;
+            if ((string)criterioList[0] == "miembro")
                 builder = new ConsultaxMiembro();
-            else if (criterioList[0] == "actividad")
+            else if ((string)criterioList[0] == "actividad")
                 builder = new ConsultaxActividad();
-            else if (criterioList[0] == "fecha")
+            else if ((string)criterioList[0] == "fecha")
                 builder = new ConsultaxFecha();
             return builder.hacerConsulta(criterio);
         }
@@ -30,7 +30,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             string query = constructQuery(criterio).Get();
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             db.conectar();
-            object[][] resultSet = db.consultar(query, 100);
+            object[][] resultSet = db.consultar(query, 7);
             db.desconectar();
             List<Avance> avances = new List<Avance>();
             darFormato(avances, resultSet);
@@ -47,9 +47,9 @@ namespace Proyecto_Diseno_Asana.control.dao
                 avance.creador.id = (string)fila[0];
                 avance.creador.nombre = (string)fila[1];
                 //Avance
-                avance.id = ((int)fila[2]).ToString();
-                avance.Fecha = DateTime.ParseExact((string)fila[3], "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
-                avance.HorasDedicadas = (int)fila[4];
+                avance.id = ((decimal)fila[2]).ToString();
+                avance.Fecha = (DateTime)fila[3];
+                avance.HorasDedicadas = int.Parse(((decimal)fila[4]).ToString());
                 avance.descripción = (string)fila[5];
                 listaAvances.Add(avance);
             }

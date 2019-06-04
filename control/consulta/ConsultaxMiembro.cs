@@ -11,11 +11,11 @@ namespace Proyecto_Diseno_Asana.control.consulta
     {
         public Consulta hacerConsulta(object criterio)
         {
-            string[] criterioList = (string[])criterio;
-            string idProyecto = criterioList[1], idUsuario = criterioList[2];
+            object[] criterioList = (object[])criterio;
+            string idProyecto = (string)criterioList[1], idUsuario = (string)criterioList[2];
             Consulta consulta = new Consulta();
             consulta = consulta
-                .Select("t.id_usuario as \"Id creador\", u.nombre as \"Nombre creador\", a.id_avance as \"Id avance\", a.fecha as \"Fecha avance\", a.horasDedicadas as \"Horas dedicadas\", a.descripcion as \"Descripcion\", count(*) as \"Cantidad de evidencia\"")
+                .Select("u.id_usuario as \"Id creador\", u.nombre as \"Nombre creador\", a.id_avance as \"Id avance\", a.fecha as \"Fecha avance\", a.horasDedicadas as \"Horas dedicadas\", a.descripcion as \"Descripcion\", count(*) as \"Cantidad de evidencia\"")
                 .From("Proyecto p"+
                         " inner join MiembroPorProyecto mp on(mp.id_proyecto = p.id_proyecto)"+
                         " inner join Usuario u on(u.id_usuario = mp.id_usuario)" +

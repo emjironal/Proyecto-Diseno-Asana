@@ -57,11 +57,57 @@ namespace Proyecto_Diseno_Asana.vista
                 case "6":
                     completarUsuario();
                     break;
+                case "7":
+                    login();
+                    break;
+                case "8":
+                    hacerConsulta();
+                    break;
                 default:
                     print("Opción no válida");
                     break;
             }
             return false;
+        }
+
+        private static void hacerConsulta()
+        {
+            print("Seleccione el tipo de consulta");
+            print("1. Miembro");
+            print("2. Actividad");
+            print("3. Rango de fechas");
+            print("S. Regresar al menú principal");
+            switch (input().ToUpper())
+            {
+                case "S":
+                    return;
+                case "1":
+                    control.hacerConsulta("miembro");
+                    break;
+                case "2":
+                    control.hacerConsulta("actividad");
+                    break;
+                case "3":
+                    control.hacerConsulta("fecha");
+                    break;
+                default:
+                    print("Consulta no válida");
+                    hacerConsulta();
+                    return;
+            }
+            foreach(Avance avance in control.dto.avances)
+            {
+                imprimirAvance(avance, "");
+            }
+        }
+
+        private static void login()
+        {
+            print("Ingrese su id de usuario");
+            control.dto.setUsuario(new Usuario());
+            control.dto.getUsuario().id = input();
+            control.login();
+            imprimirUsuario(control.dto.getUsuario(), "");
         }
 
         private static void completarUsuario()
@@ -257,6 +303,8 @@ namespace Proyecto_Diseno_Asana.vista
             print("4. Abrir proyecto");
             print("5. Abrir tarea");
             print("6. Completar usuario");
+            print("7. Login");
+            print("8. Consulta");
             print("S. Salir");
             print("Ingrese su elección: ");
         }

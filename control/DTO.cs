@@ -13,6 +13,7 @@ namespace Proyecto_Diseno_Asana.controller
         private Proyecto proyecto;
         private Tarea tarea;
         private Avance avance;
+        public List<Avance> avances { set; get; }
 
         public DTO()
         {
@@ -20,6 +21,7 @@ namespace Proyecto_Diseno_Asana.controller
             proyecto = new Proyecto();
             tarea = new Tarea();
             avance = new Avance();
+            avances = new List<Avance>();
         }
         
         public Usuario getUsuario()

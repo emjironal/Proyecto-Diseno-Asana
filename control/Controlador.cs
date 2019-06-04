@@ -28,7 +28,9 @@ namespace Proyecto_Diseno_Asana
 
         public Boolean login()
         {
-            return true;
+            GestorUsuario gestorUsuario = new GestorUsuario();
+            dto.setUsuario(gestorUsuario.login(dto.getUsuario()));
+            return dto.getUsuario() != null;
         }
 
         public void abrirProyecto()
@@ -98,6 +100,9 @@ namespace Proyecto_Diseno_Asana
 
         public Boolean hacerConsulta(String tipo)
         {
+            GestorProyecto gestorProyecto = new GestorProyecto();
+            object[] criterio = { null, dto.getProyecto().id, dto.getUsuario().id };
+            dto.avances = gestorProyecto.consultar(tipo, criterio);
             return true;
         }
 

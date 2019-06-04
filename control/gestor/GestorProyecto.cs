@@ -35,9 +35,11 @@ namespace Proyecto_Diseno_Asana.control.gestor
             return DAOProyecto.consultarProyecto(idProyecto);
         }
 
-        public Boolean consultar(String tipo, Object criterio)
+        public List<Avance> consultar(String tipo, Object criterio)
         {
-            return true;
+            object[] criterioList = (object[])criterio;
+            criterioList[0] = tipo;
+            return DAOConsulta.executeQuery(criterioList);
         }
 
         public List<Proyecto> consultarProyectos()
