@@ -141,16 +141,15 @@ namespace Proyecto_Diseno_Asana.control.dao
         public static Proyecto consultarProyecto(String id)
         {
             gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
-            //SE CAE AL TRATAR DE CASTEAR de Object[] a Object[][]
-            Object[][] resultSet = (Object[][]) DbConnection.consultar(new Consulta().Select("*").From("Proyecto").Where(String.Format("id_proyecto = '{0}'",id)).Get(), 3);
-            String[] proyAttrib = (String[]) resultSet[0];
+            Object[][] resultSet = DbConnection.consultar(new Consulta().Select("*").From("Proyecto").Where(String.Format("id_proyecto = '{0}'",id)).Get(), 3);
             Proyecto proyecto = new Proyecto();
             try
             {
-                //
+                String[] proyAttrib = Array.ConvertAll(resultSet[0], p => (p ?? String.Empty).ToString());
                 proyecto.id = proyAttrib[0];
-                Usuario administrador = DAOUsuario.consultarUsuario(proyAttrib[1]);
+                Usuario administrador = DAOUsuario.consultarUsuario(proyAttrib[2]);
                 if (administrador != null) {
+                    administrador.isAdministrador = true;
                     proyecto.administradorProyecto = administrador;
                 }
                 proyecto.secciones = consultarTarea(id);
@@ -160,7 +159,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             }
             
 
-            return null;
+            return proyecto;
         }
 
         private static List<Tarea> consultarTarea(string proyecto)
@@ -168,17 +167,19 @@ namespace Proyecto_Diseno_Asana.control.dao
             gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             List<Tarea> result = new List<Tarea>();
             //SE CAE AL TRATAR DE CASTEAR de Object[] a String[][]
-            String[][] tareas = (String[][]) DbConnection.consultar(new Consulta().Select("*").From("Tarea").Where(String.Format("id_proyecto = {0} AND \"id_tareaPadre\" IS NULL",proyecto)).Get(),8);
-            foreach (String[] datosTarea in tareas) {
+            Object[][] tareas = DbConnection.consultar(new Consulta().Select("*").From("Tarea").Where(String.Format("id_proyecto = {0} AND id_tareaPadre IS NULL",proyecto)).Get(),8);
+            for (int i = 0; i < tareas.Count(); i++) {
+                String[] datosTarea = Array.ConvertAll(tareas[i], p => (p ?? String.Empty).ToString());
                 Tarea t = new Tarea();
                 int id = 0;
-                if(Int32.TryParse(datosTarea[0],out id))
+                if (Int32.TryParse(datosTarea[0], out id))
                 {
                     t.codigo = datosTarea[0];
-                    t.tareas = consultarTareaHijas(id,true);
+                    t.tareas = consultarTareaHijas(id, true);
                 }
                 Usuario encargado = DAOUsuario.consultarUsuario(datosTarea[1]);
-                if (encargado == null) {
+                if (encargado == null)
+                {
                     Console.WriteLine("tarea" + t.codigo + "no tiene encargado");
                 }
                 t.encargado = encargado;
@@ -186,8 +187,9 @@ namespace Proyecto_Diseno_Asana.control.dao
                 t.fchFinalizacion = DateTime.Parse(datosTarea[3]);
                 t.nombre = datosTarea[4];
                 t.notas = datosTarea[5];
+                result.Add(t);
             }
-            return null;
+            return result;
         }
 
         private static List<Tarea> consultarTareaHijas(int tareaPadre, bool isTarea)
@@ -195,9 +197,10 @@ namespace Proyecto_Diseno_Asana.control.dao
             gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             List<Tarea> result = new List<Tarea>();
             //SE CAE AL TRATAR DE CASTEAR de Object[] a String[][]
-            String[][] tareas = (String[][])DbConnection.consultar(new Consulta().Select("*").From("Tarea").Where(String.Format("\"id_tareaPadre\" = {0} ", tareaPadre)).Get(), 8);
-            foreach (String[] datosTarea in tareas)
+            Object[][] tareas = DbConnection.consultar(new Consulta().Select("*").From("Tarea").Where(String.Format("id_tareaPadre = {0} ", tareaPadre)).Get(), 8);
+            for (int i = 0; i < tareas.Count(); i++)
             {
+                String[] datosTarea = Array.ConvertAll(tareas[i], p => (p ?? String.Empty).ToString());
                 Tarea t = new Tarea();
                 int id = 0;
                 if (Int32.TryParse(datosTarea[0], out id) && isTarea)

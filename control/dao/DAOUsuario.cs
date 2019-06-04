@@ -12,11 +12,11 @@ namespace Proyecto_Diseno_Asana.control.dao
         public static Usuario consultarUsuario(String usr)
         {
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
-            String[][] response = (String [][]) db.consultar(new Consulta().Select("*").From("usuario").Where(String.Format("id_usuario = '{0}'",usr)).Get(),4);
+            Object[][] response = db.consultar(new Consulta().Select("*").From("usuario").Where(String.Format("id_usuario = '{0}'",usr)).Get(),6);
             if (response.Count() > 0)
             {
                 Usuario user = new Usuario();
-                String[] userData = response[0];
+                String[] userData = Array.ConvertAll(response[0], p => (p ?? String.Empty).ToString());
                 user.id = userData[0];
                 user.nombre = userData[1];
                 // userData[2] --> usuario

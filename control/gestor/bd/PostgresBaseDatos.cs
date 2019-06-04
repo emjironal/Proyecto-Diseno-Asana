@@ -45,7 +45,7 @@ namespace Proyecto_Diseno_Asana.control.gestor.bd
             return true;
         }
 
-        public override object[] consultar(string query, int columns)
+        public override object[][] consultar(string query, int columns)
         {
             conectar();
             NpgsqlCommand command = new NpgsqlCommand(query, conn);
@@ -59,7 +59,14 @@ namespace Proyecto_Diseno_Asana.control.gestor.bd
                 list.Add(row);
             }
             desconectar();
-            return list.ToArray();
+            Object[][] vs = new object[list.Count][];
+            for (int i = 0; i < list.Count; i++) {
+                vs[i] = new object[columns];
+                for (int j = 0; j < columns; j++) {
+                    vs[i][j] = ((List<Object>)list.ElementAt(i)).ElementAt(j);
+                }
+            }
+            return vs;
         }
 
         public override bool executeNonQuery(string query)
