@@ -1,6 +1,7 @@
 ﻿using Proyecto_Diseno_Asana.modelo;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -147,12 +148,13 @@ namespace Proyecto_Diseno_Asana.control.dao
             {
                 String[] proyAttrib = Array.ConvertAll(resultSet[0], p => (p ?? String.Empty).ToString());
                 proyecto.id = proyAttrib[0];
+                proyecto.nombre = proyAttrib[1];
                 Usuario administrador = DAOUsuario.consultarUsuario(proyAttrib[2]);
                 if (administrador != null) {
                     administrador.isAdministrador = true;
                     proyecto.administradorProyecto = administrador;
                 }
-                //TODO: Asignar miembros
+                asignarMiembros(proyecto);
                 proyecto.secciones = consultarTarea(id);
             }
             catch (Exception e) {
@@ -163,6 +165,17 @@ namespace Proyecto_Diseno_Asana.control.dao
             return proyecto;
         }
 
+        private static void asignarMiembros(Proyecto proyecto)
+        {
+            gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            Object[][] resultSet = DbConnection.consultar(new Consulta().Select("id_usuario").From("miembroporproyecto").Where(String.Format("id_proyecto = {0}", proyecto.id)).Get(), 1);
+            for (int i = 0; i < resultSet.Count(); i++) {
+                String[] result = Array.ConvertAll(resultSet[0], p => (p ?? String.Empty).ToString());
+                Usuario u = DAOUsuario.consultarUsuario(result[0]);
+                proyecto.miembros.Add(u);
+            }
+        }
+
         private static List<Tarea> consultarTarea(string proyecto)
         {
             gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
@@ -170,7 +183,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             Object[][] tareas = DbConnection.consultar(new Consulta().Select("*").From("Tarea t")
                 .Where(
                     String.Format("id_proyecto = {0} AND \"id_tareaPadre\" IS NULL AND EXISTS ({1})",proyecto,
-                    String.Format(new Consulta().Select("*").From("tareaporseccion ts").Where("t.id_tarea = ts.id_seccion").Get())))
+                    new Consulta().Select("*").From("tareaporseccion ts").Where("t.id_tarea = ts.id_seccion").Get()))
                 .OrderBy("t.id_tarea").Get(),8);
             for (int i = 0; i < tareas.Count(); i++) {
                 String[] datosTarea = Array.ConvertAll(tareas[i], p => (p ?? String.Empty).ToString());
@@ -179,18 +192,24 @@ namespace Proyecto_Diseno_Asana.control.dao
                 if (Int64.TryParse(datosTarea[0], out id))
                 {
                     t.codigo = datosTarea[0];
-                    t.tareas = consultarTareaHijas(id, true); //RETORNA 0 SIEMPRE
+                    t.tareas = consultarTareaHijas(id, proyecto, true); //RETORNA 0 SIEMPRE
                 }
                 Usuario encargado = DAOUsuario.consultarUsuario(datosTarea[1]);
                 if (encargado == null)
                 {
-                    Console.WriteLine("tarea" + t.codigo + "no tiene encargado");
+                    Console.WriteLine("tarea " + t.codigo + " no tiene encargado");
                 }
                 //TODO: Asignar Seguidores
-                //TODO: Hacer el string valido para dateTime
                 t.encargado = encargado;
-                //t.fchEntrega = DateTime.Parse(datosTarea[2]); //No reconoce string como dateTime valido
-                //t.fchFinalizacion = DateTime.Parse(datosTarea[3]); //Lo mismo
+                t.seguidores = asignarSeguidores(t.codigo);
+                String[] fechaprueba = datosTarea[2].Split();
+                DateTime fchEntrega, fchFinalizacion;
+                if (DateTime.TryParseExact(datosTarea[2].Split()[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None,out fchEntrega)){
+                    t.fchEntrega = fchEntrega;
+                }
+                if (DateTime.TryParseExact(datosTarea[3].Split()[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fchFinalizacion)) {
+                    t.fchFinalizacion = fchFinalizacion;
+                }
                 t.nombre = datosTarea[4];
                 t.notas = datosTarea[5];
                 result.Add(t);
@@ -198,20 +217,47 @@ namespace Proyecto_Diseno_Asana.control.dao
             return result;
         }
 
-        private static List<Tarea> consultarTareaHijas(long tareaPadre, bool isTarea)
+        private static List<Usuario> asignarSeguidores(string codigo)
+        {
+            List<Usuario> seguidores = new List<Usuario>();
+            gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            Object[][] resultSet = DbConnection.consultar(new Consulta().Select("id_usuario").From("seguidorportarea").Where(String.Format("id_tarea = {0}",codigo)).Get(), 1);
+            for (int i = 0; i < resultSet.Count(); i++)
+            {
+                String[] result = Array.ConvertAll(resultSet[0], p => (p ?? String.Empty).ToString());
+                Usuario u = DAOUsuario.consultarUsuario(result[0]);
+                seguidores.Add(u);
+            }
+            return seguidores;
+        }
+
+        private static List<Tarea> consultarTareaHijas(long tareaPadre, string id_proyecto, bool isTarea)
         {
             gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             List<Tarea> result = new List<Tarea>();
-            Object[][] tareas = DbConnection.consultar(new Consulta().Select("*").From("Tarea").Where(String.Format("\"id_tareaPadre\" = '{0}' ", tareaPadre)).Get(), 8);
+            Object[][] tareas;
+            if (isTarea)
+            {
+                tareas = DbConnection.consultar(new Consulta().Select("*").From("Tarea t")
+                .Where(
+                    String.Format("id_proyecto = {0} AND \"id_tareaPadre\" IS NULL AND EXISTS ({1})", id_proyecto,
+                    new Consulta().Select("*").From("tareaporseccion ts")
+                    .Where(String.Format("t.id_tarea = ts.id_tarea and ts.id_seccion = '{0}'",tareaPadre)).Get()))
+                .OrderBy("t.id_tarea").Get(), 8);
+            }
+            else {
+                tareas = DbConnection.consultar(new Consulta().Select("*").From("Tarea").Where(String.Format("\"id_tareaPadre\" = '{0}' ", tareaPadre)).Get(),8);
+            }
             for (int i = 0; i < tareas.Count(); i++)
             {
                 String[] datosTarea = Array.ConvertAll(tareas[i], p => (p ?? String.Empty).ToString());
                 Tarea t = new Tarea();
-                int id = 0;
-                if (Int32.TryParse(datosTarea[0], out id) && isTarea)
+                long id = 0;
+                if (Int64.TryParse(datosTarea[0], out id))
                 {
                     t.codigo = datosTarea[0];
-                    t.tareas = consultarTareaHijas(id, false);
+                    if(isTarea)
+                        t.tareas = consultarTareaHijas(id, id_proyecto, false);
                 }
                 Usuario encargado = DAOUsuario.consultarUsuario(datosTarea[1]);
                 if (encargado == null)
@@ -219,8 +265,16 @@ namespace Proyecto_Diseno_Asana.control.dao
                     Console.WriteLine("tarea" + t.codigo + "no tiene encargado");
                 }
                 t.encargado = encargado;
-                t.fchEntrega = DateTime.Parse(datosTarea[2]);
-                t.fchFinalizacion = DateTime.Parse(datosTarea[3]);
+                t.seguidores = asignarSeguidores(t.codigo);
+                DateTime fchEntrega, fchFinalizacion;
+                if (DateTime.TryParseExact(datosTarea[2].Split()[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fchEntrega))
+                {
+                    t.fchEntrega = fchEntrega;
+                }
+                if (DateTime.TryParseExact(datosTarea[3].Split()[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fchFinalizacion))
+                {
+                    t.fchFinalizacion = fchFinalizacion;
+                }
                 t.nombre = datosTarea[4];
                 t.notas = datosTarea[5];
                 result.Add(t);
