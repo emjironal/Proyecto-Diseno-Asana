@@ -36,7 +36,8 @@ namespace Proyecto_Diseno_Asana
 
         public void abrirProyecto()
         {
-
+            GestorProyecto gestorProyecto = new GestorProyecto();
+            dto.setProyecto(gestorProyecto.cargarProyecto(dto.getProyecto().id));
         }
 
         public Boolean importarProyecto(string pathJson)

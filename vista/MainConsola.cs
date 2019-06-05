@@ -36,6 +36,7 @@ namespace Proyecto_Diseno_Asana.vista
                 case "S":
                     return true;
                 case "1":
+                    print("Importando...");
                     importarProyecto();
                     break;
                 case "2":
@@ -65,6 +66,9 @@ namespace Proyecto_Diseno_Asana.vista
                     break;
                 case "9":
                     generarReporte();
+                    break;
+                case "10":
+                    actualizarProyecto();
                     break;
                 default:
                     print("Opción no válida");
@@ -134,7 +138,10 @@ namespace Proyecto_Diseno_Asana.vista
             control.dto.setUsuario(new Usuario());
             control.dto.getUsuario().id = input();
             control.login();
-            imprimirUsuario(control.dto.getUsuario(), "");
+            if (control.dto.getUsuario() != null)
+                imprimirUsuario(control.dto.getUsuario(), "");
+            else
+                print("No existe el usuario");
         }
 
         private static void completarUsuario()
@@ -310,6 +317,15 @@ namespace Proyecto_Diseno_Asana.vista
             }
         }
 
+        static private void actualizarProyecto()
+        {
+            print("Ingrese el path del json del proyecto de asana");
+            if (control.actualizarProyecto(input()))
+            {
+                print("El proyecto se actualizó correctamente");
+            }
+        }
+
         static private void importarProyecto()
         {
             print("Ingrese el path del json del proyecto de asana");
@@ -333,6 +349,7 @@ namespace Proyecto_Diseno_Asana.vista
             print("7. Login");
             print("8. Consulta");
             print("9. Generar reporte");
+            print("10. Actualizar proyecto");
             print("S. Salir");
             print("Ingrese su elección: ");
         }
