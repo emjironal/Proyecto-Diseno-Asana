@@ -103,7 +103,7 @@ namespace Proyecto_Diseno_Asana
         public Boolean hacerConsulta(String tipo)
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
-            object[] criterio = { null, dto.getProyecto().id, dto.getUsuario().id };
+            object[] criterio = { null, dto.getProyecto().id, dto.getUsuario().id, dto.getTarea().nombre };
             dto.avances = gestorProyecto.consultar(tipo, criterio);
             return true;
         }
