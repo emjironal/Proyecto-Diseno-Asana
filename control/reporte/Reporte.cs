@@ -9,6 +9,6 @@ namespace Proyecto_Diseno_Asana.control.reporte
     interface Reporte
     {
         Boolean generarReporte();
-        Boolean guardarReporte();
+        Boolean guardarReporte(string pathWithNameNoExtension);
     }
 }

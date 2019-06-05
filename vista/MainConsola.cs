@@ -63,11 +63,38 @@ namespace Proyecto_Diseno_Asana.vista
                 case "8":
                     hacerConsulta();
                     break;
+                case "9":
+                    generarReporte();
+                    break;
                 default:
                     print("Opción no válida");
                     break;
             }
             return false;
+        }
+
+        private static void generarReporte()
+        {
+            print("Escoja su formato");
+            print("1. PDF");
+            print("S. Regresar al menú principal");
+            switch (input().ToUpper())
+            {
+                case "S":
+                    return;
+                case "1":
+                    control.generarReportePDF();
+                    print("Ingrese el path donde desea guardar el archivo");
+                    string path = input();
+                    print("Ingrese el nombre que le desea dar al archivo");
+                    string filename = input();
+                    control.guardarReportePDF(path, filename);
+                    break;
+                default:
+                    print("Opción no válida");
+                    generarReporte();
+                    return;
+            }
         }
 
         private static void hacerConsulta()
@@ -305,6 +332,7 @@ namespace Proyecto_Diseno_Asana.vista
             print("6. Completar usuario");
             print("7. Login");
             print("8. Consulta");
+            print("9. Generar reporte");
             print("S. Salir");
             print("Ingrese su elección: ");
         }

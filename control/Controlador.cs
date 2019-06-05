@@ -1,5 +1,6 @@
 ﻿using Proyecto_Diseno_Asana.control.fabrica;
 using Proyecto_Diseno_Asana.control.gestor;
+using Proyecto_Diseno_Asana.control.reporte;
 using Proyecto_Diseno_Asana.controller;
 using Proyecto_Diseno_Asana.modelo;
 using System;
@@ -117,5 +118,14 @@ namespace Proyecto_Diseno_Asana
             return gestorProyecto.consultarProyectos();
         }
 
+        public bool generarReportePDF()
+        {
+            return (new ReportePDF()).generarReporte();
+        }
+
+        public bool guardarReportePDF(string path, string filename)
+        {
+            return (new ReportePDF()).guardarReporte(path + "\\" + filename);
+        }
     }
 }
