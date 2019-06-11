@@ -202,18 +202,15 @@ namespace Proyecto_Diseno_Asana.vista
             print("Id del proyecto:");
             string idProyecto = input();
             Proyecto proyecto = control.dto.getProyecto();
-            if(idProyecto != proyecto.id)
+            control.dto.getProyecto().id = idProyecto;
+            if (control.abrirProyecto())
             {
-                control.dto.getProyecto().id = idProyecto;
-                if (control.abrirProyecto())
-                {
-                    proyecto = control.dto.getProyecto();
-                }
-                else
-                {
-                    print("Error: no existe el proyecto");
-                    return;
-                }
+                proyecto = control.dto.getProyecto();
+            }
+            else
+            {
+                print("Error: no existe el proyecto");
+                return;
             }
             
             print("Id: " + proyecto.id);
