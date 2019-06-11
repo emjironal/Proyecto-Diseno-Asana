@@ -170,7 +170,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             Object[][] resultSet = DbConnection.consultar(new Consulta().Select("id_usuario").From("miembroporproyecto").Where(String.Format("id_proyecto = {0}", proyecto.id)).Get(), 1);
             for (int i = 0; i < resultSet.Count(); i++) {
-                String[] result = Array.ConvertAll(resultSet[0], p => (p ?? String.Empty).ToString());
+                String[] result = Array.ConvertAll(resultSet[i], p => (p ?? String.Empty).ToString());
                 Usuario u = DAOUsuario.consultarUsuario(result[0]);
                 proyecto.miembros.Add(u);
             }
@@ -184,7 +184,7 @@ namespace Proyecto_Diseno_Asana.control.dao
                 .Where(
                     String.Format("id_proyecto = {0} AND \"id_tareaPadre\" IS NULL AND EXISTS ({1})",proyecto,
                     new Consulta().Select("*").From("tareaporseccion ts").Where("t.id_tarea = ts.id_seccion").Get()))
-                .OrderBy("t.id_tarea").Get(),8);
+                .OrderBy("t.nombre").Get(),8);
             for (int i = 0; i < tareas.Count(); i++) {
                 String[] datosTarea = Array.ConvertAll(tareas[i], p => (p ?? String.Empty).ToString());
                 Tarea t = new Tarea();
@@ -224,7 +224,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             Object[][] resultSet = DbConnection.consultar(new Consulta().Select("id_usuario").From("seguidorportarea").Where(String.Format("id_tarea = {0}",codigo)).Get(), 1);
             for (int i = 0; i < resultSet.Count(); i++)
             {
-                String[] result = Array.ConvertAll(resultSet[0], p => (p ?? String.Empty).ToString());
+                String[] result = Array.ConvertAll(resultSet[i], p => (p ?? String.Empty).ToString());
                 Usuario u = DAOUsuario.consultarUsuario(result[0]);
                 seguidores.Add(u);
             }

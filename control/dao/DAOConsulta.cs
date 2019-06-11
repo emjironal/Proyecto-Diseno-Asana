@@ -30,7 +30,7 @@ namespace Proyecto_Diseno_Asana.control.dao
             string query = constructQuery(criterio).Get();
             gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
             db.conectar();
-            object[][] resultSet = db.consultar(query, 7);
+            object[][] resultSet = db.consultar(query, 8);
             db.desconectar();
             List<Avance> avances = new List<Avance>();
             darFormato(avances, resultSet);
@@ -46,11 +46,13 @@ namespace Proyecto_Diseno_Asana.control.dao
                 avance.creador = new Usuario();
                 avance.creador.id = (string)fila[0];
                 avance.creador.nombre = (string)fila[1];
+                avance.nbrActividad = (string)fila[2];
                 //Avance
-                avance.id = ((decimal)fila[2]).ToString();
-                avance.Fecha = (DateTime)fila[3];
-                avance.HorasDedicadas = int.Parse(((decimal)fila[4]).ToString());
-                avance.descripción = (string)fila[5];
+                avance.id = ((decimal)fila[3]).ToString();
+                avance.Fecha = (DateTime)fila[4];
+                avance.HorasDedicadas = int.Parse(((decimal)fila[5]).ToString());
+                avance.descripción = (string)fila[6];
+                avance.cantidadEvidencias = int.Parse(((Int64)fila[7]).ToString());
                 listaAvances.Add(avance);
             }
             return true;

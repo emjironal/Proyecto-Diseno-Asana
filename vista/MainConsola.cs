@@ -113,13 +113,26 @@ namespace Proyecto_Diseno_Asana.vista
                 case "S":
                     return;
                 case "1":
-                    control.hacerConsulta("miembro");
+                    print("Proyecto: ");
+                    String idProyecto = input();
+                    print("Miembro: ");
+                    String usuario = input();
+                    object[] criterio = { null, idProyecto, usuario };
+                    control.hacerConsulta("miembro",criterio);
                     break;
                 case "2":
-                    control.hacerConsulta("actividad");
+                    print("Actividad: ");
+                    String idActividad = input();
+                    object[] criterio2 = { null, idActividad };
+                    control.hacerConsulta("actividad",criterio2);
                     break;
                 case "3":
-                    control.hacerConsulta("fecha");
+                    print("Fecha inicial: ");
+                    String fchInicial = input();
+                    print("Fecha final: ");
+                    String fchFinal = input();
+                    object[] criterio3 = { null, fchInicial,fchFinal };
+                    control.hacerConsulta("fecha",criterio3);
                     break;
                 default:
                     print("Consulta no válida");
@@ -191,24 +204,32 @@ namespace Proyecto_Diseno_Asana.vista
             Proyecto proyecto = control.dto.getProyecto();
             if(idProyecto != proyecto.id)
             {
-                print("No exite el proyecto");
+                control.dto.getProyecto().id = idProyecto;
+                if (control.abrirProyecto())
+                {
+                    proyecto = control.dto.getProyecto();
+                }
+                else
+                {
+                    print("Error: no existe el proyecto");
+                    return;
+                }
             }
-            else
+            
+            print("Id: " + proyecto.id);
+            print("Nombre: " + proyecto.nombre);
+            print("Administrador: " + proyecto.administradorProyecto.nombre);
+            print("Miembros: ");
+            foreach (Usuario miembro in proyecto.miembros)
             {
-                print("Id: " + proyecto.id);
-                print("Nombre: " + proyecto.nombre);
-                print("Administrador: " + proyecto.administradorProyecto.nombre);
-                print("Miembros: ");
-                foreach (Usuario miembro in proyecto.miembros)
-                {
-                    imprimirUsuario(miembro, "\t");
-                }
-                print("Secciones:");
-                foreach (Tarea seccion in proyecto.secciones)
-                {
-                    imprimirSeccion(seccion, "\t");
-                }
+                imprimirUsuario(miembro, "\t");
             }
+            print("Secciones:");
+            foreach (Tarea seccion in proyecto.secciones)
+            {
+                imprimirSeccion(seccion, "\t");
+            }
+            
             print();
         }
 
@@ -257,6 +278,7 @@ namespace Proyecto_Diseno_Asana.vista
         static private void imprimirUsuario(Usuario user, string tabs)
         {
             print(tabs + "Nombre: " + user.nombre);
+            print(tabs + "Administrador: " + (user.isAdministrador ? "Si" : "No"));
             print();
         }
 

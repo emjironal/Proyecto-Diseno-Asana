@@ -34,10 +34,11 @@ namespace Proyecto_Diseno_Asana
             return dto.getUsuario() != null;
         }
 
-        public void abrirProyecto()
+        public Boolean abrirProyecto()
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
             dto.setProyecto(gestorProyecto.cargarProyecto(dto.getProyecto().id));
+            return dto.getProyecto() != null;
         }
 
         public Boolean importarProyecto(string pathJson)
@@ -100,10 +101,9 @@ namespace Proyecto_Diseno_Asana
             }
         }
 
-        public Boolean hacerConsulta(String tipo)
+        public Boolean hacerConsulta(String tipo, object criterio)
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
-            object[] criterio = { null, dto.getProyecto().id, dto.getUsuario().id, dto.getTarea().nombre };
             dto.avances = gestorProyecto.consultar(tipo, criterio);
             return true;
         }

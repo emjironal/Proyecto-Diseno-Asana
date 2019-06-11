@@ -23,5 +23,6 @@ namespace Proyecto_Diseno_Asana.modelo
         {
             return this.nombre;
         }
+
     }
 }
