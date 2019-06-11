@@ -41,9 +41,14 @@ namespace Proyecto_Diseno_Asana.control.gestor
             return DAOConsulta.executeQuery(criterioList);
         }
 
-        public List<Proyecto> consultarProyectos()
+        public List<Proyecto> consultarProyectos(Usuario usr)
         {
-            return null;
+            return DAOProyecto.consultarProyectos(usr);
+        }
+
+        public List<Tarea> consultarTarea(string idProyecto)
+        {
+            return DAOProyecto.consultarActividades(idProyecto);
         }
 
         public List<Usuario> mergeMiembros(Proyecto oldProyecto, Proyecto newProyecto)

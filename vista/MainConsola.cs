@@ -70,11 +70,47 @@ namespace Proyecto_Diseno_Asana.vista
                 case "10":
                     actualizarProyecto();
                     break;
+                case "11":
+                    consultarUsuarios();
+                    break;
+                case "12":
+                    consultarProyectos();
+                    break;
+                case "13":
+                    consultarTareas();
+                    break;
                 default:
                     print("Opción no válida");
                     break;
             }
             return false;
+        }
+
+        private static void consultarTareas()
+        {
+            List<Tarea> tareas = control.consultarActividades();
+            foreach(Tarea t in tareas)
+            {
+                print(t.nombre);
+            }
+        }
+
+        private static void consultarProyectos()
+        {
+            List<Proyecto> proyectos = control.consultarProyectos();
+            foreach(Proyecto p in proyectos)
+            {
+                print(p.nombre);
+            }
+        }
+
+        private static void consultarUsuarios()
+        {
+            List<Usuario> usrs = control.consultarUsuarios();
+            foreach(Usuario u in usrs)
+            {
+                print(u.nombre);
+            }
         }
 
         private static void generarReporte()

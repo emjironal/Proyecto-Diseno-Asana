@@ -282,9 +282,44 @@ namespace Proyecto_Diseno_Asana.control.dao
             return result;
         }
 
-        private static List<Proyecto> consultarProyectos()
+        public static List<Proyecto> consultarProyectos(Usuario usr)
         {
-            return null;
+            gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            List<Proyecto> proyectos = new List<Proyecto>();
+            Consulta consulta = new Consulta().Select("p.id_proyecto,p.nombre").From("Proyecto p");
+            if (!usr.isAdministrador)
+            {
+                consulta.Join("miembroporproyecto m", "p.id_proyecto = m.id_proyecto").Where("m.id_usuario = '"+ usr.id+"'");
+            }
+           
+            Object[][] resultSet = DbConnection.consultar(consulta.Get(), 2);
+            for (int i = 0; i < resultSet.Count(); i++)
+            {
+                Proyecto pr = new Proyecto();
+                String[] result = Array.ConvertAll(resultSet[i], p => (p ?? String.Empty).ToString());
+                pr.id = result[0];
+                pr.nombre = result[1];
+                proyectos.Add(pr);
+            }
+            return proyectos;
         }
+
+        public static List<Tarea> consultarActividades(string idProyecto)
+        {
+            gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            List<Tarea> tareas = new List<Tarea>();
+            Consulta consulta = new Consulta().Select("t.id_tarea,t.nombre").From("Tarea t").Where("t.id_proyecto = '" + idProyecto+"'");
+            Object[][] resultSet = DbConnection.consultar(consulta.Get(), 2);
+            for (int i = 0; i < resultSet.Count(); i++)
+            {
+                Tarea t = new Tarea();
+                String[] result = Array.ConvertAll(resultSet[i], p => (p ?? String.Empty).ToString());
+                t.codigo = result[0];
+                t.nombre = result[1];
+                tareas.Add(t);
+            }
+            return tareas;
+        }
+
     }
 }

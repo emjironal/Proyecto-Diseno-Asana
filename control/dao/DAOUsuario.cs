@@ -55,5 +55,21 @@ namespace Proyecto_Diseno_Asana.control.dao
             db.desconectar();
             return result;
         }
+
+        public static List<Usuario> consultarUsuarios()
+        {
+            gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            Object[][] response = db.consultar(new Consulta().Select("id_usuario,nombre").From("usuario").Get(), 2);
+            List<Usuario> usuarios = new List<Usuario>();
+            for (int i = 0; i < response.Count(); i++)
+            {
+                Usuario usr = new Usuario();
+                String[] result = Array.ConvertAll(response[i], p => (p ?? String.Empty).ToString());
+                usr.id = result[0];
+                usr.nombre = result[1];
+                usuarios.Add(usr);
+            }
+            return usuarios;
+        }
     }
 }

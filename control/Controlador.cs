@@ -116,7 +116,19 @@ namespace Proyecto_Diseno_Asana
         public List<Proyecto> consultarProyectos()
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
-            return gestorProyecto.consultarProyectos();
+            return gestorProyecto.consultarProyectos(dto.getUsuario());
+        }
+
+        public List<Tarea> consultarActividades()
+        {
+            GestorProyecto gestor = new GestorProyecto();
+            return gestor.consultarTarea(dto.getProyecto().id);
+        }
+
+        public List<Usuario> consultarUsuarios()
+        {
+            GestorUsuario gestor = new GestorUsuario();
+            return gestor.consultarUsuarios();
         }
 
         public bool generarReportePDF()

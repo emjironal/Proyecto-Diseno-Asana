@@ -29,5 +29,10 @@ namespace Proyecto_Diseno_Asana.control.gestor
         {
             return DAOUsuario.consultarUsuario(usr.id);
         }
+
+        public List<Usuario> consultarUsuarios()
+        {
+            return DAOUsuario.consultarUsuarios();
+        }
     }
 }
