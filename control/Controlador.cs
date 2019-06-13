@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Diseno_Asana
 {
-    class Controlador
+    class Controlador : control.IController
     {
         static private Controlador instance = new Controlador();
         public DTO dto { get; }
@@ -27,21 +27,21 @@ namespace Proyecto_Diseno_Asana
             return instance;
         }
 
-        public Boolean login()
+        public override Boolean login()
         {
             GestorUsuario gestorUsuario = new GestorUsuario();
             dto.setUsuario(gestorUsuario.login(dto.getUsuario()));
             return dto.getUsuario() != null;
         }
 
-        public Boolean abrirProyecto()
+        public override Boolean abrirProyecto()
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
             dto.setProyecto(gestorProyecto.cargarProyecto(dto.getProyecto().id));
             return dto.getProyecto() != null;
         }
 
-        public Boolean importarProyecto(string pathJson)
+        public override Boolean importarProyecto(string pathJson)
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
             try
@@ -58,7 +58,7 @@ namespace Proyecto_Diseno_Asana
             return false;
         }
 
-        public Boolean actualizarProyecto(string pathJson)
+        public override Boolean actualizarProyecto(string pathJson)
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
             try
@@ -79,29 +79,33 @@ namespace Proyecto_Diseno_Asana
             return false;
         }
 
-        public Boolean completarUsuario()
+        public override Boolean completarUsuario()
         {
             GestorUsuario gestorUsuario = new GestorUsuario();
             return gestorUsuario.completarUsuario(dto.getUsuario());
         }
 
-        public Boolean borrarUsuario()
+        public override Boolean borrarUsuario()
         {
             return true;
         }
 
-        public void agregarAvance()
+        public override bool agregarAvance()
         {
             GestorAvance gestorAvance = new GestorAvance();
             Avance avance = dto.getAvance();
             if (gestorAvance.agregarAvance(avance))
             {
                 if((gestorAvance.agregarAvancePorTarea(dto.getTarea().codigo, avance.id.ToString())))
+                {
                     dto.getTarea().avances.Add(avance);
+                    return true;
+                }
             }
+            return false;
         }
 
-        public Boolean hacerConsulta(String tipo, object criterio)
+        public override Boolean hacerConsulta(String tipo, object criterio)
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
             dto.avances = gestorProyecto.consultar(tipo, criterio);
@@ -113,30 +117,30 @@ namespace Proyecto_Diseno_Asana
             return this.dto;
         }
 
-        public List<Proyecto> consultarProyectos()
+        public override List<Proyecto> consultarProyectos()
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
             return gestorProyecto.consultarProyectos(dto.getUsuario());
         }
 
-        public List<Tarea> consultarActividades()
+        public override List<Tarea> consultarActividades()
         {
             GestorProyecto gestor = new GestorProyecto();
             return gestor.consultarTarea(dto.getProyecto().id);
         }
 
-        public List<Usuario> consultarUsuarios()
+        public override List<Usuario> consultarUsuarios()
         {
             GestorUsuario gestor = new GestorUsuario();
             return gestor.consultarUsuarios();
         }
 
-        public bool generarReportePDF()
+        public override bool generarReportePDF()
         {
             return (new ReportePDF()).generarReporte();
         }
 
-        public bool guardarReportePDF(string path, string filename)
+        public override bool guardarReportePDF(string path, string filename)
         {
             return (new ReportePDF()).guardarReporte(path + "\\" + filename);
         }

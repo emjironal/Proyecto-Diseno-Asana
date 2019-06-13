@@ -89,6 +89,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="control\gestor\bd\PostgresBaseDatos.cs" />
+    <Compile Include="control\IController.cs" />
     <Compile Include="vista\GUIAvance.cs">
       <SubType>Form</SubType>
     </Compile>
