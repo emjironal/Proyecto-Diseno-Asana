@@ -88,52 +88,52 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="control\gestor\bd\PostgresBaseDatos.cs" />
-    <Compile Include="control\IController.cs" />
-    <Compile Include="modelo\AvanceMemento.cs" />
-    <Compile Include="vista\GUIAvance.cs">
+    <Compile Include="oldproject\control\gestor\bd\PostgresBaseDatos.cs" />
+    <Compile Include="oldproject\control\IController.cs" />
+    <Compile Include="newproject\modelo\AvanceMemento.cs" />
+    <Compile Include="newproject\vista\GUIAvance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vista\GUIAvance.Designer.cs">
+    <Compile Include="newproject\vista\GUIAvance.Designer.cs">
       <DependentUpon>GUIAvance.cs</DependentUpon>
     </Compile>
-    <Compile Include="vista\GUIConsultas.cs">
+    <Compile Include="newproject\vista\GUIConsultas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vista\GUIConsultas.Designer.cs">
+    <Compile Include="newproject\vista\GUIConsultas.Designer.cs">
       <DependentUpon>GUIConsultas.cs</DependentUpon>
     </Compile>
-    <Compile Include="vista\GUILogin.cs">
+    <Compile Include="newproject\vista\GUILogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vista\GUILogin.Designer.cs">
+    <Compile Include="newproject\vista\GUILogin.Designer.cs">
       <DependentUpon>GUILogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="vista\GUIMainAdministrador.cs">
+    <Compile Include="newproject\vista\GUIMainAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vista\GUIMainAdministrador.Designer.cs">
+    <Compile Include="newproject\vista\GUIMainAdministrador.Designer.cs">
       <DependentUpon>GUIMainAdministrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="vista\GUIMainMiembro.cs">
+    <Compile Include="newproject\vista\GUIMainMiembro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vista\GUIMainMiembro.Designer.cs">
+    <Compile Include="newproject\vista\GUIMainMiembro.Designer.cs">
       <DependentUpon>GUIMainMiembro.cs</DependentUpon>
     </Compile>
-    <Compile Include="vista\GUIProyecto.cs">
+    <Compile Include="newproject\vista\GUIProyecto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vista\GUIProyecto.Designer.cs">
+    <Compile Include="newproject\vista\GUIProyecto.Designer.cs">
       <DependentUpon>GUIProyecto.cs</DependentUpon>
     </Compile>
-    <Compile Include="vista\GUIRegistro.cs">
+    <Compile Include="newproject\vista\GUIRegistro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="vista\GUIRegistro.Designer.cs">
+    <Compile Include="newproject\vista\GUIRegistro.Designer.cs">
       <DependentUpon>GUIRegistro.cs</DependentUpon>
     </Compile>
-    <Compile Include="vista\MainConsola.cs" />
+    <Compile Include="oldproject\vista\MainConsola.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -142,39 +142,39 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="control\consulta\ConsultaBuilder.cs" />
-    <Compile Include="control\consulta\ConsultaGetProyecto.cs" />
-    <Compile Include="control\consulta\ConsultaxActividad.cs" />
-    <Compile Include="control\consulta\ConsultaxFecha.cs" />
-    <Compile Include="control\consulta\ConsultaxMiembro.cs" />
-    <Compile Include="control\dao\DAOAvance.cs" />
-    <Compile Include="control\dao\DAOConsulta.cs" />
-    <Compile Include="control\dao\DAOProyecto.cs" />
-    <Compile Include="control\dao\DAOUsuario.cs" />
-    <Compile Include="control\DTO.cs" />
-    <Compile Include="control\Controlador.cs" />
-    <Compile Include="control\fabrica\Fabrica.cs" />
-    <Compile Include="control\fabrica\FabricaCargaProyecto.cs" />
-    <Compile Include="control\fabrica\FabricaImportacionProyecto.cs" />
-    <Compile Include="control\gestor\GestorAvance.cs" />
-    <Compile Include="control\gestor\bd\GestorBaseDatos.cs" />
-    <Compile Include="control\gestor\GestorProyecto.cs" />
-    <Compile Include="control\gestor\GestorUsuario.cs" />
-    <Compile Include="control\reporte\Reporte.cs" />
-    <Compile Include="control\reporte\ReportePDF.cs" />
+    <Compile Include="oldproject\control\consulta\ConsultaBuilder.cs" />
+    <Compile Include="oldproject\control\consulta\ConsultaGetProyecto.cs" />
+    <Compile Include="oldproject\control\consulta\ConsultaxActividad.cs" />
+    <Compile Include="oldproject\control\consulta\ConsultaxFecha.cs" />
+    <Compile Include="oldproject\control\consulta\ConsultaxMiembro.cs" />
+    <Compile Include="oldproject\control\dao\DAOAvance.cs" />
+    <Compile Include="oldproject\control\dao\DAOConsulta.cs" />
+    <Compile Include="oldproject\control\dao\DAOProyecto.cs" />
+    <Compile Include="oldproject\control\dao\DAOUsuario.cs" />
+    <Compile Include="oldproject\control\DTO.cs" />
+    <Compile Include="oldproject\control\Controlador.cs" />
+    <Compile Include="oldproject\control\fabrica\Fabrica.cs" />
+    <Compile Include="oldproject\control\fabrica\FabricaCargaProyecto.cs" />
+    <Compile Include="oldproject\control\fabrica\FabricaImportacionProyecto.cs" />
+    <Compile Include="oldproject\control\gestor\GestorAvance.cs" />
+    <Compile Include="oldproject\control\gestor\bd\GestorBaseDatos.cs" />
+    <Compile Include="oldproject\control\gestor\GestorProyecto.cs" />
+    <Compile Include="oldproject\control\gestor\GestorUsuario.cs" />
+    <Compile Include="oldproject\control\reporte\Reporte.cs" />
+    <Compile Include="oldproject\control\reporte\ReportePDF.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="modelo\Avance.cs" />
-    <Compile Include="modelo\Consulta.cs" />
-    <Compile Include="modelo\Evidencia.cs" />
-    <Compile Include="modelo\ProductoAbstracto.cs" />
-    <Compile Include="modelo\Proyecto.cs" />
-    <Compile Include="modelo\Tarea.cs" />
-    <Compile Include="modelo\Usuario.cs" />
+    <Compile Include="oldproject\modelo\Avance.cs" />
+    <Compile Include="oldproject\modelo\Consulta.cs" />
+    <Compile Include="oldproject\modelo\Evidencia.cs" />
+    <Compile Include="oldproject\modelo\ProductoAbstracto.cs" />
+    <Compile Include="oldproject\modelo\Proyecto.cs" />
+    <Compile Include="oldproject\modelo\Tarea.cs" />
+    <Compile Include="oldproject\modelo\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -192,22 +192,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="vista\GUIConsultas.resx">
+    <EmbeddedResource Include="newproject\vista\GUIConsultas.resx">
       <DependentUpon>GUIConsultas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vista\GUILogin.resx">
+    <EmbeddedResource Include="newproject\vista\GUILogin.resx">
       <DependentUpon>GUILogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vista\GUIMainAdministrador.resx">
+    <EmbeddedResource Include="newproject\vista\GUIMainAdministrador.resx">
       <DependentUpon>GUIMainAdministrador.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vista\GUIMainMiembro.resx">
+    <EmbeddedResource Include="newproject\vista\GUIMainMiembro.resx">
       <DependentUpon>GUIMainMiembro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vista\GUIProyecto.resx">
+    <EmbeddedResource Include="newproject\vista\GUIProyecto.resx">
       <DependentUpon>GUIProyecto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="vista\GUIRegistro.resx">
+    <EmbeddedResource Include="newproject\vista\GUIRegistro.resx">
       <DependentUpon>GUIRegistro.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -219,6 +219,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="newproject\control\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
