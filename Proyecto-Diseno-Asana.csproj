@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>Proyecto_Diseno_Asana.vista.MainConsola</StartupObject>
+    <StartupObject>Proyecto_Diseno_Asana.vista.GUILogin</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
@@ -190,6 +190,7 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="newproject\vista\GUIConsultas.resx">
@@ -221,6 +222,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="newproject\control\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white-bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asana+.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asana+2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asana+3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asana+4.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,6 +13,13 @@ namespace Proyecto_Diseno_Asana.vista
 {
     public partial class GUILogin : Form
     {
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new GUILogin());
+        }
+
         public GUILogin()
         {
             InitializeComponent();
@@ -20,10 +27,8 @@ namespace Proyecto_Diseno_Asana.vista
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            Usuario usr = new Usuario();
-            usr.contraseña = tBCorreo.Text;
             Controlador ctrl = Controlador.getInstance();
-            ctrl.getDTO().setUsuario(usr);
+            ctrl.getDTO().getUsuario().id = tBCorreo.Text;
             if (ctrl.login())
             {
                 this.Hide();
@@ -41,9 +46,13 @@ namespace Proyecto_Diseno_Asana.vista
             }
             else
             {
-                tBCorreo.Text = "";
                 System.Windows.Forms.MessageBox.Show("Error: usuario no existe");
             }
+        }
+
+        private void GUILogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

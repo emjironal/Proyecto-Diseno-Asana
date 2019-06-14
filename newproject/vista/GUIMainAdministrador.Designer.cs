@@ -37,47 +37,62 @@
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Actualizar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Administrar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(43, 20);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(22, 10);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(323, 37);
+            this.label1.Size = new System.Drawing.Size(369, 42);
             this.label1.TabIndex = 0;
             this.label1.Text = "Menú Administrador";
             // 
             // btnImportar
             // 
-            this.btnImportar.Location = new System.Drawing.Point(50, 100);
+            this.btnImportar.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnImportar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnImportar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnImportar.Location = new System.Drawing.Point(2, 2);
+            this.btnImportar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnImportar.Name = "btnImportar";
-            this.btnImportar.Size = new System.Drawing.Size(228, 54);
+            this.btnImportar.Size = new System.Drawing.Size(338, 41);
             this.btnImportar.TabIndex = 1;
             this.btnImportar.Text = "Importar Proyecto";
-            this.btnImportar.UseVisualStyleBackColor = true;
+            this.btnImportar.UseVisualStyleBackColor = false;
             this.btnImportar.Click += new System.EventHandler(this.BtnImportar_Click);
             // 
             // btnCompletar
             // 
-            this.btnCompletar.Location = new System.Drawing.Point(767, 100);
+            this.btnCompletar.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnCompletar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCompletar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnCompletar.Location = new System.Drawing.Point(344, 2);
+            this.btnCompletar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCompletar.Name = "btnCompletar";
-            this.btnCompletar.Size = new System.Drawing.Size(228, 54);
+            this.btnCompletar.Size = new System.Drawing.Size(339, 41);
             this.btnCompletar.TabIndex = 2;
             this.btnCompletar.Text = "Completar Usuario";
-            this.btnCompletar.UseVisualStyleBackColor = true;
+            this.btnCompletar.UseVisualStyleBackColor = false;
             this.btnCompletar.Click += new System.EventHandler(this.BtnCompletar_Click);
             // 
             // lblProyectos
             // 
             this.lblProyectos.AutoEllipsis = true;
             this.lblProyectos.AutoSize = true;
-            this.lblProyectos.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProyectos.Location = new System.Drawing.Point(61, 188);
+            this.lblProyectos.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lblProyectos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProyectos.Location = new System.Drawing.Point(2, 45);
+            this.lblProyectos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProyectos.Name = "lblProyectos";
-            this.lblProyectos.Size = new System.Drawing.Size(136, 31);
+            this.lblProyectos.Size = new System.Drawing.Size(108, 45);
             this.lblProyectos.TabIndex = 3;
             this.lblProyectos.Text = "Proyectos";
             // 
@@ -89,11 +104,12 @@
             this.Nombre,
             this.Actualizar,
             this.Administrar});
-            this.dataGridView1.Location = new System.Drawing.Point(50, 286);
+            this.dataGridView1.Location = new System.Drawing.Point(29, 229);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 82;
             this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(956, 274);
+            this.dataGridView1.Size = new System.Drawing.Size(685, 252);
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             // 
@@ -126,20 +142,53 @@
             this.Administrar.Name = "Administrar";
             this.Administrar.Width = 200;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.btnImportar, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnCompletar, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblProyectos, 0, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(29, 116);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(685, 90);
+            this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::Proyecto_Diseno_Asana.Properties.Resources.asana_4;
+            this.pictureBox1.Location = new System.Drawing.Point(544, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(168, 97);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // GUIMainAdministrador
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 636);
+            this.BackgroundImage = global::Proyecto_Diseno_Asana.Properties.Resources.white_bg;
+            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.lblProyectos);
-            this.Controls.Add(this.btnCompletar);
-            this.Controls.Add(this.btnImportar);
             this.Controls.Add(this.label1);
+            this.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "GUIMainAdministrador";
             this.Text = "ASANA upgrade";
             this.Load += new System.EventHandler(this.GUIMainAdministrador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,5 +205,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewButtonColumn Actualizar;
         private System.Windows.Forms.DataGridViewButtonColumn Administrar;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

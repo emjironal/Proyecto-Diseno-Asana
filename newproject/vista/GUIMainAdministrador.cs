@@ -17,6 +17,7 @@ namespace Proyecto_Diseno_Asana.vista
         public GUIMainAdministrador()
         {
             InitializeComponent();
+            LoadProyects();
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -29,9 +30,10 @@ namespace Proyecto_Diseno_Asana.vista
 
         private void BtnCompletar_Click(object sender, EventArgs e)
         {
-            Form frm = new GUIRegistro(this);
             this.Hide();
+            Form frm = new GUIRegistro();
             frm.ShowDialog();
+            this.Show();
         }
 
         private void BtnImportar_Click(object sender, EventArgs e)

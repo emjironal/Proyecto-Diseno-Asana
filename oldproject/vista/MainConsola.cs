@@ -10,6 +10,7 @@ using Proyecto_Diseno_Asana.control.gestor;
 using Proyecto_Diseno_Asana.control.gestor.bd;
 using System.Data;
 using Proyecto_Diseno_Asana.control.dao;
+using System.Windows.Forms;
 
 namespace Proyecto_Diseno_Asana.vista
 {
@@ -18,6 +19,7 @@ namespace Proyecto_Diseno_Asana.vista
         static Controlador control = Controlador.getInstance();
         static void Main(string[] args)
         {
+            /*
             bool exit = false;
             while (!exit)
             {
@@ -27,6 +29,9 @@ namespace Proyecto_Diseno_Asana.vista
                 exit = executeMenu(input);
                 print();
             }
+            */
+            Form form = new GUILogin();
+            form.Show();
         }
 
         static private bool executeMenu(string entry)
