@@ -247,5 +247,23 @@
   <ItemGroup>
     <None Include="Resources\asana+4.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minicalendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ultramini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ultramini2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconEncargado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bwhite-bg.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -33,12 +33,12 @@
             this.btnCompletar = new System.Windows.Forms.Button();
             this.lblProyectos = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Actualizar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Administrar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -114,34 +114,6 @@
             this.dataGridView1.TabIndex = 4;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellClick);
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.btnImportar, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btnCompletar, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblProyectos, 0, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(29, 116);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(685, 90);
-            this.tableLayoutPanel1.TabIndex = 5;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::Proyecto_Diseno_Asana.Properties.Resources.asana_4;
-            this.pictureBox1.Location = new System.Drawing.Point(544, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(168, 97);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // ID
             // 
             this.ID.HeaderText = "ID";
@@ -171,6 +143,34 @@
             this.Administrar.Name = "Administrar";
             this.Administrar.Width = 200;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.btnImportar, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnCompletar, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lblProyectos, 0, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(29, 116);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(685, 90);
+            this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::Proyecto_Diseno_Asana.Properties.Resources.asana_4;
+            this.pictureBox1.Location = new System.Drawing.Point(544, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(168, 97);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.DeepSkyBlue;
@@ -197,6 +197,7 @@
             this.ForeColor = System.Drawing.Color.MidnightBlue;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GUIMainAdministrador";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ASANA upgrade";
             this.Load += new System.EventHandler(this.GUIMainAdministrador_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
