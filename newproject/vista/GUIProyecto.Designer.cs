@@ -39,7 +39,7 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.lEncargado = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.gBAvances = new System.Windows.Forms.GroupBox();
+            this.gBEvidencias = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAgregarAvance = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +50,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.gBAvances.SuspendLayout();
+            this.gBEvidencias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,9 +70,9 @@
             this.lNombreProyecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lNombreProyecto.Location = new System.Drawing.Point(28, 26);
             this.lNombreProyecto.Name = "lNombreProyecto";
-            this.lNombreProyecto.Size = new System.Drawing.Size(93, 33);
+            this.lNombreProyecto.Size = new System.Drawing.Size(130, 33);
             this.lNombreProyecto.TabIndex = 1;
-            this.lNombreProyecto.Text = "label1";
+            this.lNombreProyecto.Text = "Proyecto";
             this.lNombreProyecto.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // tableLayoutPanel1
@@ -84,7 +84,7 @@
             this.tableLayoutPanel1.Controls.Add(this.lNotas, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.gBAvances, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.gBEvidencias, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.btnAgregarAvance, 0, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(427, 86);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -195,18 +195,19 @@
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             // 
-            // gBAvances
+            // gBEvidencias
             // 
-            this.gBAvances.Controls.Add(this.dataGridView1);
-            this.gBAvances.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gBAvances.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gBAvances.Location = new System.Drawing.Point(3, 333);
-            this.gBAvances.Name = "gBAvances";
-            this.gBAvances.Size = new System.Drawing.Size(632, 191);
-            this.gBAvances.TabIndex = 5;
-            this.gBAvances.TabStop = false;
-            this.gBAvances.Text = "Avances";
-            this.gBAvances.Enter += new System.EventHandler(this.GBAvances_Enter);
+            this.gBEvidencias.Controls.Add(this.dataGridView1);
+            this.gBEvidencias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gBEvidencias.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gBEvidencias.Location = new System.Drawing.Point(3, 333);
+            this.gBEvidencias.Name = "gBEvidencias";
+            this.gBEvidencias.Size = new System.Drawing.Size(632, 191);
+            this.gBEvidencias.TabIndex = 5;
+            this.gBEvidencias.TabStop = false;
+            this.gBEvidencias.Text = "Evidencias";
+            this.gBEvidencias.Visible = false;
+            this.gBEvidencias.Enter += new System.EventHandler(this.GBAvances_Enter);
             // 
             // dataGridView1
             // 
@@ -225,6 +226,7 @@
             // 
             this.btnAgregarAvance.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnAgregarAvance.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAgregarAvance.Enabled = false;
             this.btnAgregarAvance.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnAgregarAvance.Location = new System.Drawing.Point(3, 530);
             this.btnAgregarAvance.Name = "btnAgregarAvance";
@@ -232,6 +234,7 @@
             this.btnAgregarAvance.TabIndex = 6;
             this.btnAgregarAvance.Text = "Agregar Avance";
             this.btnAgregarAvance.UseVisualStyleBackColor = false;
+            this.btnAgregarAvance.Click += new System.EventHandler(this.BtnAgregarAvance_Click);
             // 
             // ID
             // 
@@ -272,7 +275,7 @@
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.gBAvances.ResumeLayout(false);
+            this.gBEvidencias.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -292,7 +295,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.GroupBox gBAvances;
+        private System.Windows.Forms.GroupBox gBEvidencias;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnAgregarAvance;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
