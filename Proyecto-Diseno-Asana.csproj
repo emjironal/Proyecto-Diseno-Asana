@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{961BB25D-197C-487C-9746-3D9F65D1B7D8}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>Proyecto_Diseno_Asana</RootNamespace>
     <AssemblyName>Proyecto-Diseno-Asana</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
