@@ -1,4 +1,5 @@
 ﻿using Proyecto_Diseno_Asana.modelo;
+using Proyecto_Diseno_Asana.newproject.vista;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,8 @@ namespace Proyecto_Diseno_Asana.vista
 {
     public partial class GUIMainAdministrador : Form
     {
-       
+
+        string path = "";
         public GUIMainAdministrador()
         {
             InitializeComponent();
@@ -27,7 +29,6 @@ namespace Proyecto_Diseno_Asana.vista
         }
 
 
-
         private void BtnCompletar_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -38,18 +39,37 @@ namespace Proyecto_Diseno_Asana.vista
 
         private void BtnImportar_Click(object sender, EventArgs e)
         {
-            string path = "";
+            
             OpenFileDialog file = new OpenFileDialog();
             if (file.ShowDialog() == DialogResult.OK)
             {
                 path = file.FileName;
-            }
-            if (Controlador.getInstance().importarProyecto(path))
-            {
+                using(WaitForm frm = new WaitForm(Importar))
+                {
+                    frm.ShowDialog(this);
+                }
+                LoadProyects();
                 System.Windows.Forms.MessageBox.Show("Proyecto importado correctamente");
+
             }
 
         }
+
+        void Importar()
+        {
+            Controlador.getInstance().importarProyecto(path);
+        }
+
+        void Actializar()
+        {
+            Controlador.getInstance().actualizarProyecto(path);
+        }
+        
+        void AbrirPoyecto()
+        {
+            Controlador.getInstance().abrirProyecto();
+        }
+       
 
         private void GUIMainAdministrador_Load(object sender, EventArgs e)
         {
@@ -58,6 +78,7 @@ namespace Proyecto_Diseno_Asana.vista
 
         private void LoadProyects()
         {
+            dataGridView1.Rows.Clear();
             List<Proyecto> proyectos = Controlador.getInstance().consultarProyectos();
             foreach(Proyecto p in proyectos)
             {
@@ -70,29 +91,41 @@ namespace Proyecto_Diseno_Asana.vista
         {
             Controlador ctrl = Controlador.getInstance();
 
-            if (e.ColumnIndex == 1)
+            if (e.ColumnIndex == 2)
             {
                 //Actualiza proyecto
-                string path = "";
                 OpenFileDialog file = new OpenFileDialog();
                 if (file.ShowDialog() == DialogResult.OK)
                 {
                     path = file.FileName;
-                }
-                if (ctrl.actualizarProyecto(path))
-                {
-                    System.Windows.Forms.MessageBox.Show("Proyecto importado correctamente");
+                    using (WaitForm frm = new WaitForm(Actializar))
+                    {
+                        frm.ShowDialog(this);
+                    }
+                    System.Windows.Forms.MessageBox.Show("Proyecto actualizado correctamente");
                 }
             }
-            else if (e.ColumnIndex == 2)
+            else if (e.ColumnIndex == 3)
             {
                 //Abre poryecto
                 Proyecto p = new Proyecto();
                 p.id = (string)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
                 p.nombre = (string)dataGridView1.Rows[e.RowIndex].Cells[1].Value;
                 ctrl.getDTO().setProyecto(p);
-                ctrl.abrirProyecto();
+                using (WaitForm frm = new WaitForm(AbrirPoyecto))
+                {
+                    frm.ShowDialog(this);
+                }
+                this.Hide();
+                Form guiProyecto = new GUIProyecto();
+                guiProyecto.ShowDialog();
+                this.Show();
             }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

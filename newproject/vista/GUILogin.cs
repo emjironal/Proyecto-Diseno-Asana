@@ -13,6 +13,7 @@ namespace Proyecto_Diseno_Asana.vista
 {
     public partial class GUILogin : Form
     {
+        [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
@@ -43,6 +44,8 @@ namespace Proyecto_Diseno_Asana.vista
                     Form mainMiembro = new GUIMainMiembro();
                     mainMiembro.ShowDialog();
                 }
+                tBCorreo.Text = "";
+                this.Show();
             }
             else
             {
