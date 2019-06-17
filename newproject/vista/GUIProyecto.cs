@@ -83,6 +83,7 @@ namespace Proyecto_Diseno_Asana.vista
                 lEncargado.Text = a.creador.nombre;
                 lFchEntrega.Text = a.Fecha.ToString("dd/MM/yyyy");
                 lNotas.Text = a.descripción;
+                dataGridView1.Rows.Clear();
                 foreach (Evidencia evidencia in a.evidencias)
                 {
                     dataGridView1.Rows.Add(a.id, a.creador, a.Fecha.ToString("dd/MM/yyyy"));

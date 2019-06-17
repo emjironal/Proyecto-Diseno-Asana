@@ -19,7 +19,7 @@ namespace Proyecto_Diseno_Asana.vista
         static Controlador control = Controlador.getInstance();
         static void Main(string[] args)
         {
-            /*
+            
             bool exit = false;
             while (!exit)
             {
@@ -29,9 +29,9 @@ namespace Proyecto_Diseno_Asana.vista
                 exit = executeMenu(input);
                 print();
             }
-            */
+            /*
             Form form = new GUILogin();
-            form.Show();
+            form.Show();*/
         }
 
         static private bool executeMenu(string entry)

@@ -212,6 +212,7 @@ namespace Proyecto_Diseno_Asana.control.dao
                 }
                 t.nombre = datosTarea[4];
                 t.notas = datosTarea[5];
+                consultarAvances(t);
                 result.Add(t);
             }
             return result;
@@ -277,6 +278,7 @@ namespace Proyecto_Diseno_Asana.control.dao
                 }
                 t.nombre = datosTarea[4];
                 t.notas = datosTarea[5];
+                consultarAvances(t);
                 result.Add(t);
             }
             return result;
@@ -319,6 +321,54 @@ namespace Proyecto_Diseno_Asana.control.dao
                 tareas.Add(t);
             }
             return tareas;
+        }
+
+        private static void consultarAvances(Tarea tarea)
+        {
+            gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            Consulta consulta = new Consulta()
+                .Select("a.id_avance, fecha, horasdedicadas,descripcion,creador")
+                .From("avance a inner join  avanceportarea t on (a.id_avance = t.id_avance)")
+                .Where("t.id_tarea = '" + tarea.codigo + "'");
+            Object[][] resultSet = DbConnection.consultar(consulta.Get(), 5);
+            for (int i = 0; i < resultSet.Count(); i++)
+            {
+                Avance a = new Avance();
+                String[] result = Array.ConvertAll(resultSet[i], p => (p ?? String.Empty).ToString());
+                a.id = result[0];
+                String[] fechaprueba = result[1].Split();
+                DateTime fchEntrega;
+                if (DateTime.TryParseExact(result[1].Split()[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fchEntrega))
+                {
+                    a.Fecha = fchEntrega;
+                }
+                a.HorasDedicadas = int.Parse(result[2]);
+                a.descripción = result[3];
+                a.creador = DAOUsuario.consultarUsuario(result[4]);
+                a.nbrActividad = tarea.nombre;
+                consultarEvidencias(a);
+                tarea.avances.Add(a);
+            }
+        }
+
+        private static void consultarEvidencias(Avance avance)
+        {
+            gestor.GestorBaseDatos DbConnection = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            Consulta consulta = new Consulta()
+                .Select("tipo,documento")
+                .From("evidenciaporavance")
+                .Where("id_avance = '" + avance.id + "'");
+            Object[][] resultSet = DbConnection.consultar(consulta.Get(), 2);
+            avance.cantidadEvidencias = 0;
+            for (int i = 0; i < resultSet.Count(); i++)
+            {
+                Evidencia e = new Evidencia();
+                String[] result = Array.ConvertAll(resultSet[i], p => (p ?? String.Empty).ToString());
+                e.tipo = result[0];
+                string documento = result[1];
+                avance.evidencias.Add(e);
+                avance.cantidadEvidencias++;
+            }
         }
 
     }
