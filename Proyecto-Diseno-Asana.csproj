@@ -194,6 +194,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="newproject\vista\GUIAvance.resx">
+      <DependentUpon>GUIAvance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="newproject\vista\WaitForm.resx">
       <DependentUpon>WaitForm.cs</DependentUpon>
     </EmbeddedResource>

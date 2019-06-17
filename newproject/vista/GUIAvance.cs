@@ -29,8 +29,7 @@ namespace Proyecto_Diseno_Asana.vista
         private void Btn_cancelar_Click(object sender, EventArgs e)
         {
             controlador.dto.setAvance(new modelo.Avance());
-            this.Visible = false;
-            this.ParentForm.Visible = true;
+            this.DialogResult = DialogResult.OK;
         }
 
         private void Btn_seleccionar_archivo_Click(object sender, EventArgs e)
