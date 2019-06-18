@@ -308,7 +308,8 @@
             this.ForeColor = System.Drawing.Color.MidnightBlue;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "GUIAvance";
-            this.Text = "GUIAvance";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "ASANA upgrade";
             ((System.ComponentModel.ISupportInitialize)(this.spn_horas_dedicadas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.table_archivos_seleccionados)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
