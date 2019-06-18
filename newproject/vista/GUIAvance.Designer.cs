@@ -61,10 +61,9 @@
             this.lb_subtask_name.AutoSize = true;
             this.lb_subtask_name.BackColor = System.Drawing.Color.Transparent;
             this.lb_subtask_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_subtask_name.Location = new System.Drawing.Point(18, 14);
-            this.lb_subtask_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_subtask_name.Location = new System.Drawing.Point(12, 9);
             this.lb_subtask_name.Name = "lb_subtask_name";
-            this.lb_subtask_name.Size = new System.Drawing.Size(369, 61);
+            this.lb_subtask_name.Size = new System.Drawing.Size(231, 38);
             this.lb_subtask_name.TabIndex = 0;
             this.lb_subtask_name.Text = "Nuevo Avance";
             // 
@@ -74,10 +73,9 @@
             this.lb_horas_dedicadas.BackColor = System.Drawing.Color.Transparent;
             this.lb_horas_dedicadas.Dock = System.Windows.Forms.DockStyle.Top;
             this.lb_horas_dedicadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_horas_dedicadas.Location = new System.Drawing.Point(4, 0);
-            this.lb_horas_dedicadas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_horas_dedicadas.Location = new System.Drawing.Point(3, 0);
             this.lb_horas_dedicadas.Name = "lb_horas_dedicadas";
-            this.lb_horas_dedicadas.Size = new System.Drawing.Size(711, 37);
+            this.lb_horas_dedicadas.Size = new System.Drawing.Size(473, 25);
             this.lb_horas_dedicadas.TabIndex = 1;
             this.lb_horas_dedicadas.Text = "Horas dedicadas";
             // 
@@ -85,10 +83,9 @@
             // 
             this.spn_horas_dedicadas.Dock = System.Windows.Forms.DockStyle.Top;
             this.spn_horas_dedicadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.spn_horas_dedicadas.Location = new System.Drawing.Point(723, 5);
-            this.spn_horas_dedicadas.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.spn_horas_dedicadas.Location = new System.Drawing.Point(482, 3);
             this.spn_horas_dedicadas.Name = "spn_horas_dedicadas";
-            this.spn_horas_dedicadas.Size = new System.Drawing.Size(301, 49);
+            this.spn_horas_dedicadas.Size = new System.Drawing.Size(200, 34);
             this.spn_horas_dedicadas.TabIndex = 2;
             // 
             // lb_descripcion
@@ -96,10 +93,9 @@
             this.lb_descripcion.AutoSize = true;
             this.lb_descripcion.BackColor = System.Drawing.Color.Transparent;
             this.lb_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_descripcion.Location = new System.Drawing.Point(4, 171);
-            this.lb_descripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_descripcion.Location = new System.Drawing.Point(3, 109);
             this.lb_descripcion.Name = "lb_descripcion";
-            this.lb_descripcion.Size = new System.Drawing.Size(184, 37);
+            this.lb_descripcion.Size = new System.Drawing.Size(114, 25);
             this.lb_descripcion.TabIndex = 3;
             this.lb_descripcion.Text = "Descripción";
             // 
@@ -107,10 +103,9 @@
             // 
             this.txt_descripcion.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txt_descripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_descripcion.Location = new System.Drawing.Point(4, 290);
-            this.txt_descripcion.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_descripcion.Location = new System.Drawing.Point(3, 185);
             this.txt_descripcion.Name = "txt_descripcion";
-            this.txt_descripcion.Size = new System.Drawing.Size(1026, 851);
+            this.txt_descripcion.Size = new System.Drawing.Size(683, 545);
             this.txt_descripcion.TabIndex = 4;
             this.txt_descripcion.Text = "";
             // 
@@ -120,10 +115,9 @@
             this.lb_adjuntar_documento.BackColor = System.Drawing.Color.Transparent;
             this.lb_adjuntar_documento.Dock = System.Windows.Forms.DockStyle.Top;
             this.lb_adjuntar_documento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_adjuntar_documento.Location = new System.Drawing.Point(4, 0);
-            this.lb_adjuntar_documento.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_adjuntar_documento.Location = new System.Drawing.Point(3, 0);
             this.lb_adjuntar_documento.Name = "lb_adjuntar_documento";
-            this.lb_adjuntar_documento.Size = new System.Drawing.Size(506, 37);
+            this.lb_adjuntar_documento.Size = new System.Drawing.Size(337, 25);
             this.lb_adjuntar_documento.TabIndex = 5;
             this.lb_adjuntar_documento.Text = "Adjuntar documento";
             // 
@@ -133,10 +127,9 @@
             this.btn_seleccionar_archivo.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_seleccionar_archivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_seleccionar_archivo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_seleccionar_archivo.Location = new System.Drawing.Point(518, 5);
-            this.btn_seleccionar_archivo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_seleccionar_archivo.Location = new System.Drawing.Point(346, 3);
             this.btn_seleccionar_archivo.Name = "btn_seleccionar_archivo";
-            this.btn_seleccionar_archivo.Size = new System.Drawing.Size(506, 89);
+            this.btn_seleccionar_archivo.Size = new System.Drawing.Size(337, 57);
             this.btn_seleccionar_archivo.TabIndex = 6;
             this.btn_seleccionar_archivo.Text = "Seleccionar archivo";
             this.btn_seleccionar_archivo.UseVisualStyleBackColor = false;
@@ -148,10 +141,9 @@
             this.btn_registrar_avance.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btn_registrar_avance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_registrar_avance.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_registrar_avance.Location = new System.Drawing.Point(518, 12);
-            this.btn_registrar_avance.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_registrar_avance.Location = new System.Drawing.Point(346, 8);
             this.btn_registrar_avance.Name = "btn_registrar_avance";
-            this.btn_registrar_avance.Size = new System.Drawing.Size(506, 93);
+            this.btn_registrar_avance.Size = new System.Drawing.Size(337, 60);
             this.btn_registrar_avance.TabIndex = 7;
             this.btn_registrar_avance.Text = "Registrar avance";
             this.btn_registrar_avance.UseVisualStyleBackColor = false;
@@ -163,10 +155,9 @@
             this.btn_cancelar.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.btn_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cancelar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btn_cancelar.Location = new System.Drawing.Point(4, 12);
-            this.btn_cancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_cancelar.Location = new System.Drawing.Point(3, 8);
             this.btn_cancelar.Name = "btn_cancelar";
-            this.btn_cancelar.Size = new System.Drawing.Size(506, 93);
+            this.btn_cancelar.Size = new System.Drawing.Size(337, 60);
             this.btn_cancelar.TabIndex = 8;
             this.btn_cancelar.Text = "Cancelar";
             this.btn_cancelar.UseVisualStyleBackColor = false;
@@ -179,12 +170,11 @@
             this.nombre_archivo,
             this.tipo_archivo});
             this.table_archivos_seleccionados.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.table_archivos_seleccionados.Location = new System.Drawing.Point(4, 176);
-            this.table_archivos_seleccionados.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.table_archivos_seleccionados.Location = new System.Drawing.Point(3, 112);
             this.table_archivos_seleccionados.Name = "table_archivos_seleccionados";
             this.table_archivos_seleccionados.RowHeadersWidth = 51;
             this.table_archivos_seleccionados.RowTemplate.Height = 24;
-            this.table_archivos_seleccionados.Size = new System.Drawing.Size(1026, 849);
+            this.table_archivos_seleccionados.Size = new System.Drawing.Size(684, 543);
             this.table_archivos_seleccionados.TabIndex = 9;
             // 
             // nombre_archivo
@@ -209,11 +199,12 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(29, 120);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(19, 77);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(2080, 1152);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1387, 737);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // tableLayoutPanel2
@@ -225,13 +216,14 @@
             this.tableLayoutPanel2.Controls.Add(this.lb_descripcion, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.txt_descripcion, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 3;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1034, 1146);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(689, 733);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -242,11 +234,12 @@
             this.tableLayoutPanel3.Controls.Add(this.lb_horas_dedicadas, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.spn_horas_dedicadas, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1028, 165);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(685, 105);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -257,13 +250,14 @@
             this.tableLayoutPanel4.Controls.Add(this.table_archivos_seleccionados, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 0, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(1043, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(695, 2);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 3;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 75F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1034, 1146);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(690, 733);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // tableLayoutPanel5
@@ -275,11 +269,12 @@
             this.tableLayoutPanel5.Controls.Add(this.lb_adjuntar_documento, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.btn_seleccionar_archivo, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(2, 2);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1028, 165);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(686, 105);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // tableLayoutPanel6
@@ -290,23 +285,23 @@
             this.tableLayoutPanel6.Controls.Add(this.btn_cancelar, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.btn_registrar_avance, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 1033);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(2, 660);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1028, 110);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(686, 71);
             this.tableLayoutPanel6.TabIndex = 1;
             // 
             // GUIAvance
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Proyecto_Diseno_Asana.Properties.Resources.Bwhite_bg;
-            this.ClientSize = new System.Drawing.Size(2154, 1329);
+            this.ClientSize = new System.Drawing.Size(1417, 822);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.lb_subtask_name);
             this.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "GUIAvance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ASANA upgrade";
