@@ -91,7 +91,7 @@ namespace Proyecto_Diseno_Asana.vista
                 {
                     dataGridView1.Rows.Add(a.id, a.creador.nombre, a.Fecha.ToString("dd/MM/yyyy"));
                 }
-                currentAvance = a;
+                Controlador.getInstance().dto.setAvance(a);
             }
         
 
@@ -105,7 +105,7 @@ namespace Proyecto_Diseno_Asana.vista
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string idAvance = (string)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-            Evidencia evidencia = currentAvance.evidencias.ElementAt(e.RowIndex);
+            Evidencia evidencia = Controlador.getInstance().dto.getAvance().evidencias.ElementAt(e.RowIndex);
             File.WriteAllBytes(idAvance + evidencia.tipo, evidencia.documento);
             System.Diagnostics.Process.Start(idAvance + evidencia.tipo);
         }
