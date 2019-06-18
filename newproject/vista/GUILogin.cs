@@ -1,4 +1,5 @@
 ﻿using Proyecto_Diseno_Asana.modelo;
+using Proyecto_Diseno_Asana.newproject.vista;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,17 +34,9 @@ namespace Proyecto_Diseno_Asana.vista
             if (ctrl.login())
             {
                 this.Hide();
-                if (ctrl.getDTO().getUsuario().isAdministrador)
-                {
-
-                    Form mainAdmin = new GUIMainAdministrador();
-                    mainAdmin.ShowDialog();
-                }
-                else
-                {
-                    Form mainMiembro = new GUIMainMiembro();
-                    mainMiembro.ShowDialog();
-                }
+                ProxyVistaMain proxy = new ProxyVistaMain();
+                Form main = proxy.vista;
+                main.ShowDialog();
                 tBCorreo.Text = "";
                 this.Show();
             }

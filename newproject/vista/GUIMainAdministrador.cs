@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Proyecto_Diseno_Asana.vista
 {
-    public partial class GUIMainAdministrador : Form
+    public partial class GUIMainAdministrador : Form, FiltroVista
     {
 
         string path = "";
@@ -20,6 +20,15 @@ namespace Proyecto_Diseno_Asana.vista
         {
             InitializeComponent();
             LoadProyects();
+        }
+
+        public void filtrar()
+        {
+            btnImportar.Visible = false;
+            btnCompletar.Visible = false;
+            btnConsultas.Visible = false;
+            dataGridView1.Columns[2].Visible = false;
+            label1.Text = "Menú miembro";
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
