@@ -127,5 +127,13 @@ namespace Proyecto_Diseno_Asana.vista
         {
             this.DialogResult = DialogResult.OK;
         }
+
+        private void BtnConsultas_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Form guiconsulta = new GUIConsultas();
+            guiconsulta.ShowDialog();
+            this.Show();
+        }
     }
 }
