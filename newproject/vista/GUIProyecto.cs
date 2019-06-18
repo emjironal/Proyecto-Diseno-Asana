@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ namespace Proyecto_Diseno_Asana.vista
 {
     public partial class GUIProyecto : Form
     {
+        Avance currentAvance;
         public GUIProyecto()
         {
             InitializeComponent();
@@ -89,6 +91,7 @@ namespace Proyecto_Diseno_Asana.vista
                 {
                     dataGridView1.Rows.Add(a.id, a.creador.nombre, a.Fecha.ToString("dd/MM/yyyy"));
                 }
+                currentAvance = a;
             }
         
 
@@ -102,6 +105,9 @@ namespace Proyecto_Diseno_Asana.vista
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string idAvance = (string)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+            Evidencia evidencia = currentAvance.evidencias.ElementAt(e.RowIndex);
+            File.WriteAllBytes(idAvance + evidencia.tipo, evidencia.documento);
+            System.Diagnostics.Process.Start(idAvance + evidencia.tipo);
         }
 
         private void BtnAgregarAvance_Click(object sender, EventArgs e)

@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -388,13 +390,21 @@ namespace Proyecto_Diseno_Asana.control.dao
             for (int i = 0; i < resultSet.Count(); i++)
             {
                 Evidencia e = new Evidencia();
-                String[] result = Array.ConvertAll(resultSet[i], p => (p ?? String.Empty).ToString());
-                e.tipo = result[0];
-                string documento = result[1];
+                object[] result = resultSet[i];
+                e.tipo = (string)result[0];
+            
+                e.documento = getByteArrayFromObjectArray(result[1]);
                 avance.evidencias.Add(e);
                 avance.cantidadEvidencias++;
             }
         }
 
+        private static byte[] getByteArrayFromObjectArray(object array)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            MemoryStream ms = new MemoryStream();
+            bf.Serialize(ms, array);
+            return ms.ToArray();
+        }
     }
 }
