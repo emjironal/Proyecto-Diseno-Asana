@@ -14,7 +14,6 @@ namespace Proyecto_Diseno_Asana.vista
 {
     public partial class GUIProyecto : Form
     {
-        Avance currentAvance;
         public GUIProyecto()
         {
             InitializeComponent();
