@@ -208,7 +208,7 @@ namespace Proyecto_Diseno_Asana.control.dao
                 try
                 {
                     fechaprueba = datosTarea[2].Split()[0];
-                    t.fchFinalizacion = DateTime.ParseExact(fechaprueba, "dd/M/yyyy", CultureInfo.InvariantCulture);
+                    t.fchFinalizacion = DateTime.ParseExact(fechaprueba, "d/M/yyyy", CultureInfo.InvariantCulture);
                 }
                 catch (Exception e)
                 {
@@ -217,7 +217,7 @@ namespace Proyecto_Diseno_Asana.control.dao
                 try
                 {
                     fechaprueba = datosTarea[3].Split()[0];
-                    t.fchEntrega = DateTime.ParseExact(fechaprueba, "dd/M/yyyy", CultureInfo.InvariantCulture);
+                    t.fchEntrega = DateTime.ParseExact(fechaprueba, "d/M/yyyy", CultureInfo.InvariantCulture);
                 }
                 catch (Exception e)
                 {
@@ -284,7 +284,7 @@ namespace Proyecto_Diseno_Asana.control.dao
                 try
                 {
                     fechaprueba = datosTarea[2].Split()[0];
-                    t.fchFinalizacion = DateTime.ParseExact(fechaprueba, "dd/M/yyyy", CultureInfo.InvariantCulture);
+                    t.fchFinalizacion = DateTime.ParseExact(fechaprueba, "d/M/yyyy", CultureInfo.InvariantCulture);
                 }
                 catch (Exception e)
                 {
@@ -293,7 +293,7 @@ namespace Proyecto_Diseno_Asana.control.dao
                 try
                 {
                     fechaprueba = datosTarea[3].Split()[0];
-                    t.fchEntrega = DateTime.ParseExact(fechaprueba, "dd/M/yyyy", CultureInfo.InvariantCulture);
+                    t.fchEntrega = DateTime.ParseExact(fechaprueba, "d/M/yyyy", CultureInfo.InvariantCulture);
                 }
                 catch (Exception e)
                 {
@@ -363,7 +363,7 @@ namespace Proyecto_Diseno_Asana.control.dao
                 string fchs = result[1].Split()[0];
                 try
                 {
-                    a.Fecha = DateTime.ParseExact("12/1/1999", "d/M/yyyy", CultureInfo.InvariantCulture);
+                    a.Fecha = DateTime.ParseExact(fchs, "d/M/yyyy", CultureInfo.InvariantCulture);
                 }
                 catch (Exception e)
                 {
