@@ -202,13 +202,24 @@ namespace Proyecto_Diseno_Asana.control.dao
                 //TODO: Asignar Seguidores
                 t.encargado = encargado;
                 t.seguidores = asignarSeguidores(t.codigo);
-                String[] fechaprueba = datosTarea[2].Split();
-                DateTime fchEntrega, fchFinalizacion;
-                if (DateTime.TryParseExact(datosTarea[2].Split()[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None,out fchEntrega)){
-                    t.fchEntrega = fchEntrega;
+                string fechaprueba;
+                try
+                {
+                    fechaprueba = datosTarea[2].Split()[0];
+                    t.fchFinalizacion = DateTime.ParseExact(fechaprueba, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 }
-                if (DateTime.TryParseExact(datosTarea[3].Split()[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fchFinalizacion)) {
-                    t.fchFinalizacion = fchFinalizacion;
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                try
+                {
+                    fechaprueba = datosTarea[3].Split()[0];
+                    t.fchEntrega = DateTime.ParseExact(fechaprueba, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
                 }
                 t.nombre = datosTarea[4];
                 t.notas = datosTarea[5];
@@ -267,14 +278,24 @@ namespace Proyecto_Diseno_Asana.control.dao
                 }
                 t.encargado = encargado;
                 t.seguidores = asignarSeguidores(t.codigo);
-                DateTime fchEntrega, fchFinalizacion;
-                if (DateTime.TryParseExact(datosTarea[2].Split()[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fchEntrega))
+                string fechaprueba;
+                try
                 {
-                    t.fchEntrega = fchEntrega;
+                    fechaprueba = datosTarea[2].Split()[0];
+                    t.fchFinalizacion = DateTime.ParseExact(fechaprueba, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 }
-                if (DateTime.TryParseExact(datosTarea[3].Split()[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fchFinalizacion))
+                catch (Exception e)
                 {
-                    t.fchFinalizacion = fchFinalizacion;
+                    Console.WriteLine(e.Message);
+                }
+                try
+                {
+                    fechaprueba = datosTarea[3].Split()[0];
+                    t.fchEntrega = DateTime.ParseExact(fechaprueba, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
                 }
                 t.nombre = datosTarea[4];
                 t.notas = datosTarea[5];
@@ -336,11 +357,15 @@ namespace Proyecto_Diseno_Asana.control.dao
                 Avance a = new Avance();
                 String[] result = Array.ConvertAll(resultSet[i], p => (p ?? String.Empty).ToString());
                 a.id = result[0];
-                String[] fechaprueba = result[1].Split();
                 DateTime fchEntrega;
-                if (DateTime.TryParseExact(result[1].Split()[0], "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out fchEntrega))
+                string fchs = result[1].Split()[0];
+                try
                 {
-                    a.Fecha = fchEntrega;
+                    a.Fecha = DateTime.ParseExact(fchs, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
                 }
                 a.HorasDedicadas = int.Parse(result[2]);
                 a.descripción = result[3];

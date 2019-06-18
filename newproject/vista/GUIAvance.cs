@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_Diseno_Asana.modelo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +24,15 @@ namespace Proyecto_Diseno_Asana.vista
 
         private void Btn_registrar_avance_Click(object sender, EventArgs e)
         {
+            Avance avance = controlador.dto.getAvance();
+            avance.creador = controlador.dto.getUsuario();
+            avance.descripción = txt_descripcion.Text;
+            avance.HorasDedicadas = (int)spn_horas_dedicadas.Value;
+            avance.Fecha = DateTime.Now;
+            avance.id = "" + controlador.dto.getTarea().codigo + controlador.dto.getTarea().avances.Count;
             controlador.agregarAvance();
+            System.Windows.Forms.MessageBox.Show("Avance agregado correctamente");
+            this.DialogResult = DialogResult.OK;
         }
 
         private void Btn_cancelar_Click(object sender, EventArgs e)
@@ -41,6 +50,7 @@ namespace Proyecto_Diseno_Asana.vista
                 evidencia.documento = File.ReadAllBytes(fileDialog.FileName);
                 evidencia.tipo = Path.GetExtension(fileDialog.FileName);
                 controlador.dto.getAvance().evidencias.Add(evidencia);
+                controlador.dto.getAvance().cantidadEvidencias++;
                 addRow(Path.GetFileNameWithoutExtension(fileDialog.FileName), Path.GetExtension(fileDialog.FileName));
             }
         }

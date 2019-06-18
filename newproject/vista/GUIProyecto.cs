@@ -21,6 +21,7 @@ namespace Proyecto_Diseno_Asana.vista
 
         private void LoadTreeView()
         {
+            treeView1.Nodes.Clear();
             int i = 0, j = 0, k = 0, l = 0;
             Proyecto p = Controlador.getInstance().getDTO().getProyecto();
 
@@ -82,11 +83,11 @@ namespace Proyecto_Diseno_Asana.vista
                 lNombreTarea.Text = "Avance";
                 lEncargado.Text = a.creador.nombre;
                 lFchEntrega.Text = a.Fecha.ToString("dd/MM/yyyy");
-                lNotas.Text = a.descripción;
+                lNotas.Text = "Horas dedicadas: "+a.HorasDedicadas+"\n"+ a.descripción;
                 dataGridView1.Rows.Clear();
                 foreach (Evidencia evidencia in a.evidencias)
                 {
-                    dataGridView1.Rows.Add(a.id, a.creador, a.Fecha.ToString("dd/MM/yyyy"));
+                    dataGridView1.Rows.Add(a.id, a.creador.nombre, a.Fecha.ToString("dd/MM/yyyy"));
                 }
             }
         
@@ -108,6 +109,7 @@ namespace Proyecto_Diseno_Asana.vista
             Controlador.getInstance().getDTO().setTarea((Tarea)treeView1.SelectedNode.Tag);
             Form avance = new GUIAvance();
             avance.ShowDialog();
+            LoadTreeView();
         }
     }
 }
