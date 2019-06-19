@@ -25,7 +25,7 @@ namespace Proyecto_Diseno_Asana.control.consulta
                         " inner join AvancePorTarea at on(at.id_tarea = t.id_tarea)" +
                         " inner join Avance a on(a.id_avance = at.id_avance and a.creador = u.id_usuario)" +
                         " inner join EvidenciaPorAvance ea on(ea.id_avance = a.id_avance)")
-                .Where(string.Format("t.nombre= '{0}' ", nombreActividad))
+                .Where(string.Format("t.id_tarea= '{0}' ", nombreActividad))
                 .GroupBy("\"Id creador\", \"Nombre creador\", \"Actividad\",\"Id avance\", \"Fecha avance\", \"Horas dedicadas\", \"Descripcion\"");
             return consulta;
 

@@ -36,27 +36,27 @@
             this.cBTipo = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.lblProyecto = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dateFrom = new System.Windows.Forms.DateTimePicker();
             this.cBProyecto = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dateFrom = new System.Windows.Forms.DateTimePicker();
             this.Criterio = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dateTo = new System.Windows.Forms.DateTimePicker();
             this.cBCriterio = new System.Windows.Forms.ComboBox();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.btnReporte = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -183,6 +183,25 @@
             this.lblProyecto.Text = "Proyecto:";
             this.lblProyecto.Visible = false;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dateFrom);
+            this.panel3.Controls.Add(this.cBProyecto);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(220, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(320, 103);
+            this.panel3.TabIndex = 1;
+            // 
+            // dateFrom
+            // 
+            this.dateFrom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateFrom.Location = new System.Drawing.Point(0, 0);
+            this.dateFrom.Name = "dateFrom";
+            this.dateFrom.Size = new System.Drawing.Size(320, 31);
+            this.dateFrom.TabIndex = 1;
+            this.dateFrom.Visible = false;
+            // 
             // cBProyecto
             // 
             this.cBProyecto.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -218,15 +237,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 103);
             this.panel1.TabIndex = 1;
-            // 
-            // dateFrom
-            // 
-            this.dateFrom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dateFrom.Location = new System.Drawing.Point(0, 0);
-            this.dateFrom.Name = "dateFrom";
-            this.dateFrom.Size = new System.Drawing.Size(320, 31);
-            this.dateFrom.TabIndex = 1;
-            this.dateFrom.Visible = false;
             // 
             // Criterio
             // 
@@ -294,16 +304,6 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Consultas";
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.dateFrom);
-            this.panel3.Controls.Add(this.cBProyecto);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(220, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(320, 103);
-            this.panel3.TabIndex = 1;
-            // 
             // btnConsultar
             // 
             this.btnConsultar.BackColor = System.Drawing.Color.DeepSkyBlue;
@@ -349,11 +349,11 @@
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
