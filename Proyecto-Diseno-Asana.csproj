@@ -121,11 +121,11 @@
     <Compile Include="newproject\vista\GUILogin.Designer.cs">
       <DependentUpon>GUILogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="newproject\vista\GUIMainAdministrador.cs">
+    <Compile Include="newproject\vista\GUIMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="newproject\vista\GUIMainAdministrador.Designer.cs">
-      <DependentUpon>GUIMainAdministrador.cs</DependentUpon>
+    <Compile Include="newproject\vista\GUIMain.Designer.cs">
+      <DependentUpon>GUIMain.cs</DependentUpon>
     </Compile>
     <Compile Include="newproject\vista\GUIMainMiembro.cs">
       <SubType>Form</SubType>
@@ -217,8 +217,8 @@
     <EmbeddedResource Include="newproject\vista\GUILogin.resx">
       <DependentUpon>GUILogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="newproject\vista\GUIMainAdministrador.resx">
-      <DependentUpon>GUIMainAdministrador.cs</DependentUpon>
+    <EmbeddedResource Include="newproject\vista\GUIMain.resx">
+      <DependentUpon>GUIMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="newproject\vista\GUIMainMiembro.resx">
       <DependentUpon>GUIMainMiembro.cs</DependentUpon>

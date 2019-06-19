@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace Proyecto_Diseno_Asana.vista
 {
-    public partial class GUIMainAdministrador : Form, FiltroVista
+    public partial class GUIMain : Form, FiltroVista
     {
 
         string path = "";
-        public GUIMainAdministrador()
+        public GUIMain()
         {
             InitializeComponent();
             LoadProyects();

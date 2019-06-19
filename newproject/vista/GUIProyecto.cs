@@ -107,7 +107,12 @@ namespace Proyecto_Diseno_Asana.vista
             string idAvance = (string)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
             Evidencia evidencia = Controlador.getInstance().dto.getAvance().evidencias.ElementAt(e.RowIndex);
             File.WriteAllBytes(idAvance + evidencia.tipo, evidencia.documento);
-            System.Diagnostics.Process.Start(idAvance + evidencia.tipo);
+            try {
+                System.Diagnostics.Process.Start(idAvance + evidencia.tipo);
+            }catch(Exception ex){
+                System.Windows.Forms.MessageBox.Show("No existe aplicación por defecto para abrir archivo " + evidencia.tipo);
+            }
+            
         }
 
         private void BtnAgregarAvance_Click(object sender, EventArgs e)
