@@ -88,6 +88,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="newproject\control\INewController.cs" />
+    <Compile Include="newproject\control\NewController.cs" />
     <Compile Include="newproject\vista\FiltroVista.cs" />
     <Compile Include="newproject\vista\ProxyVistaMain.cs" />
     <Compile Include="newproject\vista\WaitForm.cs">
@@ -234,9 +236,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="newproject\control\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\white-bg.png" />
   </ItemGroup>

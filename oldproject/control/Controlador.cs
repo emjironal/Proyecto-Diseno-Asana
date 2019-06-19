@@ -27,21 +27,21 @@ namespace Proyecto_Diseno_Asana
             return instance;
         }
 
-        public override Boolean login()
+        public Boolean login()
         {
             GestorUsuario gestorUsuario = new GestorUsuario();
             dto.setUsuario(gestorUsuario.login(dto.getUsuario()));
             return dto.getUsuario() != null;
         }
 
-        public override Boolean abrirProyecto()
+        public Boolean abrirProyecto()
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
             dto.setProyecto(gestorProyecto.cargarProyecto(dto.getProyecto().id));
             return dto.getProyecto() != null;
         }
 
-        public override Boolean importarProyecto(string pathJson)
+        public Boolean importarProyecto(string pathJson)
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
             try
@@ -58,7 +58,7 @@ namespace Proyecto_Diseno_Asana
             return false;
         }
 
-        public override Boolean actualizarProyecto(string pathJson)
+        public Boolean actualizarProyecto(string pathJson)
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
             try
@@ -79,18 +79,18 @@ namespace Proyecto_Diseno_Asana
             return false;
         }
 
-        public override Boolean completarUsuario()
+        public Boolean completarUsuario()
         {
             GestorUsuario gestorUsuario = new GestorUsuario();
             return gestorUsuario.completarUsuario(dto.getUsuario());
         }
 
-        public override Boolean borrarUsuario()
+        public Boolean borrarUsuario()
         {
             return true;
         }
 
-        public override bool agregarAvance()
+        public bool agregarAvance()
         {
             GestorAvance gestorAvance = new GestorAvance();
             Avance avance = dto.getAvance();
@@ -105,7 +105,7 @@ namespace Proyecto_Diseno_Asana
             return false;
         }
 
-        public override Boolean hacerConsulta(String tipo, object criterio)
+        public Boolean hacerConsulta(String tipo, object criterio)
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
             dto.avances = gestorProyecto.consultar(tipo, criterio);
@@ -117,30 +117,30 @@ namespace Proyecto_Diseno_Asana
             return this.dto;
         }
 
-        public override List<Proyecto> consultarProyectos()
+        public List<Proyecto> consultarProyectos()
         {
             GestorProyecto gestorProyecto = new GestorProyecto();
             return gestorProyecto.consultarProyectos(dto.getUsuario());
         }
 
-        public override List<Tarea> consultarActividades()
+        public List<Tarea> consultarActividades()
         {
             GestorProyecto gestor = new GestorProyecto();
             return gestor.consultarTarea(dto.getProyecto().id);
         }
 
-        public override List<Usuario> consultarUsuarios()
+        public List<Usuario> consultarUsuarios()
         {
             GestorUsuario gestor = new GestorUsuario();
             return gestor.consultarUsuarios();
         }
 
-        public override bool generarReportePDF()
+        public bool generarReportePDF()
         {
             return (new ReportePDF()).generarReporte();
         }
 
-        public override bool guardarReportePDF(string path, string filename)
+        public bool guardarReportePDF(string path, string filename)
         {
             return (new ReportePDF()).guardarReporte(path + "\\" + filename);
         }
