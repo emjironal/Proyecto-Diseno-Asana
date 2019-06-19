@@ -32,6 +32,7 @@ namespace Proyecto_Diseno_Asana.vista
             avance.Fecha = DateTime.Now;
             avance.id = "" + controlador.dto.getTarea().codigo + controlador.dto.getTarea().avances.Count;
             controlador.agregarAvance();
+
             System.Windows.Forms.MessageBox.Show("Avance agregado correctamente");
             this.DialogResult = DialogResult.OK;
         }
