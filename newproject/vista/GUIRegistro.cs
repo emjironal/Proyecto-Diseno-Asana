@@ -1,4 +1,5 @@
 ﻿using Proyecto_Diseno_Asana.modelo;
+using Proyecto_Diseno_Asana.newproject.control;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,7 +39,7 @@ namespace Proyecto_Diseno_Asana.vista
 
         private void BtnCompletar_Click_1(object sender, EventArgs e)
         {
-            Controlador ctrl = Controlador.getInstance();
+            NewController ctrl = NewController.getInstance();
             Usuario usr = new Usuario();
             usr.correo = tBCorreo.Text;
             usr.id = ((Usuario)cBID.SelectedItem).id;
@@ -62,7 +63,7 @@ namespace Proyecto_Diseno_Asana.vista
 
         private void loadComboBoxID()
         {
-            Controlador ctrl = Controlador.getInstance();
+            NewController ctrl = NewController.getInstance();
             List<Usuario> usrs = ctrl.consultarUsuarios();
             foreach(Usuario u in usrs)
             {

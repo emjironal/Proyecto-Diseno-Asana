@@ -1,4 +1,5 @@
-﻿using Proyecto_Diseno_Asana.vista;
+﻿using Proyecto_Diseno_Asana.newproject.control;
+using Proyecto_Diseno_Asana.vista;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Proyecto_Diseno_Asana.newproject.vista
 
         public void filtrar()
         {
-            if (!Controlador.getInstance().getDTO().getUsuario().isAdministrador)
+            if (!NewController.getInstance().getDTO().getUsuario().isAdministrador)
             {
                 vista.filtrar();
             }

@@ -10,6 +10,7 @@ namespace Proyecto_Diseno_Asana.newproject.control
 {
     class NewController : INewController
     {
+        private static NewController instance = new NewController();
         private Controlador controlador;
         public DTO dto { get; }
         private NewController()
@@ -86,6 +87,16 @@ namespace Proyecto_Diseno_Asana.newproject.control
         public bool undoAvance()
         {
             throw new NotImplementedException();
+        }
+
+        public static NewController getInstance()
+        {
+            return instance;
+        }
+
+        public DTO getDTO()
+        {
+            return dto;
         }
     }
 }

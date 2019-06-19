@@ -1,4 +1,5 @@
 ﻿using Proyecto_Diseno_Asana.modelo;
+using Proyecto_Diseno_Asana.newproject.control;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,7 @@ namespace Proyecto_Diseno_Asana.vista
         {
             treeView1.Nodes.Clear();
             int i = 0, j = 0, k = 0, l = 0;
-            Proyecto p = Controlador.getInstance().getDTO().getProyecto();
+            Proyecto p = NewController.getInstance().getDTO().getProyecto();
 
             lNombreProyecto.Text = p.nombre;
 
@@ -90,7 +91,7 @@ namespace Proyecto_Diseno_Asana.vista
                 {
                     dataGridView1.Rows.Add(a.id, a.creador.nombre, a.Fecha.ToString("dd/MM/yyyy"));
                 }
-                Controlador.getInstance().dto.setAvance(a);
+                NewController.getInstance().dto.setAvance(a);
             }
         
 
@@ -111,7 +112,7 @@ namespace Proyecto_Diseno_Asana.vista
 
         private void BtnAgregarAvance_Click(object sender, EventArgs e)
         {
-            Controlador.getInstance().getDTO().setTarea((Tarea)treeView1.SelectedNode.Tag);
+            NewController.getInstance().getDTO().setTarea((Tarea)treeView1.SelectedNode.Tag);
             Form avance = new GUIAvance();
             avance.ShowDialog();
             LoadTreeView();

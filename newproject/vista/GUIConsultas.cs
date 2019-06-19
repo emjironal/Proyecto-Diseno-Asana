@@ -1,5 +1,6 @@
 ﻿using Proyecto_Diseno_Asana.control;
 using Proyecto_Diseno_Asana.modelo;
+using Proyecto_Diseno_Asana.newproject.control;
 using Proyecto_Diseno_Asana.newproject.vista;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,12 @@ namespace Proyecto_Diseno_Asana.vista
 {
     public partial class GUIConsultas : Form
     {
-        Controlador control;
+        NewController control;
         string tipo, path, filename;
         object[] criterio;
         public GUIConsultas()
         {
-            control = Controlador.getInstance();
+            control = NewController.getInstance();
             InitializeComponent();
             btnConsultar.ForeColor = Color.White;
             btnReporte.ForeColor = Color.White;
