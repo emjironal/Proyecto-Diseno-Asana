@@ -1,6 +1,6 @@
 ﻿namespace Proyecto_Diseno_Asana.vista
 {
-    partial class GUIMainAdministrador
+    partial class GUIMain
     {
         /// <summary>
         /// Required designer variable.

@@ -21,10 +21,9 @@ namespace Proyecto_Diseno_Asana.control.gestor
             return DAOAvance.agregarAvancePorTarea(idTarea, idAvance);
         }
 
-        public Boolean eliminarAvance(Avance avance)
+        public Boolean eliminarAvance(string id)
         {
-            DAOAvance.eliminarAvance(avance.id);
-            return true;
+            return (DAOAvance.eliminarAvance(id));
         }
     }
 }

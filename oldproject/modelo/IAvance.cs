@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Proyecto_Diseno_Asana.modelo;
 
-
-namespace Proyecto_Diseno_Asana.newproject.modelo
+namespace Proyecto_Diseno_Asana.oldproject.modelo
 {
-    interface MementoI
+    interface IAvance
     {
-        private ();
+        string ToString();
     }
 }

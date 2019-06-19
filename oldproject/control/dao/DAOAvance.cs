@@ -37,7 +37,22 @@ namespace Proyecto_Diseno_Asana.control.dao
 
         public static Boolean eliminarAvance(string id)
         {
-            return true;
+
+            gestor.GestorBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            db.conectar();
+            string query = "Delete from EvidenciaPorAvance where id_avance = {0}";
+            query = string.Format(query, id);
+            bool result = db.executeNonQuery(query);
+            query = "Delete from AvancePorTarea where id_avance = {0}";
+            query = string.Format(query, id);
+            bool result2 = db.executeNonQuery(query);
+            query = "Delete from Avance where id_avance = {0}";
+            query = string.Format(query, id);
+            bool result3 = db.executeNonQuery(query);
+            db.desconectar();
+
+
+            return result && result2 && result3;
         }
 
         public static bool agregarEvidencia(Evidencia evidencia, string idAvance)

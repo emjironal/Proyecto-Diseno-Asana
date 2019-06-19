@@ -21,10 +21,13 @@ namespace Proyecto_Diseno_Asana.vista
             InitializeComponent();
             limpiarTabla();
             controlador = NewController.getInstance();
+            controlador.dto.setAvance(new Avance());
+
         }
 
         private void Btn_registrar_avance_Click(object sender, EventArgs e)
         {
+
             Avance avance = controlador.dto.getAvance();
             avance.creador = controlador.dto.getUsuario();
             avance.descripción = txt_descripcion.Text;
@@ -66,5 +69,6 @@ namespace Proyecto_Diseno_Asana.vista
         {
             table_archivos_seleccionados.Rows.Clear();
         }
+
     }
 }
