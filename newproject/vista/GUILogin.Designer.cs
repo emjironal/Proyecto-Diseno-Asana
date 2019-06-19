@@ -73,6 +73,7 @@
             this.tBCorreo.Name = "tBCorreo";
             this.tBCorreo.Size = new System.Drawing.Size(306, 26);
             this.tBCorreo.TabIndex = 2;
+            this.tBCorreo.KeyDown += TBCorreo_KeyDown;
             // 
             // btnLogin
             // 

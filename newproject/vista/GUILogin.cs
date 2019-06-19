@@ -28,7 +28,16 @@ namespace Proyecto_Diseno_Asana.vista
             InitializeComponent();
         }
 
-        private void BtnLogin_Click(object sender, EventArgs e)
+        private void TBCorreo_KeyDown(object sender, System.Windows.Forms.KeyEventArgs e)
+        {
+            if (e.KeyCode == System.Windows.Forms.Keys.Enter)
+            {
+                attempt_log_in();
+            }
+        }
+
+
+        private void attempt_log_in()
         {
             NewController ctrl = NewController.getInstance();
             ctrl.getDTO().getUsuario().id = tBCorreo.Text;
@@ -46,6 +55,13 @@ namespace Proyecto_Diseno_Asana.vista
                 System.Windows.Forms.MessageBox.Show("Error: usuario no existe");
             }
         }
+
+        private void BtnLogin_Click(object sender, EventArgs e)
+        {
+            attempt_log_in();
+        }
+
+        
 
         private void GUILogin_Load(object sender, EventArgs e)
         {
