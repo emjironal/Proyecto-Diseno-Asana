@@ -12,15 +12,18 @@ namespace Proyecto_Diseno_Asana.newproject.modelo
     class Caretaker
     {
         private Stack avances;
+
         public Caretaker()
         {
             avances = new Stack();
         }
-        public MementoI Get()
+
+        public AvanceMemento Get()
         {
-            return ((MementoI)avances.Pop());
+            return ((AvanceMemento)avances.Pop());
         }
-        public void Put(MementoI avance)
+
+        public void Put(AvanceMemento avance)
         {
             avances.Push(avance);
         }
