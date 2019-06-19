@@ -35,7 +35,7 @@ namespace Proyecto_Diseno_Asana.newproject.control
 
         public bool agregarAvance()
         {
-            gestorCaretaker.SaveMemento(new NewAvance(controlador.dto.getAvance()));
+            gestorCaretaker.SaveMemento(controlador.dto.getAvance());
             return controlador.agregarAvance();
         }
 
