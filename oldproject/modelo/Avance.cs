@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Proyecto_Diseno_Asana.oldproject.modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Diseno_Asana.modelo
 {
-    class Avance
+    class Avance: IAvance
     {
         public string id { get; set; }
         public DateTime Fecha { get; set; }

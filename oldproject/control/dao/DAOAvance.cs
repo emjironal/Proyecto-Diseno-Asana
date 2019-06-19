@@ -37,6 +37,11 @@ namespace Proyecto_Diseno_Asana.control.dao
 
         public static Boolean eliminarAvance(string id)
         {
+            gestor.bd.PostgresBaseDatos db = new gestor.bd.PostgresBaseDatos("35.239.31.249", "postgres", "5432", "E@05face", "asana_upgradedb");
+            Npgsql.NpgsqlCommand objCom = new Npgsql.NpgsqlCommand("Delete from EvidenciaPorAvance where id_avance = " + id, db.conn);
+            Npgsql.NpgsqlCommand objCom = new Npgsql.NpgsqlCommand("Delete from AvancePorTarea where id_avance = " + id, db.conn);
+            Npgsql.NpgsqlCommand objCom = new Npgsql.NpgsqlCommand("Delete from Avance where id_avance = " + id, db.conn);
+
             return true;
         }
 

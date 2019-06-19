@@ -16,7 +16,7 @@ namespace Proyecto_Diseno_Asana.modelo
         public Usuario creador { get; }
         public String nbrActividad { get; }
         public int cantidadEvidencias { get; }
-        public AvanceMemento(string id, DateTime Fecha, int HorasDedicadas, string descripción, List<Evidencia> evidencias, Usuario creador, string nbrActividad, int cartEvidencias)
+        public AvanceMemento(string id, DateTime Fecha, int HorasDedicadas, string descripción, List<Evidencia> evidencias, Usuario creador, string nbrActividad, int cantidadEvidencias)
         {
             this.id = id;
             this.Fecha = Fecha;
