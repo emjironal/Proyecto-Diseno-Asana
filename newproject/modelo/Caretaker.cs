@@ -18,9 +18,11 @@ namespace Proyecto_Diseno_Asana.newproject.modelo
             avances = new Stack();
         }
 
-        public AvanceMemento Get()
+        public string Get()
         {
-            return ((AvanceMemento)avances.Pop());
+            AvanceMemento avance = (AvanceMemento)avances.Pop();
+
+            return (avance.id);
         }
 
         public void Put(AvanceMemento avance)

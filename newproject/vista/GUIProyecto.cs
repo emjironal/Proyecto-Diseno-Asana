@@ -122,5 +122,14 @@ namespace Proyecto_Diseno_Asana.vista
             avance.ShowDialog();
             LoadTreeView();
         }
+
+        private void GUIProyecto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Z && e.Modifiers == Keys.Control)
+            {
+                NewController.getInstance().undoAvance();
+                LoadTreeView();
+            }
+        }
     }
 }

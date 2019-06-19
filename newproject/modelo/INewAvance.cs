@@ -10,6 +10,6 @@ namespace Proyecto_Diseno_Asana.newproject.modelo
 {
     interface INewAvance : IAvance
     {
-        AvanceMemento Clone();
+        AvanceMemento SaveMemento();
     }
 }

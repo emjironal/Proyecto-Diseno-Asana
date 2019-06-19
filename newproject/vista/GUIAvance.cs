@@ -66,5 +66,6 @@ namespace Proyecto_Diseno_Asana.vista
         {
             table_archivos_seleccionados.Rows.Clear();
         }
+
     }
 }

@@ -88,10 +88,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="newproject\control\GestorCaretaker.cs" />
     <Compile Include="newproject\modelo\Caretaker.cs" />
-    <Compile Include="newproject\modelo\MementoI.cs" />
     <Compile Include="newproject\control\INewController.cs" />
     <Compile Include="newproject\control\NewController.cs" />
+    <Compile Include="newproject\modelo\INewAvance.cs" />
+    <Compile Include="newproject\modelo\NewAvance.cs" />
     <Compile Include="newproject\vista\FiltroVista.cs" />
     <Compile Include="newproject\vista\ProxyVistaMain.cs" />
     <Compile Include="newproject\vista\WaitForm.cs">
@@ -145,6 +147,7 @@
     <Compile Include="newproject\vista\GUIRegistro.Designer.cs">
       <DependentUpon>GUIRegistro.cs</DependentUpon>
     </Compile>
+    <Compile Include="oldproject\modelo\IAvance.cs" />
     <Compile Include="oldproject\vista\MainConsola.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

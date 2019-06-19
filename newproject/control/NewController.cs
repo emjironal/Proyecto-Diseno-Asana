@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Proyecto_Diseno_Asana.control.gestor;
 using Proyecto_Diseno_Asana.controller;
 using Proyecto_Diseno_Asana.modelo;
+using Proyecto_Diseno_Asana.newproject.modelo;
 
 namespace Proyecto_Diseno_Asana.newproject.control
 {
@@ -13,10 +15,12 @@ namespace Proyecto_Diseno_Asana.newproject.control
         private static NewController instance = new NewController();
         private Controlador controlador;
         public DTO dto { get; }
+        private GestorCaretaker gestorCaretaker;
         private NewController()
         {
             controlador = Controlador.getInstance();
             dto = controlador.dto;
+            gestorCaretaker = new GestorCaretaker();
         }
 
         public bool abrirProyecto()
@@ -31,6 +35,7 @@ namespace Proyecto_Diseno_Asana.newproject.control
 
         public bool agregarAvance()
         {
+            gestorCaretaker.SaveMemento(new NewAvance(controlador.dto.getAvance()));
             return controlador.agregarAvance();
         }
 
@@ -86,7 +91,8 @@ namespace Proyecto_Diseno_Asana.newproject.control
 
         public bool undoAvance()
         {
-            throw new NotImplementedException();
+            GestorAvance gestorAvance = new GestorAvance();
+            return gestorAvance.eliminarAvance(gestorCaretaker.UndoMemento());
         }
 
         public static NewController getInstance()
