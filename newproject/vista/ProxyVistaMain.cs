@@ -11,11 +11,11 @@ namespace Proyecto_Diseno_Asana.newproject.vista
 {
     class ProxyVistaMain : FiltroVista
     {
-        public GUIMainAdministrador vista { get; }
+        public GUIMain vista { get; }
 
         public ProxyVistaMain()
         {
-            vista = new GUIMainAdministrador();
+            vista = new GUIMain();
             filtrar();
         }
 
