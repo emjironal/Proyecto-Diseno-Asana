@@ -1,4 +1,5 @@
 ﻿using Proyecto_Diseno_Asana.modelo;
+using Proyecto_Diseno_Asana.newproject.control;
 using Proyecto_Diseno_Asana.newproject.vista;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace Proyecto_Diseno_Asana.vista
 
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            Controlador ctrl = Controlador.getInstance();
+            NewController ctrl = NewController.getInstance();
             ctrl.getDTO().getUsuario().id = tBCorreo.Text;
             if (ctrl.login())
             {

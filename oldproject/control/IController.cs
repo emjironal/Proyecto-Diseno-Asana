@@ -8,21 +8,20 @@ using System.Threading.Tasks;
 
 namespace Proyecto_Diseno_Asana.control
 {
-    abstract class IController
+    interface IController
     {
-        public DTO dto { get; }
-        abstract public bool login();
-        abstract public bool abrirProyecto();
-        abstract public bool importarProyecto(string pathJson);
-        abstract public bool actualizarProyecto(string pathJson);
-        abstract public bool completarUsuario();
-        abstract public bool borrarUsuario();
-        abstract public bool agregarAvance();
-        abstract public bool hacerConsulta(string tipo, object criterio);
-        abstract public List<Proyecto> consultarProyectos();
-        abstract public List<Tarea> consultarActividades();
-        abstract public List<Usuario> consultarUsuarios();
-        abstract public bool generarReportePDF();
-        abstract public bool guardarReportePDF(string path, string filename);
+        bool login();
+        bool abrirProyecto();
+        bool importarProyecto(string pathJson);
+        bool actualizarProyecto(string pathJson);
+        bool completarUsuario();
+        bool borrarUsuario();
+        bool agregarAvance();
+        bool hacerConsulta(string tipo, object criterio);
+        List<Proyecto> consultarProyectos();
+        List<Tarea> consultarActividades();
+        List<Usuario> consultarUsuarios();
+        bool generarReportePDF();
+        bool guardarReportePDF(string path, string filename);
     }
 }

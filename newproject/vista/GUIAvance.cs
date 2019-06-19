@@ -1,4 +1,5 @@
 ﻿using Proyecto_Diseno_Asana.modelo;
+using Proyecto_Diseno_Asana.newproject.control;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,12 +15,12 @@ namespace Proyecto_Diseno_Asana.vista
 {
     public partial class GUIAvance : Form
     {
-        Controlador controlador;
+        NewController controlador;
         public GUIAvance()
         {
             InitializeComponent();
             limpiarTabla();
-            controlador = Controlador.getInstance();
+            controlador = NewController.getInstance();
         }
 
         private void Btn_registrar_avance_Click(object sender, EventArgs e)
@@ -31,6 +32,7 @@ namespace Proyecto_Diseno_Asana.vista
             avance.Fecha = DateTime.Now;
             avance.id = "" + controlador.dto.getTarea().codigo + controlador.dto.getTarea().avances.Count;
             controlador.agregarAvance();
+
             System.Windows.Forms.MessageBox.Show("Avance agregado correctamente");
             this.DialogResult = DialogResult.OK;
         }

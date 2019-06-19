@@ -1,4 +1,5 @@
 ﻿using Proyecto_Diseno_Asana.modelo;
+using Proyecto_Diseno_Asana.newproject.control;
 using Proyecto_Diseno_Asana.newproject.vista;
 using System;
 using System.Collections.Generic;
@@ -66,17 +67,17 @@ namespace Proyecto_Diseno_Asana.vista
 
         void Importar()
         {
-            Controlador.getInstance().importarProyecto(path);
+            NewController.getInstance().importarProyecto(path);
         }
 
         void Actializar()
         {
-            Controlador.getInstance().actualizarProyecto(path);
+            NewController.getInstance().actualizarProyecto(path);
         }
         
         void AbrirPoyecto()
         {
-            Controlador.getInstance().abrirProyecto();
+            NewController.getInstance().abrirProyecto();
         }
        
 
@@ -88,7 +89,7 @@ namespace Proyecto_Diseno_Asana.vista
         private void LoadProyects()
         {
             dataGridView1.Rows.Clear();
-            List<Proyecto> proyectos = Controlador.getInstance().consultarProyectos();
+            List<Proyecto> proyectos = NewController.getInstance().consultarProyectos();
             foreach(Proyecto p in proyectos)
             {
                 dataGridView1.Rows.Add(p.id, p.nombre);
@@ -98,7 +99,7 @@ namespace Proyecto_Diseno_Asana.vista
 
         private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            Controlador ctrl = Controlador.getInstance();
+            NewController ctrl = NewController.getInstance();
 
             if (e.ColumnIndex == 2)
             {
