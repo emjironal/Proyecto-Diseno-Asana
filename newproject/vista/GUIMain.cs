@@ -62,6 +62,7 @@ namespace Proyecto_Diseno_Asana.vista
                 System.Windows.Forms.MessageBox.Show("Proyecto importado correctamente");
 
             }
+            LoadProyects();
 
         }
 
