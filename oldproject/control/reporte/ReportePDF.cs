@@ -20,6 +20,7 @@ namespace Proyecto_Diseno_Asana.control.reporte
             foreach (modelo.Avance avance in Controlador.getInstance().dto.avances)
             {
                 document.Add(new Paragraph(avance.ToString()));
+                document.Add(new Paragraph(Environment.NewLine));
             }
             document.Close();
             return true;
