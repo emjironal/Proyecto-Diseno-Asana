@@ -92,7 +92,9 @@ namespace Proyecto_Diseno_Asana.newproject.control
         public bool undoAvance()
         {
             GestorAvance gestorAvance = new GestorAvance();
-            return gestorAvance.eliminarAvance(gestorCaretaker.UndoMemento());
+            string id = gestorCaretaker.UndoMemento();
+
+            return gestorAvance.eliminarAvance(id);
         }
 
         public static NewController getInstance()

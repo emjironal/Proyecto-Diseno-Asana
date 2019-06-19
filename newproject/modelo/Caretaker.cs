@@ -21,7 +21,7 @@ namespace Proyecto_Diseno_Asana.newproject.modelo
         public string Get()
         {
             AvanceMemento avance = (AvanceMemento)avances.Pop();
-
+            Console.WriteLine("El valor del id avance " + avance.id );
             return (avance.id);
         }
 

@@ -131,5 +131,20 @@ namespace Proyecto_Diseno_Asana.vista
                 LoadTreeView();
             }
         }
+
+        private void TreeView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Z && e.Modifiers == Keys.Control)
+            {
+                NewController.getInstance().undoAvance();
+                LoadTreeView();
+            }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            NewController.getInstance().undoAvance();
+            LoadTreeView();
+        }
     }
 }

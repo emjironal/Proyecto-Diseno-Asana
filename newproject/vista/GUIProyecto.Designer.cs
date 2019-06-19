@@ -31,6 +31,7 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.lNombreProyecto = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnAgregarAvance = new System.Windows.Forms.Button();
             this.lNombreTarea = new System.Windows.Forms.Label();
             this.lNotas = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -44,7 +45,6 @@
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Creador = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAgregarAvance = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -63,6 +63,7 @@
             this.treeView1.Size = new System.Drawing.Size(394, 581);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeView1_NodeMouseClick);
+            this.treeView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TreeView1_KeyDown);
             // 
             // lNombreProyecto
             // 
@@ -80,12 +81,12 @@
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.Transparent;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.btnAgregarAvance, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.lNombreTarea, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lNotas, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.gBEvidencias, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.btnAgregarAvance, 0, 5);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(427, 86);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
@@ -95,8 +96,23 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 27.15977F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.97398F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.774995F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(638, 581);
             this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // btnAgregarAvance
+            // 
+            this.btnAgregarAvance.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.btnAgregarAvance.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnAgregarAvance.Enabled = false;
+            this.btnAgregarAvance.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnAgregarAvance.Location = new System.Drawing.Point(3, 530);
+            this.btnAgregarAvance.Name = "btnAgregarAvance";
+            this.btnAgregarAvance.Size = new System.Drawing.Size(632, 48);
+            this.btnAgregarAvance.TabIndex = 6;
+            this.btnAgregarAvance.Text = "Agregar Avance";
+            this.btnAgregarAvance.UseVisualStyleBackColor = false;
+            this.btnAgregarAvance.Click += new System.EventHandler(this.BtnAgregarAvance_Click);
             // 
             // lNombreTarea
             // 
@@ -245,20 +261,6 @@
             this.Fecha.MinimumWidth = 10;
             this.Fecha.Name = "Fecha";
             // 
-            // btnAgregarAvance
-            // 
-            this.btnAgregarAvance.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.btnAgregarAvance.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnAgregarAvance.Enabled = false;
-            this.btnAgregarAvance.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnAgregarAvance.Location = new System.Drawing.Point(3, 530);
-            this.btnAgregarAvance.Name = "btnAgregarAvance";
-            this.btnAgregarAvance.Size = new System.Drawing.Size(632, 48);
-            this.btnAgregarAvance.TabIndex = 6;
-            this.btnAgregarAvance.Text = "Agregar Avance";
-            this.btnAgregarAvance.UseVisualStyleBackColor = false;
-            this.btnAgregarAvance.Click += new System.EventHandler(this.BtnAgregarAvance_Click);
-            // 
             // GUIProyecto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,7 +271,7 @@
             this.Controls.Add(this.lNombreProyecto);
             this.Controls.Add(this.treeView1);
             this.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "GUIProyecto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ASANA upgrade";
